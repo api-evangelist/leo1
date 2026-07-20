@@ -1,0 +1,15 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/leo1-leofees-openapi-original.json
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: APIKeyHeader
+  type: apiKey
+  in: header
+  parameter: secret-key
+  sources:
+  - openapi/leo1-leofees-openapi-original.json
