@@ -1,0 +1,785 @@
+openapi: 3.0.2
+info:
+  title: leofees_backend api student API
+  version: version
+  description: General system endpoints for the API.
+tags:
+- name: student
+paths:
+  /api/v1/student/info/roll-number:
+    get:
+      tags:
+      - student
+      summary: Get Student
+      operationId: get_student_api_v1_student_info_roll_number_get
+      parameters:
+      - required: false
+        schema:
+          title: Student Roll Number
+          type: string
+        name: student_roll_number
+        in: query
+      - required: false
+        schema:
+          title: Institute Id
+          type: integer
+        name: institute_id
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/student/info/:
+    get:
+      tags:
+      - student
+      summary: Get Student
+      operationId: get_student_api_v1_student_info__get
+      parameters:
+      - required: false
+        schema:
+          title: Phone Number
+          type: string
+        name: phone_number
+        in: query
+      - required: false
+        schema:
+          title: Institute Id
+          type: integer
+        name: institute_id
+        in: query
+      - required: false
+        schema:
+          title: Student Id
+          type: string
+        name: student_id
+        in: query
+      - required: false
+        schema:
+          title: Student Uuid
+          type: string
+        name: student_uuid
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/student/check-student-exist:
+    post:
+      tags:
+      - student
+      summary: Check Student Exist
+      operationId: check_student_exist_api_v1_student_check_student_exist_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StudentExistRequestBody'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/student/change-mobile-number:
+    post:
+      tags:
+      - student
+      summary: Change Student Mobile
+      operationId: change_student_mobile_api_v1_student_change_mobile_number_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeMobileNumberRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/student/:
+    get:
+      tags:
+      - student
+      summary: Get Students
+      operationId: get_students_api_v1_student__get
+      parameters:
+      - required: false
+        schema:
+          title: Filter Data
+          type: string
+        name: filter_data
+        in: query
+      - required: false
+        schema:
+          title: From Date
+          type: string
+        name: from_date
+        in: query
+      - required: false
+        schema:
+          title: To Date
+          type: string
+        name: to_date
+        in: query
+      - required: false
+        schema:
+          title: Institutes
+          type: string
+          default: ''
+        name: institutes
+        in: query
+      - required: false
+        schema:
+          title: Branches
+          type: string
+          default: ''
+        name: branches
+        in: query
+      - required: false
+        schema:
+          title: Courses
+          type: string
+          default: ''
+        name: courses
+        in: query
+      - required: false
+        schema:
+          title: Classes
+          type: string
+          default: ''
+        name: classes
+        in: query
+      - required: false
+        schema:
+          title: Limit
+          type: integer
+        name: limit
+        in: query
+      - required: false
+        schema:
+          title: Offset
+          type: integer
+        name: offset
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    put:
+      tags:
+      - student
+      summary: Update Students
+      operationId: update_students_api_v1_student__put
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateStudentProfileRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    post:
+      tags:
+      - student
+      summary: Create Student
+      operationId: create_student_api_v1_student__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateStudentProfileRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    delete:
+      tags:
+      - student
+      summary: Delete Students
+      operationId: delete_students_api_v1_student__delete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteStudentProfileRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/student/download_filtered_students:
+    post:
+      tags:
+      - student
+      summary: Download Filtered Students
+      operationId: download_filtered_students_api_v1_student_download_filtered_students_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DownloadStudentsFilterData'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/student/download_students:
+    post:
+      tags:
+      - student
+      summary: Download Students
+      operationId: download_students_api_v1_student_download_students_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DownloadStudents'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/student/add_bulk_students:
+    post:
+      tags:
+      - student
+      summary: Create Bulk Students
+      operationId: create_bulk_students_api_v1_student_add_bulk_students_post
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_create_bulk_students_api_v1_student_add_bulk_students_post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/student/add_bulk_fee_dues:
+    post:
+      tags:
+      - student
+      summary: Create Bulk Students Fee Dues
+      operationId: create_bulk_students_fee_dues_api_v1_student_add_bulk_fee_dues_post
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_create_bulk_students_fee_dues_api_v1_student_add_bulk_fee_dues_post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/student/data_sync_students_leo1_fees:
+    post:
+      tags:
+      - student
+      summary: Data Sync Students Leo1 Fees
+      operationId: data_sync_students_leo1_fees_api_v1_student_data_sync_students_leo1_fees_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Request
+              type: object
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/student/fetch_student_details_for_payment:
+    post:
+      tags:
+      - student
+      summary: Fetch Student Details Payment
+      operationId: fetch_student_details_payment_api_v1_student_fetch_student_details_for_payment_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FetchStudentDetailsForPaymentRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/student/bank-details/:
+    get:
+      tags:
+      - student
+      summary: Get Student Bank Details
+      operationId: get_student_bank_details_api_v1_student_bank_details__get
+      parameters:
+      - description: The uuid of the student
+        required: true
+        schema:
+          title: Student Uuid
+          type: string
+          description: The uuid of the student
+        name: student_uuid
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/student/create-or-update-bank-details/:
+    post:
+      tags:
+      - student
+      summary: Create Or Update Bank Details
+      operationId: create_or_update_bank_details_api_v1_student_create_or_update_bank_details__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BankDetails'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    BankDetails:
+      title: BankDetails
+      required:
+      - student_uuid
+      - account_number
+      - ifsc_code
+      - bank_code
+      - account_type
+      - name_on_bank_account
+      type: object
+      properties:
+        student_uuid:
+          title: Student Uuid
+          type: string
+        account_number:
+          title: Account Number
+          type: string
+        ifsc_code:
+          title: Ifsc Code
+          type: string
+        bank_code:
+          title: Bank Code
+          type: string
+        account_type:
+          title: Account Type
+          type: string
+        name_on_bank_account:
+          title: Name On Bank Account
+          type: string
+    FetchStudentDetailsForPaymentRequest:
+      title: FetchStudentDetailsForPaymentRequest
+      required:
+      - institute_identifier
+      - roll_no
+      type: object
+      properties:
+        institute_identifier:
+          title: Institute Identifier
+          type: string
+        roll_no:
+          title: Roll No
+          type: string
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    Body_create_bulk_students_api_v1_student_add_bulk_students_post:
+      title: Body_create_bulk_students_api_v1_student_add_bulk_students_post
+      required:
+      - file
+      type: object
+      properties:
+        file:
+          title: File
+          type: string
+          format: binary
+        institute_id:
+          title: Institute Id
+          type: integer
+        branch_id:
+          title: Branch Id
+          type: integer
+        institute_name:
+          title: Institute Name
+          type: string
+        branch_name:
+          title: Branch Name
+          type: string
+    StudentExistRequestBody:
+      title: StudentExistRequestBody
+      required:
+      - student_roll_number
+      - institute_ids
+      type: object
+      properties:
+        student_roll_number:
+          title: Student Roll Number
+          type: string
+        institute_ids:
+          title: Institute Ids
+          type: string
+    DeleteStudentProfileRequest:
+      title: DeleteStudentProfileRequest
+      type: object
+      properties: {}
+    Body_create_bulk_students_fee_dues_api_v1_student_add_bulk_fee_dues_post:
+      title: Body_create_bulk_students_fee_dues_api_v1_student_add_bulk_fee_dues_post
+      required:
+      - file
+      - institute_id
+      - branch_id
+      type: object
+      properties:
+        file:
+          title: File
+          type: string
+          format: binary
+        institute_id:
+          title: Institute Id
+          type: integer
+        branch_id:
+          title: Branch Id
+          type: integer
+    UpdateStudentProfileRequest:
+      title: UpdateStudentProfileRequest
+      type: object
+      properties: {}
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    DownloadStudentsFilterData:
+      title: DownloadStudentsFilterData
+      required:
+      - institutes
+      type: object
+      properties:
+        filter_data:
+          title: Filter Data
+          type: string
+          description: filter_data is optional
+          default: ''
+        from_date:
+          title: From Date
+          type: string
+          description: from_date is optional
+          default: ''
+        to_date:
+          title: To Date
+          type: string
+          description: to_date is optional
+          default: ''
+        institutes:
+          title: Institutes
+          type: array
+          items:
+            type: integer
+          description: Institute IDs are required
+        branches:
+          title: Branches
+          type: array
+          items:
+            type: integer
+          description: Branch IDs are optional
+          default: []
+        courses:
+          title: Courses
+          type: array
+          items:
+            type: integer
+          description: Course IDs are optional
+          default: []
+        classes:
+          title: Classes
+          type: array
+          items:
+            type: integer
+          description: Class IDs are optional
+          default: []
+        students:
+          title: Students
+          type: array
+          items:
+            type: integer
+          description: Student IDs is optional
+          default: []
+        limit:
+          title: Limit
+          type: integer
+          description: limit is optional
+        offset:
+          title: Offset
+          type: integer
+          description: offset is optional
+    DownloadStudents:
+      title: DownloadStudents
+      required:
+      - institute_ids
+      - branch_ids
+      type: object
+      properties:
+        institute_ids:
+          title: Institute Ids
+          type: array
+          items:
+            type: integer
+          description: Institute IDs are required
+        branch_ids:
+          title: Branch Ids
+          type: array
+          items:
+            type: integer
+          description: Branch IDs are required
+        student_ids:
+          title: Student Ids
+          type: array
+          items:
+            type: integer
+          description: Student IDs is optional
+    CreateStudentProfileRequest:
+      title: CreateStudentProfileRequest
+      required:
+      - student_name
+      - mobile_number
+      - roll_number
+      - institute_id
+      - branch_id
+      - institute_name
+      - branch_name
+      type: object
+      properties:
+        student_name:
+          title: Student Name
+          type: string
+          description: Student name is required
+        mobile_number:
+          title: Mobile Number
+          type: string
+          description: Mobile number is required
+        roll_number:
+          title: Roll Number
+          type: string
+          description: Roll number is required
+        institute_id:
+          title: Institute Id
+          type: integer
+          description: Institute ID is required
+        branch_id:
+          title: Branch Id
+          type: integer
+          description: Branch ID is required
+        institute_name:
+          title: Institute Name
+          type: string
+          description: Institute name is required
+        branch_name:
+          title: Branch Name
+          type: string
+          description: Branch name is required
+    ChangeMobileNumberRequest:
+      title: ChangeMobileNumberRequest
+      required:
+      - old_mobile
+      - new_mobile
+      - new_nbfc_user_id
+      type: object
+      properties:
+        old_mobile:
+          title: Old Mobile
+          type: string
+        new_mobile:
+          title: New Mobile
+          type: string
+        new_nbfc_user_id:
+          title: New Nbfc User Id
+          type: integer
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: secret-key

@@ -1,0 +1,353 @@
+openapi: 3.0.2
+info:
+  title: leofees_backend api Institute Course Class Fee Structure Mapping API
+  version: version
+  description: General system endpoints for the API.
+tags:
+- name: Institute Course Class Fee Structure Mapping
+paths:
+  /api/v1/institute/mapping/class_fee_structure:
+    get:
+      tags:
+      - Institute Course Class Fee Structure Mapping
+      summary: Get Institute Course Classes Fee Structures
+      operationId: get_institute_course_classes_fee_structures_api_v1_institute_mapping_class_fee_structure_get
+      parameters:
+      - required: true
+        schema:
+          title: Course Ids
+          type: string
+        name: course_ids
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/institute/mapping/add_student:
+    post:
+      tags:
+      - Institute Course Class Fee Structure Mapping
+      summary: Create Student
+      operationId: create_student_api_v1_institute_mapping_add_student_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateStudentInstituteCourseMappingRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/institute/mapping/add_bulk_students:
+    post:
+      tags:
+      - Institute Course Class Fee Structure Mapping
+      summary: Create Bulk Students
+      operationId: create_bulk_students_api_v1_institute_mapping_add_bulk_students_post
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_create_bulk_students_api_v1_institute_mapping_add_bulk_students_post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/institute/mapping/update_bulk_students:
+    post:
+      tags:
+      - Institute Course Class Fee Structure Mapping
+      summary: Update Bulk Students
+      operationId: update_bulk_students_api_v1_institute_mapping_update_bulk_students_post
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_update_bulk_students_api_v1_institute_mapping_update_bulk_students_post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/institute/mapping/sample_template_download:
+    post:
+      tags:
+      - Institute Course Class Fee Structure Mapping
+      summary: Download Sample Template
+      operationId: download_sample_template_api_v1_institute_mapping_sample_template_download_post
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Body_download_sample_template_api_v1_institute_mapping_sample_template_download_post'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/institute/mapping/collection_sample_template_download:
+    post:
+      tags:
+      - Institute Course Class Fee Structure Mapping
+      summary: Collection Download Sample Template
+      operationId: collection_download_sample_template_api_v1_institute_mapping_collection_sample_template_download_post
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Body_collection_download_sample_template_api_v1_institute_mapping_collection_sample_template_download_post'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/institute/mapping/download_course_mapping:
+    post:
+      tags:
+      - Institute Course Class Fee Structure Mapping
+      summary: Download Course Mapping
+      operationId: download_course_mapping_api_v1_institute_mapping_download_course_mapping_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DownloadCourseMapping'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+components:
+  schemas:
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    CreateStudentInstituteCourseMappingRequest:
+      title: CreateStudentInstituteCourseMappingRequest
+      required:
+      - student_name
+      - mobile_number
+      - roll_number
+      - course_name
+      - class_name
+      - institute_id
+      - branch_id
+      - institute_name
+      - branch_name
+      type: object
+      properties:
+        student_name:
+          title: Student Name
+          type: string
+          description: Student name is required
+        mobile_number:
+          title: Mobile Number
+          type: string
+          description: Mobile number ID is required
+        roll_number:
+          title: Roll Number
+          type: string
+          description: Student ID is required
+        course_name:
+          title: Course Name
+          type: string
+          description: Course name is required
+        class_name:
+          title: Class Name
+          type: string
+          description: Class name is required
+        institute_id:
+          title: Institute Id
+          type: integer
+          description: Institute ID is required
+        branch_id:
+          title: Branch Id
+          type: integer
+          description: Branch ID is required
+        institute_name:
+          title: Institute Name
+          type: string
+          description: Institute name is required
+        branch_name:
+          title: Branch Name
+          type: string
+          description: Branch name is required
+    DownloadCourseMapping:
+      title: DownloadCourseMapping
+      required:
+      - institute_ids
+      - branch_ids
+      type: object
+      properties:
+        institute_ids:
+          title: Institute Ids
+          type: array
+          items:
+            type: integer
+          description: Institute IDs are required
+        branch_ids:
+          title: Branch Ids
+          type: array
+          items:
+            type: integer
+          description: Branch IDs are required
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    Body_create_bulk_students_api_v1_institute_mapping_add_bulk_students_post:
+      title: Body_create_bulk_students_api_v1_institute_mapping_add_bulk_students_post
+      required:
+      - file
+      type: object
+      properties:
+        file:
+          title: File
+          type: string
+          format: binary
+        institute_id:
+          title: Institute Id
+          type: integer
+        branch_id:
+          title: Branch Id
+          type: integer
+        institute_name:
+          title: Institute Name
+          type: string
+        branch_name:
+          title: Branch Name
+          type: string
+    Body_collection_download_sample_template_api_v1_institute_mapping_collection_sample_template_download_post:
+      title: Body_collection_download_sample_template_api_v1_institute_mapping_collection_sample_template_download_post
+      type: object
+      properties:
+        branch_id:
+          title: Branch Id
+          type: integer
+    Body_update_bulk_students_api_v1_institute_mapping_update_bulk_students_post:
+      title: Body_update_bulk_students_api_v1_institute_mapping_update_bulk_students_post
+      required:
+      - file
+      type: object
+      properties:
+        file:
+          title: File
+          type: string
+          format: binary
+        institute_id:
+          title: Institute Id
+          type: integer
+        branch_id:
+          title: Branch Id
+          type: integer
+        institute_name:
+          title: Institute Name
+          type: string
+        branch_name:
+          title: Branch Name
+          type: string
+    Body_download_sample_template_api_v1_institute_mapping_sample_template_download_post:
+      title: Body_download_sample_template_api_v1_institute_mapping_sample_template_download_post
+      type: object
+      properties:
+        branch_id:
+          title: Branch Id
+          type: integer
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: secret-key

@@ -1,0 +1,245 @@
+openapi: 3.0.2
+info:
+  title: leofees_backend api student coin request API
+  version: version
+  description: General system endpoints for the API.
+tags:
+- name: student coin request
+paths:
+  /api/v1/student_coin_request/:
+    get:
+      tags:
+      - student coin request
+      summary: Get Students Coin Requests
+      operationId: get_students_coin_requests_api_v1_student_coin_request__get
+      parameters:
+      - required: true
+        schema:
+          title: Student Ids
+          type: string
+        name: student_ids
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    put:
+      tags:
+      - student coin request
+      summary: Update Student Coin Request
+      operationId: update_student_coin_request_api_v1_student_coin_request__put
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateStudentCoinRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    post:
+      tags:
+      - student coin request
+      summary: Create Student Coin Request
+      operationId: create_student_coin_request_api_v1_student_coin_request__post
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_create_student_coin_request_api_v1_student_coin_request__post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/student_coin_request/pending_coin_requests:
+    get:
+      tags:
+      - student coin request
+      summary: Get Students Pending Coin Requests
+      operationId: get_students_pending_coin_requests_api_v1_student_coin_request_pending_coin_requests_get
+      parameters:
+      - required: true
+        schema:
+          title: Institute Ids
+          type: string
+        name: institute_ids
+        in: query
+      - required: false
+        schema:
+          title: Branch Ids
+          type: string
+          default: ''
+        name: branch_ids
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/student_coin_request/download_pending_coin_requests:
+    get:
+      tags:
+      - student coin request
+      summary: Get Download Pending Coin Requests
+      operationId: get_download_pending_coin_requests_api_v1_student_coin_request_download_pending_coin_requests_get
+      parameters:
+      - required: true
+        schema:
+          title: Institute Ids
+          type: string
+        name: institute_ids
+        in: query
+      - required: false
+        schema:
+          title: Branch Ids
+          type: string
+          default: ''
+        name: branch_ids
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+components:
+  schemas:
+    Body_create_student_coin_request_api_v1_student_coin_request__post:
+      title: Body_create_student_coin_request_api_v1_student_coin_request__post
+      required:
+      - student_id
+      - amount
+      - payment_mode
+      - payment_date
+      type: object
+      properties:
+        student_id:
+          title: Student Id
+          type: integer
+        amount:
+          title: Amount
+          type: number
+        transaction_id:
+          title: Transaction Id
+          type: string
+        payment_mode:
+          title: Payment Mode
+          type: string
+        payment_date:
+          title: Payment Date
+          type: string
+        reciept:
+          title: Reciept
+          type: string
+          format: binary
+        comment:
+          title: Comment
+          type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    UpdateStudentCoinRequest:
+      title: UpdateStudentCoinRequest
+      required:
+      - student_coin_request_id
+      - student_id
+      - status
+      type: object
+      properties:
+        student_coin_request_id:
+          title: Student Coin Request Id
+          type: integer
+          description: Student coin request ID is required
+        student_id:
+          title: Student Id
+          type: integer
+          description: Student ID is required
+        status:
+          title: Status
+          type: string
+          description: Status is required
+        comment:
+          title: Comment
+          type: string
+          description: Comment is optional
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: secret-key

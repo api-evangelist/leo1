@@ -1,0 +1,416 @@
+openapi: 3.0.2
+info:
+  title: leofees_backend api payment API
+  version: version
+  description: General system endpoints for the API.
+tags:
+- name: payment
+paths:
+  /api/v1/payment/initiate_payment:
+    post:
+      tags:
+      - payment
+      summary: Initiate Payment
+      description: Initiate Payment
+      operationId: initiate_payment_api_v1_payment_initiate_payment_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/payment/easebuzz_hook:
+    post:
+      tags:
+      - payment
+      summary: Easebuzz Hook
+      operationId: easebuzz_hook_api_v1_payment_easebuzz_hook_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/v1/payment/payment_unification_hook:
+    post:
+      tags:
+      - payment
+      summary: Payment Unification Hook
+      operationId: payment_unification_hook_api_v1_payment_payment_unification_hook_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/v1/payment/payment_inititated:
+    post:
+      tags:
+      - payment
+      summary: Update Payment Initiated
+      operationId: update_payment_initiated_api_v1_payment_payment_inititated_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePaymentInitiated'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/payment/update_payment_status:
+    post:
+      tags:
+      - payment
+      summary: Get Payment Status
+      operationId: get_payment_status_api_v1_payment_update_payment_status_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentCompleteStatus'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/payment/fetch_payment_status_easebuzz:
+    post:
+      tags:
+      - payment
+      summary: Fetch Payment Status
+      operationId: fetch_payment_status_api_v1_payment_fetch_payment_status_easebuzz_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FetchPaymentStatusRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/paymentfetch_payment_status_by_date_easebuzz:
+    post:
+      tags:
+      - payment
+      summary: Fetch Payment Status Date
+      operationId: fetch_payment_status_date_api_v1_paymentfetch_payment_status_by_date_easebuzz_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/v1/payment/update_payment_status/{txn_log_id}:
+    post:
+      tags:
+      - payment
+      summary: Update Payment Status
+      operationId: update_payment_status_api_v1_payment_update_payment_status__txn_log_id__post
+      parameters:
+      - required: true
+        schema:
+          title: Txn Log Id
+        name: txn_log_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/payment/check_hook:
+    post:
+      tags:
+      - payment
+      summary: Check Hook
+      operationId: check_hook_api_v1_payment_check_hook_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/v1/payment/initiate_pg:
+    post:
+      tags:
+      - payment
+      summary: Initiate Payment
+      operationId: initiate_payment_api_v1_payment_initiate_pg_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeePaymentRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/payment/initiate_pg_store:
+    post:
+      tags:
+      - payment
+      summary: Initiate Payment Store
+      operationId: initiate_payment_store_api_v1_payment_initiate_pg_store_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/v1/payment/initiate_pg_for_temp_student:
+    post:
+      tags:
+      - payment
+      summary: Initiate Payment For Temp Student
+      operationId: initiate_payment_for_temp_student_api_v1_payment_initiate_pg_for_temp_student_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeePaymentRequestForTempStudent'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    UpdatePaymentInitiated:
+      title: UpdatePaymentInitiated
+      required:
+      - transaction_log_id
+      type: object
+      properties:
+        transaction_log_id:
+          title: Transaction Log Id
+          type: integer
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    FeePaymentRequestForTempStudent:
+      title: FeePaymentRequestForTempStudent
+      required:
+      - transaction_id
+      - phone_number
+      - amount
+      type: object
+      properties:
+        transaction_id:
+          title: Transaction Id
+          type: string
+        phone_number:
+          title: Phone Number
+          type: string
+        amount:
+          title: Amount
+          type: number
+        payment_mode:
+          title: Payment Mode
+          type: string
+        udf2:
+          title: Udf2
+          type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    FeePaymentRequest:
+      title: FeePaymentRequest
+      required:
+      - transaction_id
+      - phone_number
+      - institute_id
+      - amount
+      type: object
+      properties:
+        transaction_id:
+          title: Transaction Id
+          type: string
+        phone_number:
+          title: Phone Number
+          type: string
+        institute_id:
+          title: Institute Id
+          type: integer
+        amount:
+          title: Amount
+          type: number
+        payment_mode:
+          title: Payment Mode
+          type: string
+        comments:
+          title: Comments
+          type: string
+    PaymentCompleteStatus:
+      title: PaymentCompleteStatus
+      required:
+      - txid
+      - issuing_bank
+      - card_category
+      - card_type
+      - amount
+      - status
+      type: object
+      properties:
+        txid:
+          title: Txid
+          type: string
+        issuing_bank:
+          title: Issuing Bank
+          type: string
+        card_category:
+          title: Card Category
+          type: string
+        card_type:
+          title: Card Type
+          type: string
+        amount:
+          title: Amount
+          type: string
+        transaction_log_id:
+          title: Transaction Log Id
+          type: integer
+        status:
+          title: Status
+          type: string
+        reason:
+          title: Reason
+          type: string
+    FetchPaymentStatusRequest:
+      title: FetchPaymentStatusRequest
+      required:
+      - txn_id
+      - txn_amount
+      - trans_id
+      - insti_id
+      type: object
+      properties:
+        txn_id:
+          title: Txn Id
+          type: string
+        txn_amount:
+          title: Txn Amount
+          type: number
+        trans_id:
+          title: Trans Id
+          type: string
+        insti_id:
+          title: Insti Id
+          type: integer
+    PaymentRequest:
+      title: PaymentRequest
+      required:
+      - roll_number
+      - transaction_log_id
+      - unique_transaction_id
+      type: object
+      properties:
+        roll_number:
+          title: Roll Number
+          type: string
+        transaction_log_id:
+          title: Transaction Log Id
+          type: integer
+        unique_transaction_id:
+          title: Unique Transaction Id
+          type: string
+        redirect_success:
+          title: Redirect Success
+          type: string
+        redirect_fail:
+          title: Redirect Fail
+          type: string
+        is_enach:
+          title: Is Enach
+          type: boolean
+          default: false
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: secret-key

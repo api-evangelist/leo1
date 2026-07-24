@@ -1,0 +1,157 @@
+openapi: 3.0.2
+info:
+  title: leofees_backend api Communication API
+  version: version
+  description: General system endpoints for the API.
+tags:
+- name: Communication
+paths:
+  /api/v1/communication/send_due_notification:
+    post:
+      tags:
+      - Communication
+      summary: Send Due Notification
+      operationId: send_due_notification_api_v1_communication_send_due_notification_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SingleCommunication'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/communication/send_bulk_due_notification:
+    post:
+      tags:
+      - Communication
+      summary: Send Bulk Due Notification
+      operationId: send_bulk_due_notification_api_v1_communication_send_bulk_due_notification_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkCommunication'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/communication/save_bulk_response_file:
+    post:
+      tags:
+      - Communication
+      summary: Bulk Response File Saving
+      operationId: bulk_response_file_saving_api_v1_communication_save_bulk_response_file_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkResponseFile'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    SingleCommunication:
+      title: SingleCommunication
+      required:
+      - student_id
+      type: object
+      properties:
+        student_id:
+          title: Student Id
+          type: integer
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    BulkResponseFile:
+      title: BulkResponseFile
+      required:
+      - data
+      type: object
+      properties:
+        data:
+          title: Data
+          type: object
+    BulkCommunication:
+      title: BulkCommunication
+      type: object
+      properties:
+        institute_ids:
+          title: Institute Ids
+          type: array
+          items:
+            type: integer
+          default: []
+        branch_ids:
+          title: Branch Ids
+          type: array
+          items:
+            type: integer
+          default: []
+        student_ids:
+          title: Student Ids
+          type: array
+          items:
+            type: integer
+          default: []
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: secret-key

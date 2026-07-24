@@ -1,0 +1,206 @@
+openapi: 3.0.2
+info:
+  title: leofees_backend api Institute Payment API
+  version: version
+  description: General system endpoints for the API.
+tags:
+- name: Institute Payment
+paths:
+  /institute_payment/v1/:
+    get:
+      tags:
+      - Institute Payment
+      summary: Index
+      operationId: index_institute_payment_v1__get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /institute_payment/v1/create-temp-student:
+    post:
+      tags:
+      - Institute Payment
+      summary: Get Or Create Temp Student
+      operationId: get_or_create_temp_student_institute_payment_v1_create_temp_student_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TempStudentCreate'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /institute_payment/v1/get-temp-student-details:
+    get:
+      tags:
+      - Institute Payment
+      summary: Get Temp Student Details
+      operationId: get_temp_student_details_institute_payment_v1_get_temp_student_details_get
+      parameters:
+      - required: true
+        schema:
+          title: Mobile No
+          type: string
+        name: mobile_no
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /institute_payment/v1/get-latest-payment-record:
+    get:
+      tags:
+      - Institute Payment
+      summary: Get Latest Payment Record
+      operationId: get_latest_payment_record_institute_payment_v1_get_latest_payment_record_get
+      parameters:
+      - required: true
+        schema:
+          title: Student Id
+          type: integer
+        name: student_id
+        in: query
+      - required: false
+        schema:
+          title: User Status
+          type: string
+        name: user_status
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /institute_payment/v1/download-institute-payment-receipt:
+    get:
+      tags:
+      - Institute Payment
+      summary: Download Institute Payment Receipt
+      description: API to download institute payment receipt
+      operationId: download_institute_payment_receipt_institute_payment_v1_download_institute_payment_receipt_get
+      parameters:
+      - required: true
+        schema:
+          title: Transaction Id
+          type: string
+        name: transaction_id
+        in: query
+      - required: true
+        schema:
+          title: New Student
+          type: boolean
+        name: new_student
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    TempStudentCreate:
+      title: TempStudentCreate
+      required:
+      - name
+      - terms_conditions_agreed
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+        course:
+          title: Course
+          type: string
+        mobile_no:
+          title: Mobile No
+          type: string
+        email:
+          title: Email
+          type: string
+        father_name:
+          title: Father Name
+          type: string
+        terms_conditions_agreed:
+          title: Terms Conditions Agreed
+          type: boolean
+        institute_id:
+          title: Institute Id
+          type: integer
+        institute_name:
+          title: Institute Name
+          type: string
+        division:
+          title: Division
+          type: string
+        year_of_study:
+          title: Year Of Study
+          type: string
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: secret-key

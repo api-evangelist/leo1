@@ -1,0 +1,196 @@
+openapi: 3.0.2
+info:
+  title: leofees_backend api Switch Feature API
+  version: version
+  description: General system endpoints for the API.
+tags:
+- name: Switch Feature
+paths:
+  /api/v1/switch_feature/:
+    get:
+      tags:
+      - Switch Feature
+      summary: Get Switch Features
+      operationId: get_switch_features_api_v1_switch_feature__get
+      parameters:
+      - required: false
+        schema:
+          title: Switch Feature Ids
+          type: string
+          default: ''
+        name: switch_feature_ids
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    post:
+      tags:
+      - Switch Feature
+      summary: Create Switch Feature
+      operationId: create_switch_feature_api_v1_switch_feature__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSwitchFeatureRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    delete:
+      tags:
+      - Switch Feature
+      summary: Bulk Delete Switch Features
+      operationId: bulk_delete_switch_features_api_v1_switch_feature__delete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteSwitchFeatureRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/switch_feature/update_bulk_switch_feature:
+    put:
+      tags:
+      - Switch Feature
+      summary: Bulk Update Switch Features
+      operationId: bulk_update_switch_features_api_v1_switch_feature_update_bulk_switch_feature_put
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Request Data
+              type: array
+              items:
+                $ref: '#/components/schemas/UpdateSwitchFeatureRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+components:
+  schemas:
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    DeleteSwitchFeatureRequest:
+      title: DeleteSwitchFeatureRequest
+      required:
+      - switch_feature_ids
+      type: object
+      properties:
+        switch_feature_ids:
+          title: Switch Feature Ids
+          type: array
+          items:
+            type: integer
+          description: switch_feature_ids are required
+    UpdateSwitchFeatureRequest:
+      title: UpdateSwitchFeatureRequest
+      required:
+      - switch_feature_id
+      type: object
+      properties:
+        switch_feature_id:
+          title: Switch Feature Id
+          type: integer
+          description: switch_feature_id is required
+        feature_name:
+          title: Feature Name
+          type: string
+          description: feature_name is optional
+        enabled:
+          title: Enabled
+          type: boolean
+          description: enabled is optional
+    CreateSwitchFeatureRequest:
+      title: CreateSwitchFeatureRequest
+      required:
+      - feature_name
+      type: object
+      properties:
+        feature_name:
+          title: Feature Name
+          type: string
+          description: Feature name is required
+        enabled:
+          title: Enabled
+          type: boolean
+          description: enabled is optional
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: secret-key

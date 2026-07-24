@@ -1,0 +1,231 @@
+openapi: 3.0.2
+info:
+  title: leofees_backend api Institute Course Class API
+  version: version
+  description: General system endpoints for the API.
+tags:
+- name: Institute Course Class
+paths:
+  /api/v1/institute/class/:
+    get:
+      tags:
+      - Institute Course Class
+      summary: Get Institute Course Classes
+      operationId: get_institute_course_classes_api_v1_institute_class__get
+      parameters:
+      - required: true
+        schema:
+          title: Course Ids
+          type: string
+        name: course_ids
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    put:
+      tags:
+      - Institute Course Class
+      summary: Update Institute Course Class
+      operationId: update_institute_course_class_api_v1_institute_class__put
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateInstituteCourseClassRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    post:
+      tags:
+      - Institute Course Class
+      summary: Create Institute Course Class
+      operationId: create_institute_course_class_api_v1_institute_class__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateInstituteCourseClassRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/institute/class/create_bulk_course_class:
+    post:
+      tags:
+      - Institute Course Class
+      summary: Bulk Create Institute Course Class
+      operationId: bulk_create_institute_course_class_api_v1_institute_class_create_bulk_course_class_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Request Data
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateInstituteCourseClassRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/institute/class/update_bulk_course_class:
+    put:
+      tags:
+      - Institute Course Class
+      summary: Update Bulk Institute Course Class
+      operationId: update_bulk_institute_course_class_api_v1_institute_class_update_bulk_course_class_put
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Request Data
+              type: array
+              items:
+                $ref: '#/components/schemas/UpdateInstituteCourseClassRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+components:
+  schemas:
+    UpdateInstituteCourseClassRequest:
+      title: UpdateInstituteCourseClassRequest
+      required:
+      - course_id
+      - class_id
+      type: object
+      properties:
+        course_id:
+          title: Course Id
+          type: integer
+          description: Institute course ID is required
+        class_id:
+          title: Class Id
+          type: integer
+          description: Institute class ID is required
+        name:
+          title: Name
+          type: string
+          description: Class name is optional
+        no_of_terms:
+          title: No Of Terms
+          type: integer
+          description: Number of terms is optional
+        sequence_number:
+          title: Sequence Number
+          type: integer
+          description: Sequnce Number is optional
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    CreateInstituteCourseClassRequest:
+      title: CreateInstituteCourseClassRequest
+      required:
+      - course_id
+      - name
+      - sequence_number
+      type: object
+      properties:
+        course_id:
+          title: Course Id
+          type: integer
+          description: Institute class ID is required
+        name:
+          title: Name
+          type: string
+          description: Class name is required
+        no_of_terms:
+          title: No Of Terms
+          type: integer
+          description: Number of terms is optional
+        sequence_number:
+          title: Sequence Number
+          type: integer
+          description: Sequnce Number is optional
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: secret-key

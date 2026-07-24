@@ -1,0 +1,269 @@
+openapi: 3.0.2
+info:
+  title: leofees_backend api fee_dues API
+  version: version
+  description: General system endpoints for the API.
+tags:
+- name: fee_dues
+paths:
+  /api/v1/fee_dues/:
+    get:
+      tags:
+      - fee_dues
+      summary: Get Student Dues
+      description: API to get list of fee dues (terms) for a given student
+      operationId: get_student_dues_api_v1_fee_dues__get
+      parameters:
+      - required: false
+        schema:
+          title: Student Id
+          type: integer
+        name: student_id
+        in: query
+      - required: false
+        schema:
+          title: Phone Number
+          type: string
+        name: phone_number
+        in: query
+      - required: false
+        schema:
+          title: Institute Id
+          type: integer
+        name: institute_id
+        in: query
+      - required: false
+        schema:
+          title: Uuid
+          type: string
+        name: uuid
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    put:
+      tags:
+      - fee_dues
+      summary: Update Fee Due
+      description: API to update single fee due entry
+      operationId: update_fee_due_api_v1_fee_dues__put
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateStudentFeeDuesRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    post:
+      tags:
+      - fee_dues
+      summary: Create Fee Due
+      description: API to create single fee due entry
+      operationId: create_fee_due_api_v1_fee_dues__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateStudentFeeDuesRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    delete:
+      tags:
+      - fee_dues
+      summary: Delete Fee Due
+      description: API to delete single fee due entry
+      operationId: delete_fee_due_api_v1_fee_dues__delete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteStudentFeeDuesRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/fee_dues/update_bulk_dues:
+    put:
+      tags:
+      - fee_dues
+      summary: Update Bulk Fee Due
+      description: API to update multiple fee due entries for a given student
+      operationId: update_bulk_fee_due_api_v1_fee_dues_update_bulk_dues_put
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Request
+              type: array
+              items:
+                $ref: '#/components/schemas/UpdateStudentFeeDuesRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+components:
+  schemas:
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    CreateStudentFeeDuesRequest:
+      title: CreateStudentFeeDuesRequest
+      required:
+      - student_id
+      - due_date
+      - due_amount
+      - fee_type
+      type: object
+      properties:
+        student_id:
+          title: Student Id
+          type: integer
+          description: Student ID is required
+        due_date:
+          title: Due Date
+          type: string
+          description: Due date is required
+        due_amount:
+          title: Due Amount
+          type: number
+          description: Due amount is required
+        fee_type:
+          title: Fee Type
+          type: string
+          description: Fee type is required
+        description:
+          title: Description
+          type: string
+          description: Description is optional
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    UpdateStudentFeeDuesRequest:
+      title: UpdateStudentFeeDuesRequest
+      required:
+      - fee_due_id
+      - student_id
+      type: object
+      properties:
+        fee_due_id:
+          title: Fee Due Id
+          type: integer
+          description: Fee due ID is required
+        student_id:
+          title: Student Id
+          type: integer
+          description: Student ID is required
+        due_date:
+          title: Due Date
+          type: string
+          description: Due date is optional
+        due_amount:
+          title: Due Amount
+          type: number
+          description: Due amount is optional
+        fee_type:
+          title: Fee Type
+          type: string
+          description: Fee type is optional
+        description:
+          title: Description
+          type: string
+          description: Description is optional
+    DeleteStudentFeeDuesRequest:
+      title: DeleteStudentFeeDuesRequest
+      required:
+      - fee_due_ids
+      type: object
+      properties:
+        fee_due_ids:
+          title: Fee Due Ids
+          type: array
+          items: {}
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: secret-key

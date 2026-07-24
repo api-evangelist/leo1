@@ -1,0 +1,317 @@
+openapi: 3.0.2
+info:
+  title: leofees_backend api Institute Course Fee Structure API
+  version: version
+  description: General system endpoints for the API.
+tags:
+- name: Institute Course Fee Structure
+paths:
+  /api/v1/institute/fee_structure/:
+    get:
+      tags:
+      - Institute Course Fee Structure
+      summary: Get Institute Course Fee Structures
+      operationId: get_institute_course_fee_structures_api_v1_institute_fee_structure__get
+      parameters:
+      - required: true
+        schema:
+          title: Class Ids
+          type: string
+        name: class_ids
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    post:
+      tags:
+      - Institute Course Fee Structure
+      summary: Create Institute Course Fee Structure
+      operationId: create_institute_course_fee_structure_api_v1_institute_fee_structure__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateInstituteCourseFeeStructureRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    delete:
+      tags:
+      - Institute Course Fee Structure
+      summary: Delete Institute Course Fee Structure
+      operationId: delete_institute_course_fee_structure_api_v1_institute_fee_structure__delete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteInstituteCourseFeeStructureRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/institute/fee_structure/create_bulk_course_fee_structure:
+    post:
+      tags:
+      - Institute Course Fee Structure
+      summary: Create Bulk Institute Course Fee Structure
+      operationId: create_bulk_institute_course_fee_structure_api_v1_institute_fee_structure_create_bulk_course_fee_structure_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Request Data
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateInstituteCourseFeeStructureRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/institute/fee_structure/create_bulk_course_fee_structure_excel:
+    post:
+      tags:
+      - Institute Course Fee Structure
+      summary: Create Bulk Institute Course Fee Structure Excel
+      operationId: create_bulk_institute_course_fee_structure_excel_api_v1_institute_fee_structure_create_bulk_course_fee_structure_excel_post
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_create_bulk_institute_course_fee_structure_excel_api_v1_institute_fee_structure_create_bulk_course_fee_structure_excel_post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/institute/fee_structure/update_bulk_course_fee_structure:
+    put:
+      tags:
+      - Institute Course Fee Structure
+      summary: Update Bulk Institute Course Fee Structure
+      operationId: update_bulk_institute_course_fee_structure_api_v1_institute_fee_structure_update_bulk_course_fee_structure_put
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Request Data
+              type: array
+              items:
+                $ref: '#/components/schemas/UpdateInstituteCourseFeeStructureRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+components:
+  schemas:
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    UpdateInstituteCourseFeeStructureRequest:
+      title: UpdateInstituteCourseFeeStructureRequest
+      required:
+      - course_id
+      - class_id
+      - fee_structure_id
+      type: object
+      properties:
+        course_id:
+          title: Course Id
+          type: integer
+          description: Course ID is required
+        class_id:
+          title: Class Id
+          type: integer
+          description: Class ID is required
+        fee_structure_id:
+          title: Fee Structure Id
+          type: integer
+          description: Fee structure ID is required
+        due_amount:
+          title: Due Amount
+          type: integer
+          description: Due amount is optional
+        due_date:
+          title: Due Date
+          type: string
+          description: Due date is optional
+        fee_type:
+          title: Fee Type
+          type: string
+          description: Fee type is optional
+        description:
+          title: Description
+          type: string
+          description: Description is optional
+    DeleteInstituteCourseFeeStructureRequest:
+      title: DeleteInstituteCourseFeeStructureRequest
+      required:
+      - fee_structure_ids
+      type: object
+      properties:
+        fee_structure_ids:
+          title: Fee Structure Ids
+          type: array
+          items:
+            type: integer
+          description: Fee structure IDs is required
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    CreateInstituteCourseFeeStructureRequest:
+      title: CreateInstituteCourseFeeStructureRequest
+      required:
+      - class_id
+      - due_amount
+      - due_date
+      - fee_type
+      type: object
+      properties:
+        class_id:
+          title: Class Id
+          type: integer
+          description: Institute class ID is required
+        due_amount:
+          title: Due Amount
+          type: integer
+          description: Due amount is required
+        due_date:
+          title: Due Date
+          type: string
+          description: Due date of terms is required
+        fee_type:
+          title: Fee Type
+          type: string
+          description: Fee type is required
+        description:
+          title: Description
+          type: string
+          description: Description is required
+    ? Body_create_bulk_institute_course_fee_structure_excel_api_v1_institute_fee_structure_create_bulk_course_fee_structure_excel_post
+    : title: Body_create_bulk_institute_course_fee_structure_excel_api_v1_institute_fee_structure_create_bulk_course_fee_structure_excel_post
+      required:
+      - file
+      - course_id
+      - institute_id
+      - branch_id
+      - course_name
+      - institute_name
+      - branch_name
+      type: object
+      properties:
+        file:
+          title: File
+          type: string
+          format: binary
+        course_id:
+          title: Course Id
+          type: integer
+        institute_id:
+          title: Institute Id
+          type: integer
+        branch_id:
+          title: Branch Id
+          type: integer
+        course_name:
+          title: Course Name
+          type: string
+        institute_name:
+          title: Institute Name
+          type: string
+        branch_name:
+          title: Branch Name
+          type: string
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: secret-key

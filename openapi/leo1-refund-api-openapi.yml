@@ -1,0 +1,232 @@
+openapi: 3.0.2
+info:
+  title: leofees_backend api refund API
+  version: version
+  description: General system endpoints for the API.
+tags:
+- name: refund
+paths:
+  /api/v1/refund/:
+    get:
+      tags:
+      - refund
+      summary: Get Student Refunds
+      operationId: get_student_refunds_api_v1_refund__get
+      parameters:
+      - required: true
+        schema:
+          title: Student Ids
+          type: string
+        name: student_ids
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    put:
+      tags:
+      - refund
+      summary: Update Student Refund
+      operationId: update_student_refund_api_v1_refund__put
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateStudentRefundRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    post:
+      tags:
+      - refund
+      summary: Create Student Refund
+      operationId: create_student_refund_api_v1_refund__post
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_create_student_refund_api_v1_refund__post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    delete:
+      tags:
+      - refund
+      summary: Delete Student Refund
+      operationId: delete_student_refund_api_v1_refund__delete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteStudentRefundRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+components:
+  schemas:
+    UpdateStudentRefundRequest:
+      title: UpdateStudentRefundRequest
+      required:
+      - student_refund_id
+      - student_id
+      - payment_mode
+      - payment_date
+      - status
+      type: object
+      properties:
+        student_refund_id:
+          title: Student Refund Id
+          type: integer
+          description: Student Refund ID is required
+        student_id:
+          title: Student Id
+          type: integer
+          description: Student ID is required
+        utrn:
+          title: Utrn
+          type: string
+          description: utrn is required
+        payment_mode:
+          title: Payment Mode
+          type: string
+          description: Payment mode is required
+        payment_date:
+          title: Payment Date
+          type: string
+          description: Payment date is required
+        status:
+          title: Status
+          type: string
+          description: Status is required
+        remarks:
+          title: Remarks
+          type: string
+          description: Remarks is optional
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    Body_create_student_refund_api_v1_refund__post:
+      title: Body_create_student_refund_api_v1_refund__post
+      required:
+      - student_id
+      - amount
+      - payment_mode
+      - payment_date
+      - status
+      type: object
+      properties:
+        student_id:
+          title: Student Id
+          type: integer
+        amount:
+          title: Amount
+          type: number
+        utrn:
+          title: Utrn
+          type: string
+        payment_mode:
+          title: Payment Mode
+          type: string
+        payment_date:
+          title: Payment Date
+          type: string
+        status:
+          title: Status
+          type: string
+        reciept:
+          title: Reciept
+          type: string
+          format: binary
+        remarks:
+          title: Remarks
+          type: string
+    DeleteStudentRefundRequest:
+      title: DeleteStudentRefundRequest
+      required:
+      - student_refund_ids
+      type: object
+      properties:
+        student_refund_ids:
+          title: Student Refund Ids
+          type: array
+          items:
+            type: integer
+          description: Student Refund IDs are required
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: secret-key

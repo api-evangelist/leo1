@@ -1,0 +1,595 @@
+openapi: 3.0.2
+info:
+  title: leofees_backend api transactions API
+  version: version
+  description: General system endpoints for the API.
+tags:
+- name: transactions
+paths:
+  /api/v1/transactions/user_transactions:
+    get:
+      tags:
+      - transactions
+      summary: Get Transactions
+      operationId: get_transactions_api_v1_transactions_user_transactions_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponseList'
+  /api/v1/transactions/fee_receipt/{id}:
+    get:
+      tags:
+      - transactions
+      summary: Get Fee Receipt
+      operationId: get_fee_receipt_api_v1_transactions_fee_receipt__id__get
+      parameters:
+      - required: true
+        schema:
+          title: Id
+        name: id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/transactions/notify_loan_create:
+    post:
+      tags:
+      - transactions
+      summary: Notify Loan Create
+      operationId: notify_loan_create_api_v1_transactions_notify_loan_create_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotifyLoanCreatedRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatedResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/transactions/create_loan_lead:
+    post:
+      tags:
+      - transactions
+      summary: Create Loan Lead
+      operationId: create_loan_lead_api_v1_transactions_create_loan_lead_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLoanLead'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatedResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/transactions/institute_transactions/:
+    post:
+      tags:
+      - transactions
+      summary: Get Institute Transactions
+      operationId: get_institute_transactions_api_v1_transactions_institute_transactions__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstituteTranscationRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponseList'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/transactions/aggregate_transcations/{inst_name}:
+    get:
+      tags:
+      - transactions
+      summary: Get Institute Aggregate Transcations
+      operationId: get_institute_aggregate_transcations_api_v1_transactions_aggregate_transcations__inst_name__get
+      parameters:
+      - required: true
+        schema:
+          title: Inst Name
+          type: string
+        name: inst_name
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TranscationsAggregateInfo'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/transactions/get_branchs_for_institutes/{inst_name}:
+    get:
+      tags:
+      - transactions
+      summary: Get Institute Aggregate Transcations
+      operationId: get_institute_aggregate_transcations_api_v1_transactions_get_branchs_for_institutes__inst_name__get
+      parameters:
+      - required: true
+        schema:
+          title: Inst Name
+          type: string
+        name: inst_name
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/transactions/institute_transactions_csv/:
+    post:
+      tags:
+      - transactions
+      summary: Get Institute Transactions Csv
+      operationId: get_institute_transactions_csv_api_v1_transactions_institute_transactions_csv__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetInstituteTransactionsCsvRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/transactions/reverse_transaction/:
+    post:
+      tags:
+      - transactions
+      summary: Reverse Transaction
+      operationId: reverse_transaction_api_v1_transactions_reverse_transaction__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReverseTransactionInput'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/transactions/get_transaction_status/:
+    get:
+      tags:
+      - transactions
+      summary: Get Transaction Status
+      operationId: get_transaction_status_api_v1_transactions_get_transaction_status__get
+      parameters:
+      - required: false
+        schema:
+          title: Param Name
+          type: string
+        name: param_name
+        in: query
+      - required: false
+        schema:
+          title: Param Value
+          type: string
+        name: param_value
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    CreatedResponse:
+      title: CreatedResponse
+      required:
+      - created
+      - status
+      type: object
+      properties:
+        created:
+          title: Created
+          type: boolean
+        status:
+          title: Status
+          type: string
+    NotifyLoanCreatedRequest:
+      title: NotifyLoanCreatedRequest
+      required:
+      - loan_id
+      - loan_amount
+      type: object
+      properties:
+        loan_id:
+          title: Loan Id
+          type: integer
+        student_roll_number:
+          title: Student Roll Number
+          type: string
+        url:
+          title: Url
+          type: string
+        trans_id:
+          title: Trans Id
+          type: string
+        loan_amount:
+          title: Loan Amount
+          type: integer
+        is_leo1_flow:
+          title: Is Leo1 Flow
+          type: boolean
+          default: false
+        parent_name:
+          title: Parent Name
+          type: string
+        phone_number:
+          title: Phone Number
+          type: string
+        email:
+          title: Email
+          type: string
+          default: test@test.com
+        institute_name:
+          title: Institute Name
+          type: string
+        branch_name:
+          title: Branch Name
+          type: string
+        course_name:
+          title: Course Name
+          type: string
+        student_name:
+          title: Student Name
+          type: string
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    TransactionResponse:
+      title: TransactionResponse
+      required:
+      - transaction_id
+      - transaction_status
+      - fees_paid
+      - total_fees
+      - roll_no
+      - student_name
+      - institute_name
+      - branch_name
+      - course_name
+      - mobile_number
+      type: object
+      properties:
+        transaction_id:
+          title: Transaction Id
+          type: string
+        transaction_timestamp:
+          title: Transaction Timestamp
+          type: string
+        transaction_mode:
+          title: Transaction Mode
+          type: string
+        transaction_status:
+          title: Transaction Status
+          type: string
+        fees_paid:
+          title: Fees Paid
+          type: number
+        utrn:
+          title: Utrn
+          type: string
+        total_fees:
+          title: Total Fees
+          type: number
+        roll_no:
+          title: Roll No
+          type: string
+        student_name:
+          title: Student Name
+          type: string
+        institute_name:
+          title: Institute Name
+          type: string
+        branch_name:
+          title: Branch Name
+          type: string
+        course_name:
+          title: Course Name
+          type: string
+        mobile_number:
+          title: Mobile Number
+          type: string
+    CreateLoanLead:
+      title: CreateLoanLead
+      required:
+      - student_roll_number
+      - trans_id
+      type: object
+      properties:
+        student_roll_number:
+          title: Student Roll Number
+          type: string
+        trans_id:
+          title: Trans Id
+          type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    GetInstituteTransactionsCsvRequest:
+      title: GetInstituteTransactionsCsvRequest
+      required:
+      - institute_name
+      type: object
+      properties:
+        institute_name:
+          title: Institute Name
+          type: string
+        branch_name:
+          title: Branch Name
+          type: string
+        search_value:
+          title: Search Value
+          type: string
+        date_filter:
+          title: Date Filter
+          type: string
+        skip:
+          title: Skip
+          type: integer
+        limit:
+          title: Limit
+          type: integer
+        is_csv:
+          title: Is Csv
+          type: boolean
+        send_email:
+          title: Send Email
+          type: boolean
+          default: false
+        email_address:
+          title: Email Address
+          type: string
+          format: email
+          default: ''
+    TranscationsAggregateInfo:
+      title: TranscationsAggregateInfo
+      required:
+      - no_of_students_paid
+      - no_of_transcations_paid
+      - total_amount_paid
+      - total_no_of_transcations
+      type: object
+      properties:
+        no_of_students_paid:
+          title: No Of Students Paid
+          type: integer
+        no_of_transcations_paid:
+          title: No Of Transcations Paid
+          type: integer
+        total_amount_paid:
+          title: Total Amount Paid
+          type: number
+        total_no_of_transcations:
+          title: Total No Of Transcations
+          type: integer
+    TransactionResponseList:
+      title: TransactionResponseList
+      required:
+      - transactions
+      type: object
+      properties:
+        transactions:
+          title: Transactions
+          anyOf:
+          - type: array
+            items:
+              $ref: '#/components/schemas/TransactionResponse'
+          - type: array
+            items:
+              $ref: '#/components/schemas/InstituteTransactionResponse'
+        message:
+          title: Message
+          type: string
+        total_records_number:
+          title: Total Records Number
+          type: integer
+    InstituteTranscationRequest:
+      title: InstituteTranscationRequest
+      required:
+      - institute_name
+      type: object
+      properties:
+        institute_name:
+          title: Institute Name
+          type: string
+        branch_name:
+          title: Branch Name
+          type: string
+        search_value:
+          title: Search Value
+          type: string
+        date_filter:
+          title: Date Filter
+          type: string
+        skip:
+          title: Skip
+          type: integer
+        limit:
+          title: Limit
+          type: integer
+        is_csv:
+          title: Is Csv
+          type: boolean
+    InstituteTransactionResponse:
+      title: InstituteTransactionResponse
+      required:
+      - leofees_id
+      - roll_no
+      - student_name
+      - branch_name
+      - course_name
+      - parent_name
+      - fees_paid
+      - transaction_id
+      - transaction_status
+      - paid_by
+      type: object
+      properties:
+        leofees_id:
+          title: Leofees Id
+          type: string
+        roll_no:
+          title: Roll No
+          type: string
+        student_name:
+          title: Student Name
+          type: string
+        branch_name:
+          title: Branch Name
+          type: string
+        course_name:
+          title: Course Name
+          type: string
+        parent_name:
+          title: Parent Name
+          type: string
+        transaction_timestamp:
+          title: Transaction Timestamp
+          type: string
+        fees_paid:
+          title: Fees Paid
+          type: number
+        transaction_id:
+          title: Transaction Id
+          type: string
+        transaction_mode:
+          title: Transaction Mode
+          type: string
+        transaction_status:
+          title: Transaction Status
+          type: string
+        paid_by:
+          title: Paid By
+          type: string
+        utrn:
+          title: Utrn
+          type: string
+        erp_transaction_id:
+          title: Erp Transaction Id
+          type: string
+        easebuzz_id:
+          title: Easebuzz Id
+          type: string
+    ReverseTransactionInput:
+      title: ReverseTransactionInput
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: secret-key

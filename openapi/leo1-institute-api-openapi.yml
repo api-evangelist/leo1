@@ -1,0 +1,184 @@
+openapi: 3.0.2
+info:
+  title: leofees_backend api institute API
+  version: version
+  description: General system endpoints for the API.
+tags:
+- name: institute
+paths:
+  /api/v1/institute/settlement:
+    post:
+      tags:
+      - institute
+      summary: Retrieve Institute Settlements
+      operationId: retrieve_institute_settlements_api_v1_institute_settlement_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RetrieveSettlementsRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/institute/transactions/date:
+    post:
+      tags:
+      - institute
+      summary: Retrieve Institute Transactions Date
+      operationId: retrieve_institute_transactions_date_api_v1_institute_transactions_date_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RetrieveInstituteTransactionsByDateRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/institute/transactions:
+    post:
+      tags:
+      - institute
+      summary: Get Txn Details
+      operationId: get_txn_details_api_v1_institute_transactions_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetInstituteTransactionRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    GetInstituteTransactionRequest:
+      title: GetInstituteTransactionRequest
+      required:
+      - erp_transaction_id
+      - key
+      - email
+      - phone
+      - hash
+      type: object
+      properties:
+        erp_transaction_id:
+          title: Erp Transaction Id
+          type: string
+        key:
+          title: Key
+          type: string
+        email:
+          title: Email
+          type: string
+        phone:
+          title: Phone
+          type: string
+        hash:
+          title: Hash
+          type: string
+    RetrieveInstituteTransactionsByDateRequest:
+      title: RetrieveInstituteTransactionsByDateRequest
+      required:
+      - key
+      - transaction_date
+      - hash
+      - email
+      type: object
+      properties:
+        key:
+          title: Key
+          type: string
+        transaction_date:
+          title: Transaction Date
+          type: string
+        hash:
+          title: Hash
+          type: string
+        email:
+          title: Email
+          type: string
+    RetrieveSettlementsRequest:
+      title: RetrieveSettlementsRequest
+      required:
+      - key
+      - payout_date
+      - email
+      - hash
+      type: object
+      properties:
+        key:
+          title: Key
+          type: string
+        payout_date:
+          title: Payout Date
+          type: string
+        email:
+          title: Email
+          type: string
+        hash:
+          title: Hash
+          type: string
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: secret-key

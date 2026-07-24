@@ -1,0 +1,210 @@
+openapi: 3.0.2
+info:
+  title: leofees_backend api Enach API
+  version: version
+  description: General system endpoints for the API.
+tags:
+- name: Enach
+paths:
+  /api/v1/enach/initiate:
+    post:
+      tags:
+      - Enach
+      summary: Initiate Enach
+      operationId: initiate_enach_api_v1_enach_initiate_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InitiateEnachRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/enach/create_schedule:
+    post:
+      tags:
+      - Enach
+      summary: Create Enach Schedule
+      operationId: create_enach_schedule_api_v1_enach_create_schedule_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEnachScheduleRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/enach/debit_frequencies:
+    get:
+      tags:
+      - Enach
+      summary: Get Debit Frequencies
+      operationId: get_debit_frequencies_api_v1_enach_debit_frequencies_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/v1/enach/preview_debit_schedule:
+    post:
+      tags:
+      - Enach
+      summary: Preview Debit Schedule
+      operationId: preview_debit_schedule_api_v1_enach_preview_debit_schedule_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PreviewDebitScheduleRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    CreateEnachScheduleRequest:
+      title: CreateEnachScheduleRequest
+      required:
+      - customer_auth_id
+      - txn_log
+      - auto_debit_access_key
+      type: object
+      properties:
+        customer_auth_id:
+          title: Customer Auth Id
+          type: string
+        txn_log:
+          title: Txn Log
+          type: integer
+        auto_debit_access_key:
+          title: Auto Debit Access Key
+          type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    PreviewDebitScheduleRequest:
+      title: PreviewDebitScheduleRequest
+      required:
+      - amount
+      - frequency
+      - num_installments
+      - debit_start_date
+      type: object
+      properties:
+        amount:
+          title: Amount
+          type: number
+        frequency:
+          $ref: '#/components/schemas/DebitFrequencyEnum'
+        num_installments:
+          title: Num Installments
+          type: integer
+        debit_start_date:
+          title: Debit Start Date
+          type: string
+    DebitFrequencyEnum:
+      title: DebitFrequencyEnum
+      enum:
+      - 1
+      - 3
+      - 6
+      - 12
+      description: An enumeration.
+    InitiateEnachRequest:
+      title: InitiateEnachRequest
+      required:
+      - debit_frequency
+      - num_installments
+      - debit_start_date
+      - amount
+      - paid_txn_log_id
+      - fee_txn_id
+      - surl
+      - furl
+      type: object
+      properties:
+        debit_frequency:
+          $ref: '#/components/schemas/DebitFrequencyEnum'
+        num_installments:
+          title: Num Installments
+          type: integer
+        debit_start_date:
+          title: Debit Start Date
+          type: string
+        amount:
+          title: Amount
+          type: number
+        paid_txn_log_id:
+          title: Paid Txn Log Id
+          type: integer
+        fee_txn_id:
+          title: Fee Txn Id
+          type: integer
+        surl:
+          title: Surl
+          type: string
+        furl:
+          title: Furl
+          type: string
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: secret-key

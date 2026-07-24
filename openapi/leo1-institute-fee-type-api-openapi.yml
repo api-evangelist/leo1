@@ -1,0 +1,293 @@
+openapi: 3.0.2
+info:
+  title: leofees_backend api Institute Fee Type API
+  version: version
+  description: General system endpoints for the API.
+tags:
+- name: Institute Fee Type
+paths:
+  /api/v1/institute_fee_type/:
+    get:
+      tags:
+      - Institute Fee Type
+      summary: Get Institute Fee Types
+      operationId: get_institute_fee_types_api_v1_institute_fee_type__get
+      parameters:
+      - required: true
+        schema:
+          title: Institute Id
+          type: integer
+        name: institute_id
+        in: query
+      - required: true
+        schema:
+          title: Branch Id
+          type: integer
+        name: branch_id
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    put:
+      tags:
+      - Institute Fee Type
+      summary: Bulk Update Institute Fee Types
+      operationId: bulk_update_institute_fee_types_api_v1_institute_fee_type__put
+      parameters:
+      - required: true
+        schema:
+          title: Institute Id
+          type: integer
+        name: institute_id
+        in: query
+      - required: true
+        schema:
+          title: Branch Id
+          type: integer
+        name: branch_id
+        in: query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Request Data
+              type: array
+              items:
+                $ref: '#/components/schemas/UpdateInstituteFeeTypeRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    post:
+      tags:
+      - Institute Fee Type
+      summary: Create Institute Fee Type
+      operationId: create_institute_fee_type_api_v1_institute_fee_type__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateInstituteFeeTypeRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    delete:
+      tags:
+      - Institute Fee Type
+      summary: Bulk Delete Institute Fee Types
+      operationId: bulk_delete_institute_fee_types_api_v1_institute_fee_type__delete
+      parameters:
+      - required: true
+        schema:
+          title: Institute Id
+          type: integer
+        name: institute_id
+        in: query
+      - required: true
+        schema:
+          title: Branch Id
+          type: integer
+        name: branch_id
+        in: query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteInstituteFeeTypeRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/institute_fee_type/fee_types_bulk_create:
+    post:
+      tags:
+      - Institute Fee Type
+      summary: Bulk Create Institute Fee Type
+      operationId: bulk_create_institute_fee_type_api_v1_institute_fee_type_fee_types_bulk_create_post
+      parameters:
+      - required: true
+        schema:
+          title: Institute Id
+          type: integer
+        name: institute_id
+        in: query
+      - required: true
+        schema:
+          title: Branch Id
+          type: integer
+        name: branch_id
+        in: query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Request Data
+              type: array
+              items:
+                $ref: '#/components/schemas/BulkCreateInstituteFeeTypeRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+components:
+  schemas:
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    DeleteInstituteFeeTypeRequest:
+      title: DeleteInstituteFeeTypeRequest
+      required:
+      - fee_type_ids
+      type: object
+      properties:
+        fee_type_ids:
+          title: Fee Type Ids
+          type: array
+          items:
+            type: integer
+          description: fee_type_ids is required
+    BulkCreateInstituteFeeTypeRequest:
+      title: BulkCreateInstituteFeeTypeRequest
+      required:
+      - fee_type_name
+      type: object
+      properties:
+        fee_type_name:
+          title: Fee Type Name
+          type: string
+          description: Fee type name is required
+        common_fee_type_id:
+          title: Common Fee Type Id
+          type: integer
+          description: Common fee type is optional
+    CreateInstituteFeeTypeRequest:
+      title: CreateInstituteFeeTypeRequest
+      required:
+      - fee_type_name
+      - institute_id
+      - branch_id
+      type: object
+      properties:
+        fee_type_name:
+          title: Fee Type Name
+          type: string
+          description: Fee type name is required
+        institute_id:
+          title: Institute Id
+          type: integer
+          description: Institute ID is required
+        branch_id:
+          title: Branch Id
+          type: integer
+          description: Branch ID is required
+        common_fee_type_id:
+          title: Common Fee Type Id
+          type: integer
+          description: Common fee type is optional
+    UpdateInstituteFeeTypeRequest:
+      title: UpdateInstituteFeeTypeRequest
+      required:
+      - fee_type_id
+      - fee_type_name
+      type: object
+      properties:
+        fee_type_id:
+          title: Fee Type Id
+          type: integer
+          description: fee_type_id is required
+        fee_type_name:
+          title: Fee Type Name
+          type: string
+          description: fee_type_name is required
+        is_checked:
+          title: Is Checked
+          type: boolean
+          description: is_checked is optional
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: secret-key

@@ -1,0 +1,194 @@
+openapi: 3.0.2
+info:
+  title: leofees_backend api waiver API
+  version: version
+  description: General system endpoints for the API.
+tags:
+- name: waiver
+paths:
+  /api/v1/waiver/:
+    get:
+      tags:
+      - waiver
+      summary: Get Student Waivers
+      description: API to get list of fee waivers for given students
+      operationId: get_student_waivers_api_v1_waiver__get
+      parameters:
+      - required: true
+        schema:
+          title: Student Ids
+          type: string
+        name: student_ids
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    post:
+      tags:
+      - waiver
+      summary: Create Student Waiver
+      description: API to create single fee collection entry. Adjusts the dues and creates mapping as well.
+      operationId: create_student_waiver_api_v1_waiver__post
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Body_create_student_waiver_api_v1_waiver__post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    delete:
+      tags:
+      - waiver
+      summary: Delete Student Waiver
+      description: API to delete single fee collection entry
+      operationId: delete_student_waiver_api_v1_waiver__delete
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Body_delete_student_waiver_api_v1_waiver__delete'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+components:
+  schemas:
+    Body_create_student_waiver_api_v1_waiver__post:
+      title: Body_create_student_waiver_api_v1_waiver__post
+      required:
+      - student_id
+      - amount
+      - payment_distribution
+      type: object
+      properties:
+        student_id:
+          title: Student Id
+          type: integer
+        amount:
+          title: Amount
+          type: number
+        type:
+          title: Type
+          type: string
+        remarks:
+          title: Remarks
+          type: string
+        payment_distribution:
+          $ref: '#/components/schemas/PaymentDistribution'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    Body_delete_student_waiver_api_v1_waiver__delete:
+      title: Body_delete_student_waiver_api_v1_waiver__delete
+      required:
+      - student_waiver_ids
+      type: object
+      properties:
+        student_waiver_ids:
+          title: Student Waiver Ids
+          type: array
+          items:
+            type: integer
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    PaymentDistribution:
+      title: PaymentDistribution
+      type: object
+      properties:
+        fee_dues:
+          title: Fee Dues
+          type: array
+          items:
+            $ref: '#/components/schemas/DistributionFields'
+          description: Fee Dues are optional
+          default: []
+        penalties:
+          title: Penalties
+          type: array
+          items:
+            $ref: '#/components/schemas/DistributionFields'
+          description: Penalties are optional
+          default: []
+        excess_payment:
+          title: Excess Payment
+          type: number
+          description: Excess payment is optional
+          default: 0
+    DistributionFields:
+      title: DistributionFields
+      required:
+      - id
+      - amount
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+        amount:
+          title: Amount
+          type: number
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: secret-key

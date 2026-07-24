@@ -1,0 +1,201 @@
+openapi: 3.0.2
+info:
+  title: leofees_backend api Institute Course API
+  version: version
+  description: General system endpoints for the API.
+tags:
+- name: Institute Course
+paths:
+  /api/v1/institute/course/:
+    get:
+      tags:
+      - Institute Course
+      summary: Get Institute Courses
+      operationId: get_institute_courses_api_v1_institute_course__get
+      parameters:
+      - required: false
+        schema:
+          title: Institutes
+          type: string
+          default: ''
+        name: institutes
+        in: query
+      - required: false
+        schema:
+          title: Branches
+          type: string
+          default: ''
+        name: branches
+        in: query
+      - required: false
+        schema:
+          title: Limit
+          type: integer
+        name: limit
+        in: query
+      - required: false
+        schema:
+          title: Offset
+          type: integer
+        name: offset
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    post:
+      tags:
+      - Institute Course
+      summary: Create Institute Course
+      operationId: create_institute_course_api_v1_institute_course__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateInstituteCourseRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/institute/course/update_bulk_course:
+    put:
+      tags:
+      - Institute Course
+      summary: Bulk Update Institute Course
+      operationId: bulk_update_institute_course_api_v1_institute_course_update_bulk_course_put
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: Request Data
+              type: array
+              items:
+                $ref: '#/components/schemas/UpdateInstituteCourseRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+components:
+  schemas:
+    UpdateInstituteCourseRequest:
+      title: UpdateInstituteCourseRequest
+      required:
+      - course_id
+      type: object
+      properties:
+        course_id:
+          title: Course Id
+          type: integer
+          description: Course ID is required
+        course_name:
+          title: Course Name
+          type: string
+          description: Course name is optional
+        alias_course_name:
+          title: Alias Course Name
+          type: string
+          description: Alias course name is optional
+        no_of_years:
+          title: No Of Years
+          type: integer
+          description: Number of years is optional
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    CreateInstituteCourseRequest:
+      title: CreateInstituteCourseRequest
+      required:
+      - course_name
+      - alias_course_name
+      - institute_id
+      - branch_id
+      - institute_name
+      - branch_name
+      - no_of_years
+      type: object
+      properties:
+        course_name:
+          title: Course Name
+          type: string
+        alias_course_name:
+          title: Alias Course Name
+          type: string
+        institute_id:
+          title: Institute Id
+          type: integer
+        branch_id:
+          title: Branch Id
+          type: integer
+        institute_name:
+          title: Institute Name
+          type: string
+        branch_name:
+          title: Branch Name
+          type: string
+        no_of_years:
+          title: No Of Years
+          type: integer
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: secret-key

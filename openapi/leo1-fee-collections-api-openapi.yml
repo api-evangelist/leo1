@@ -1,0 +1,453 @@
+openapi: 3.0.2
+info:
+  title: leofees_backend api fee_collections API
+  version: version
+  description: General system endpoints for the API.
+tags:
+- name: fee_collections
+paths:
+  /api/v1/fee_collections/:
+    get:
+      tags:
+      - fee_collections
+      summary: Get Student Collections
+      description: API to get list of fee collections for given students
+      operationId: get_student_collections_api_v1_fee_collections__get
+      parameters:
+      - required: false
+        schema:
+          title: Student Ids
+          type: string
+        name: student_ids
+        in: query
+      - required: false
+        schema:
+          title: Phone Number
+          type: string
+        name: phone_number
+        in: query
+      - required: false
+        schema:
+          title: Institute Id
+          type: integer
+        name: institute_id
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    post:
+      tags:
+      - fee_collections
+      summary: Create Fee Collection
+      description: API to create single fee collection entry. Adjusts the dues and creates mapping as well.
+      operationId: create_fee_collection_api_v1_fee_collections__post
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_create_fee_collection_api_v1_fee_collections__post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+    delete:
+      tags:
+      - fee_collections
+      summary: Delete Fee Collection
+      description: API to delete single fee collection entry
+      operationId: delete_fee_collection_api_v1_fee_collections__delete
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Body_delete_fee_collection_api_v1_fee_collections__delete'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/fee_collections/payment_options:
+    get:
+      tags:
+      - fee_collections
+      summary: Get Payment Options
+      description: API to get list of payment options for given transaction type
+      operationId: get_payment_options_api_v1_fee_collections_payment_options_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+      - APIKeyHeader: []
+  /api/v1/fee_collections/download_collections:
+    post:
+      tags:
+      - fee_collections
+      summary: Download Student Collections
+      operationId: download_student_collections_api_v1_fee_collections_download_collections_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DownloadFeeCollections'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/fee_collections/add_bulk_collections:
+    post:
+      tags:
+      - fee_collections
+      summary: Create Bulk Collections
+      operationId: create_bulk_collections_api_v1_fee_collections_add_bulk_collections_post
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_create_bulk_collections_api_v1_fee_collections_add_bulk_collections_post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/fee_collections/add_bulk_collections_erp:
+    post:
+      tags:
+      - fee_collections
+      summary: Create Bulk Collections Of Erp
+      operationId: create_bulk_collections_of_erp_api_v1_fee_collections_add_bulk_collections_erp_post
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_create_bulk_collections_of_erp_api_v1_fee_collections_add_bulk_collections_erp_post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/fee_collections/upload_reciept:
+    put:
+      tags:
+      - fee_collections
+      summary: Update Fee Collection Reciept
+      description: API to upload reciept for a single fee collection
+      operationId: update_fee_collection_reciept_api_v1_fee_collections_upload_reciept_put
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_update_fee_collection_reciept_api_v1_fee_collections_upload_reciept_put'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/fee_collections/download/:
+    get:
+      tags:
+      - fee_collections
+      summary: Download Online Fee Receipt
+      description: API to download online fee receipt
+      operationId: download_online_fee_receipt_api_v1_fee_collections_download__get
+      parameters:
+      - required: false
+        schema:
+          title: Id
+          type: integer
+        name: id
+        in: query
+      - required: false
+        schema:
+          title: Transaction Id
+          type: string
+        name: transaction_id
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+components:
+  schemas:
+    Body_create_bulk_collections_of_erp_api_v1_fee_collections_add_bulk_collections_erp_post:
+      title: Body_create_bulk_collections_of_erp_api_v1_fee_collections_add_bulk_collections_erp_post
+      required:
+      - file
+      - institute_id
+      - branch_id
+      type: object
+      properties:
+        file:
+          title: File
+          type: string
+          format: binary
+        institute_id:
+          title: Institute Id
+          type: integer
+        branch_id:
+          title: Branch Id
+          type: integer
+    Body_update_fee_collection_reciept_api_v1_fee_collections_upload_reciept_put:
+      title: Body_update_fee_collection_reciept_api_v1_fee_collections_upload_reciept_put
+      required:
+      - collection_id
+      - reciept
+      type: object
+      properties:
+        collection_id:
+          title: Collection Id
+          type: integer
+        reciept:
+          title: Reciept
+          type: string
+          format: binary
+    Body_create_bulk_collections_api_v1_fee_collections_add_bulk_collections_post:
+      title: Body_create_bulk_collections_api_v1_fee_collections_add_bulk_collections_post
+      required:
+      - file
+      - institute_id
+      - branch_id
+      type: object
+      properties:
+        file:
+          title: File
+          type: string
+          format: binary
+        institute_id:
+          title: Institute Id
+          type: integer
+        branch_id:
+          title: Branch Id
+          type: integer
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    Body_delete_fee_collection_api_v1_fee_collections__delete:
+      title: Body_delete_fee_collection_api_v1_fee_collections__delete
+      required:
+      - fee_collection_ids
+      type: object
+      properties:
+        fee_collection_ids:
+          title: Fee Collection Ids
+          type: array
+          items:
+            type: integer
+    DownloadFeeCollections:
+      title: DownloadFeeCollections
+      required:
+      - institute_ids
+      - branch_ids
+      type: object
+      properties:
+        institute_ids:
+          title: Institute Ids
+          type: array
+          items:
+            type: integer
+          description: Institute IDs are required
+        branch_ids:
+          title: Branch Ids
+          type: array
+          items:
+            type: integer
+          description: Branch IDs are required
+        student_ids:
+          title: Student Ids
+          type: array
+          items:
+            type: integer
+          description: Student IDs is optional
+    Body_create_fee_collection_api_v1_fee_collections__post:
+      title: Body_create_fee_collection_api_v1_fee_collections__post
+      required:
+      - student_id
+      - amount
+      - payment_mode
+      - payment_date
+      - payment_distribution
+      type: object
+      properties:
+        student_id:
+          title: Student Id
+          type: integer
+        amount:
+          title: Amount
+          type: number
+        transaction_id:
+          title: Transaction Id
+          type: string
+        utrn:
+          title: Utrn
+          type: string
+        payment_mode:
+          title: Payment Mode
+          type: string
+        payment_date:
+          title: Payment Date
+          type: string
+        payment_distribution:
+          $ref: '#/components/schemas/PaymentDistribution'
+        reciept:
+          title: Reciept
+          type: string
+          format: binary
+        comment:
+          title: Comment
+          type: string
+        otp:
+          title: Otp
+          type: integer
+    PaymentDistribution:
+      title: PaymentDistribution
+      type: object
+      properties:
+        fee_dues:
+          title: Fee Dues
+          type: array
+          items:
+            $ref: '#/components/schemas/DistributionFields'
+          description: Fee Dues are optional
+          default: []
+        penalties:
+          title: Penalties
+          type: array
+          items:
+            $ref: '#/components/schemas/DistributionFields'
+          description: Penalties are optional
+          default: []
+        excess_payment:
+          title: Excess Payment
+          type: number
+          description: Excess payment is optional
+          default: 0
+    DistributionFields:
+      title: DistributionFields
+      required:
+      - id
+      - amount
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+        amount:
+          title: Amount
+          type: number
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: secret-key

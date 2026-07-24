@@ -1,0 +1,1035 @@
+openapi: 3.0.2
+info:
+  title: leofees_backend api Nach Feature API
+  version: version
+  description: General system endpoints for the API.
+tags:
+- name: Nach Feature
+paths:
+  /api/v1/nach/registration/initiate/:
+    post:
+      tags:
+      - Nach Feature
+      summary: Initiate Nach Registration
+      operationId: initiate_nach_registration_api_v1_nach_registration_initiate__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnachRegistrationBody'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/registration/request/:
+    post:
+      tags:
+      - Nach Feature
+      summary: Request Nach Registration
+      operationId: request_nach_registration_api_v1_nach_registration_request__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnachBody'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/registration/:
+    get:
+      tags:
+      - Nach Feature
+      summary: Get Registration Details
+      operationId: get_registration_details_api_v1_nach_registration__get
+      parameters:
+      - required: false
+        schema:
+          title: Filter Data
+          type: string
+        name: filter_data
+        in: query
+      - required: false
+        schema:
+          title: From Date
+          type: string
+        name: from_date
+        in: query
+      - required: false
+        schema:
+          title: To Date
+          type: string
+        name: to_date
+        in: query
+      - required: false
+        schema:
+          title: Institutes
+          type: string
+          default: ''
+        name: institutes
+        in: query
+      - required: false
+        schema:
+          title: Branches
+          type: string
+          default: ''
+        name: branches
+        in: query
+      - required: false
+        schema:
+          title: Courses
+          type: string
+          default: ''
+        name: courses
+        in: query
+      - required: false
+        schema:
+          title: Classes
+          type: string
+          default: ''
+        name: classes
+        in: query
+      - required: false
+        schema:
+          title: Limit
+          type: integer
+        name: limit
+        in: query
+      - required: false
+        schema:
+          title: Offset
+          type: integer
+        name: offset
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/registration/{id}:
+    get:
+      tags:
+      - Nach Feature
+      summary: Get Registration Detail
+      operationId: get_registration_detail_api_v1_nach_registration__id__get
+      parameters:
+      - required: true
+        schema:
+          title: Id
+          type: integer
+        name: id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/registration/details/{student_uuid}:
+    get:
+      tags:
+      - Nach Feature
+      summary: Get Registration Details
+      operationId: get_registration_details_api_v1_nach_registration_details__student_uuid__get
+      parameters:
+      - required: true
+        schema:
+          title: Student Uuid
+          type: string
+        name: student_uuid
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/registration/link/{student_uuid}:
+    get:
+      tags:
+      - Nach Feature
+      summary: Get Registration Redirect Link
+      operationId: get_registration_redirect_link_api_v1_nach_registration_link__student_uuid__get
+      parameters:
+      - required: true
+        schema:
+          title: Student Uuid
+          type: string
+        name: student_uuid
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/registration/status/:
+    get:
+      tags:
+      - Nach Feature
+      summary: Request Nach Registration
+      operationId: request_nach_registration_api_v1_nach_registration_status__get
+      parameters:
+      - required: false
+        schema:
+          title: Reg Ids
+          type: string
+        name: reg_ids
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/registration/webhook/:
+    post:
+      tags:
+      - Nach Feature
+      summary: Registration Webhook
+      operationId: registration_webhook_api_v1_nach_registration_webhook__post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/v1/nach/registration/redirect/:
+    get:
+      tags:
+      - Nach Feature
+      summary: Registration Redirect
+      operationId: registration_redirect_api_v1_nach_registration_redirect__get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+    post:
+      tags:
+      - Nach Feature
+      summary: Registration Redirect
+      operationId: registration_redirect_api_v1_nach_registration_redirect__post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/v1/nach/presentation/:
+    post:
+      tags:
+      - Nach Feature
+      summary: Get Registration Details
+      operationId: get_registration_details_api_v1_nach_presentation__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnachPresentationBody'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/presentation/webhook/:
+    post:
+      tags:
+      - Nach Feature
+      summary: Create Student
+      operationId: create_student_api_v1_nach_presentation_webhook__post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/v1/nach/presentation/status/:
+    get:
+      tags:
+      - Nach Feature
+      summary: Request Nach Registration
+      operationId: request_nach_registration_api_v1_nach_presentation_status__get
+      parameters:
+      - required: false
+        schema:
+          title: Presentation Ids
+          type: string
+        name: presentation_ids
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/get-bank-codes/:
+    get:
+      tags:
+      - Nach Feature
+      summary: Get Bank Codes
+      operationId: get_bank_codes_api_v1_nach_get_bank_codes__get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/v1/nach/bulk-update-nach-status/:
+    get:
+      tags:
+      - Nach Feature
+      summary: Get Bank Codes
+      operationId: get_bank_codes_api_v1_nach_bulk_update_nach_status__get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/fee-subscription/registration/:
+    get:
+      tags:
+      - Nach Feature
+      summary: Get Fee Subscription Registration Details
+      operationId: get_fee_subscription_registration_details_api_v1_nach_fee_subscription_registration__get
+      parameters:
+      - required: false
+        schema:
+          title: Filter Data
+          type: string
+        name: filter_data
+        in: query
+      - required: false
+        schema:
+          title: From Date
+          type: string
+        name: from_date
+        in: query
+      - required: false
+        schema:
+          title: To Date
+          type: string
+        name: to_date
+        in: query
+      - required: false
+        schema:
+          title: Institutes
+          type: string
+          default: ''
+        name: institutes
+        in: query
+      - required: false
+        schema:
+          title: Branches
+          type: string
+          default: ''
+        name: branches
+        in: query
+      - required: false
+        schema:
+          title: Courses
+          type: string
+          default: ''
+        name: courses
+        in: query
+      - required: false
+        schema:
+          title: Classes
+          type: string
+          default: ''
+        name: classes
+        in: query
+      - required: false
+        schema:
+          title: Status
+          type: string
+          default: ''
+        name: status
+        in: query
+      - required: false
+        schema:
+          title: Limit
+          type: integer
+        name: limit
+        in: query
+      - required: false
+        schema:
+          title: Offset
+          type: integer
+        name: offset
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/fee-subscription/registration/initiate/:
+    post:
+      tags:
+      - Nach Feature
+      summary: Fee Subscription Initiate Nach Registration
+      operationId: fee_subscription_initiate_nach_registration_api_v1_nach_fee_subscription_registration_initiate__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnachFeeSubscriptionRegistrationBody'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/fee-subscription/analytics/:
+    get:
+      tags:
+      - Nach Feature
+      summary: Get Fee Subscription Registration Analytics
+      operationId: get_fee_subscription_registration_analytics_api_v1_nach_fee_subscription_analytics__get
+      parameters:
+      - required: true
+        schema:
+          title: Institutes
+          type: string
+        name: institutes
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/fee-subscription/institute-logo/:
+    get:
+      tags:
+      - Nach Feature
+      summary: Get Institute Logo
+      operationId: get_institute_logo_api_v1_nach_fee_subscription_institute_logo__get
+      parameters:
+      - required: false
+        schema:
+          title: Student Uuid
+          type: string
+          default: ''
+        name: student_uuid
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/fee-subscription/user-nach-registration-logs/:
+    get:
+      tags:
+      - Nach Feature
+      summary: Get User Nach Registration Logs
+      operationId: get_user_nach_registration_logs_api_v1_nach_fee_subscription_user_nach_registration_logs__get
+      parameters:
+      - required: true
+        schema:
+          title: Institutes
+          type: string
+        name: institutes
+        in: query
+      - required: true
+        schema:
+          title: Roll Number
+          type: string
+        name: roll_number
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/fee-subscription/reports-details/:
+    get:
+      tags:
+      - Nach Feature
+      summary: Get Reports Details
+      operationId: get_reports_details_api_v1_nach_fee_subscription_reports_details__get
+      parameters:
+      - required: false
+        schema:
+          title: Institutes
+          type: string
+          default: ''
+        name: institutes
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/fee-subscription/generate-report/:
+    post:
+      tags:
+      - Nach Feature
+      summary: Generate Report
+      operationId: generate_report_api_v1_nach_fee_subscription_generate_report__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateReport'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/fee-subscription/send_bulk_notification:
+    post:
+      tags:
+      - Nach Feature
+      summary: Send Bulk Notification
+      operationId: send_bulk_notification_api_v1_nach_fee_subscription_send_bulk_notification_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NachBulkCommunication'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/get-b2c-card-consent/:
+    get:
+      tags:
+      - Nach Feature
+      summary: Get B2C Card Consent
+      operationId: get_b2c_card_consent_api_v1_nach_get_b2c_card_consent__get
+      parameters:
+      - required: false
+        schema:
+          title: Student Uuid
+          type: string
+          default: ''
+        name: student_uuid
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/update-b2c-card-consent/:
+    post:
+      tags:
+      - Nach Feature
+      summary: Update B2C Card Consent
+      operationId: update_b2c_card_consent_api_v1_nach_update_b2c_card_consent__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B2CConsentData'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/get-nach-status-by-mobile-no/:
+    get:
+      tags:
+      - Nach Feature
+      summary: Get Nach Status By Mobile No
+      operationId: get_nach_status_by_mobile_no_api_v1_nach_get_nach_status_by_mobile_no__get
+      parameters:
+      - required: false
+        schema:
+          title: Mobile No
+          type: string
+          default: ''
+        name: mobile_no
+        in: query
+      - required: false
+        schema:
+          title: Institute Id
+          type: integer
+          default: ''
+        name: institute_id
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/mandate/redirect/:
+    post:
+      tags:
+      - Nach Feature
+      summary: Mandate Redirect
+      operationId: mandate_redirect_api_v1_nach_mandate_redirect__post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/v1/nach/mandate/webhook/:
+    post:
+      tags:
+      - Nach Feature
+      summary: Mandate Webhook
+      operationId: mandate_webhook_api_v1_nach_mandate_webhook__post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/v1/nach/update-institute-nach-applicable:
+    post:
+      tags:
+      - Nach Feature
+      summary: Update Institute Nach Applicable
+      operationId: update_institute_nach_applicable_api_v1_nach_update_institute_nach_applicable_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateNachConfigurationApplicable'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/institute-nach-applicable:
+    get:
+      tags:
+      - Nach Feature
+      summary: Get Institute Nach Applicable
+      operationId: get_institute_nach_applicable_api_v1_nach_institute_nach_applicable_get
+      parameters:
+      - required: true
+        schema:
+          title: Institute Name
+          type: string
+        name: institute_name
+        in: query
+      - required: true
+        schema:
+          title: Branch Name
+          type: string
+        name: branch_name
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /api/v1/nach/institutes-applicable-nach:
+    get:
+      tags:
+      - Nach Feature
+      summary: Get Institute Nach Applicable
+      operationId: get_institute_nach_applicable_api_v1_nach_institutes_applicable_nach_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+      - APIKeyHeader: []
+components:
+  schemas:
+    UpdateNachConfigurationApplicable:
+      title: UpdateNachConfigurationApplicable
+      required:
+      - institute_name
+      - branch_name
+      - is_active
+      type: object
+      properties:
+        institute_name:
+          title: Institute Name
+          type: string
+        branch_name:
+          title: Branch Name
+          type: string
+        is_active:
+          title: Is Active
+          type: boolean
+    NachBulkCommunication:
+      title: NachBulkCommunication
+      type: object
+      properties:
+        institute_ids:
+          title: Institute Ids
+          type: array
+          items:
+            type: integer
+          default: []
+        branch_ids:
+          title: Branch Ids
+          type: array
+          items:
+            type: integer
+          default: []
+        student_ids:
+          title: Student Ids
+          type: array
+          items:
+            type: integer
+          default: []
+    GenerateReport:
+      title: GenerateReport
+      required:
+      - report_name
+      - institute_ids
+      type: object
+      properties:
+        report_name:
+          title: Report Name
+          type: string
+          description: Report name is required
+        institute_ids:
+          title: Institute Ids
+          type: array
+          items:
+            type: integer
+          description: Institute IDs are required
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    EnachBody:
+      title: EnachBody
+      required:
+      - student_uuid
+      - authentication_mode
+      type: object
+      properties:
+        student_uuid:
+          title: Student Uuid
+          type: string
+        authentication_mode:
+          title: Authentication Mode
+          type: string
+    EnachFeeSubscriptionRegistrationBody:
+      title: EnachFeeSubscriptionRegistrationBody
+      required:
+      - student_id
+      - created_by
+      type: object
+      properties:
+        student_id:
+          title: Student Id
+          type: integer
+        created_by:
+          title: Created By
+          type: string
+        account_number:
+          title: Account Number
+          type: string
+        ifsc_code:
+          title: Ifsc Code
+          type: string
+        bank_code:
+          title: Bank Code
+          type: string
+        account_type:
+          title: Account Type
+          type: string
+        name_on_bank_account:
+          title: Name On Bank Account
+          type: string
+    EnachRegistrationBody:
+      title: EnachRegistrationBody
+      required:
+      - student_id
+      - amount
+      - created_by
+      type: object
+      properties:
+        student_id:
+          title: Student Id
+          type: integer
+        amount:
+          title: Amount
+          type: number
+        created_by:
+          title: Created By
+          type: string
+        account_number:
+          title: Account Number
+          type: string
+        ifsc_code:
+          title: Ifsc Code
+          type: string
+        bank_code:
+          title: Bank Code
+          type: string
+        account_type:
+          title: Account Type
+          type: string
+        name_on_bank_account:
+          title: Name On Bank Account
+          type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    EnachPresentationBody:
+      title: EnachPresentationBody
+      required:
+      - registration_id
+      - debit_date
+      - amount
+      - created_by
+      type: object
+      properties:
+        registration_id:
+          title: Registration Id
+          type: integer
+        debit_date:
+          title: Debit Date
+          type: string
+        amount:
+          title: Amount
+          type: integer
+        created_by:
+          title: Created By
+          type: string
+    B2CConsentData:
+      title: B2CConsentData
+      required:
+      - student_uuid
+      type: object
+      properties:
+        student_uuid:
+          title: Student Uuid
+          type: string
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: secret-key
