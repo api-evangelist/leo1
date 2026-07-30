@@ -1,0 +1,46 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.leo1.in/integrations/web-integration
+summary: LEO1 ships a browser-side checkout SDK ("LEO1 Fees SDK") loaded from its CDN as a script + stylesheet
+  pair. It renders the hosted fee-checkout surface from the encrypted data blob returned by the server-side
+  Start Transaction call. The docs state support for React, Angular and CommonJS consumers.
+families:
+- name: Fees Checkout SDK
+  type: hosted-checkout
+  loader: script-tag
+  assets:
+  - kind: script
+    url: https://cdn.leo1.in/feesdk/1.0.0/Fees_SDK/dist/leoFees.js
+    probe:
+      date: '2026-07-19'
+      http_status: 404
+    note: Documented loader URL; returned 404 on probe — the published version path may be stale or CDN
+      access may be restricted.
+  - kind: stylesheet
+    url: https://cdn.leo1.in/feesdk/1.0.0/Fees_SDK/dist/leoFees.css
+    probe:
+      date: '2026-07-19'
+      http_status: 404
+  frameworks:
+  - react
+  - angular
+  - commonjs
+  entry_points:
+  - function: initiateLeoFeesPayment
+    flow: Payment Gateway
+    description: Opens the LEO1 payment-gateway checkout for a started transaction.
+  - function: initiateLeoFees
+    flow: Loan Journey
+    description: Opens the LEO1 fee-finance (education loan) journey for a started transaction.
+  parameters:
+  - name: data
+    description: Encrypted transaction blob returned by the Start Transaction API.
+  - name: accessKey
+    description: Institute Access Key.
+  - name: env
+    description: 'Environment selector: test or prod.'
+  - name: onResolve
+    description: Success callback invoked with the checkout response.
+  - name: onError
+    description: Error callback.
+  docs: https://docs.leo1.in/integrations/web-integration

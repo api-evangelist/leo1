@@ -1,0 +1,33 @@
+generated: '2026-07-19'
+method: generated
+source: openapi/leo1-leofees-openapi-original.json + https://docs.leo1.in/
+note: Every operationId referenced below was verified verbatim against the harvested OpenAPI.
+skills:
+- file: leo1-collect-fee-via-sdk-checkout.md
+  name: Collect a student fee through the LEO1 Fees SDK checkout
+  api: openapi/leo1-leofees-openapi-original.json
+  operations:
+  - generate_token_api_v1_sdk_generate_access_post
+  - start_transaction_api_v1_sdk_start_transaction_post
+  - get_transaction_status_api_v1_transactions_get_transaction_status__get
+- file: leo1-reconcile-transactions-and-settlements.md
+  name: Reconcile LEO1 institute transactions and settlements
+  api: openapi/leo1-leofees-openapi-original.json
+  operations:
+  - get_institute_transactions_api_v1_transactions_institute_transactions__post
+  - retrieve_institute_transactions_date_api_v1_institute_transactions_date_post
+  - retrieve_institute_settlements_api_v1_institute_settlement_post
+  - get_institute_transactions_csv_api_v1_transactions_institute_transactions_csv__post
+  - get_institute_aggregate_transcations_api_v1_transactions_aggregate_transcations__inst_name__get
+- file: leo1-register-nach-mandate.md
+  name: Register a NACH e-mandate for recurring LEO1 fee debits
+  api: openapi/leo1-leofees-openapi-original.json
+  operations:
+  - get_bank_codes_api_v1_nach_get_bank_codes__get
+  - initiate_nach_registration_api_v1_nach_registration_initiate__post
+  - get_registration_redirect_link_api_v1_nach_registration_link__student_uuid__get
+  - get_registration_details_api_v1_nach_registration_details__student_uuid__get
+  - get_debit_frequencies_api_v1_enach_debit_frequencies_get
+  - preview_debit_schedule_api_v1_enach_preview_debit_schedule_post
+  - create_enach_schedule_api_v1_enach_create_schedule_post
+  - get_registration_details_api_v1_nach_presentation__post

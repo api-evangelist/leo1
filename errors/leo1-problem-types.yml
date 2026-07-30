@@ -1,0 +1,39 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/leo1-leofees-openapi-original.json
+format: fastapi-validation
+rfc9457: false
+summary:
+  operations: 184
+  declared_status_codes:
+  - '200'
+  - '422'
+  operations_with_422: 161
+  note: The published OpenAPI declares only 200 (Successful Response) and 422 (Validation Error) on every
+    operation — the FastAPI default. Authentication, authorization, not-found and server-error responses
+    are returned by the live API but are NOT described in the contract, so they cannot be catalogued here
+    without fabrication.
+problems:
+- status: 422
+  title: Validation Error
+  schema: HTTPValidationError
+  media_type: application/json
+  envelope: detail[] of ValidationError {loc, msg, type}
+  description: Request body, query or path parameters failed schema validation. loc identifies the offending
+    field path, msg the human message, type the machine-readable error type.
+  occurrences: 161
+  source_operations:
+  - openapi/leo1-leofees-openapi-original.json#send_OTP_api_v1_auth_get_otp_post
+  - openapi/leo1-leofees-openapi-original.json#send_otp_signup_api_v1_auth_get_otp_signup_post
+  - openapi/leo1-leofees-openapi-original.json#get_status_api_v1_auth_login_post
+  - openapi/leo1-leofees-openapi-original.json#signup_api_v1_auth_signup_post
+  - openapi/leo1-leofees-openapi-original.json#save_user_journey_erp_api_v1_user_journey_save_post
+undeclared_but_expected:
+- status: 401
+  reason: 127 operations require the secret-key API key header; a missing or invalid key must fail, but
+    no 401/403 response is declared in the spec.
+  declared: false
+gaps:
+- No 4xx responses other than 422 are described.
+- No error code registry or error-reference page is published in the docs.
+- Responses are not application/problem+json (RFC 9457).

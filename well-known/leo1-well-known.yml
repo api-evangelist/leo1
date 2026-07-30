@@ -1,0 +1,54 @@
+generated: '2026-07-19'
+method: searched
+source: live probes of /.well-known/* on all leo1 hosts
+summary: No .well-known discovery documents are published. api.leo1.in and www.leo1.in return 404 for
+  every probed path. docs.leo1.in is a Docusaurus single-page app whose server returns the HTML app shell
+  with HTTP 200 for ANY path, so its 200s are catch-all responses, NOT real documents — recorded here
+  as not_a_document so they are never mistaken for a discovery surface.
+hosts:
+- host: https://api.leo1.in
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://www.leo1.in
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://docs.leo1.in
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    not_a_document: true
+    note: catch-all SPA shell (text/html) — not a document
+  - path: /.well-known/openid-configuration
+    status: 200
+    not_a_document: true
+    note: catch-all SPA shell (text/html) — not a document
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    not_a_document: true
+    note: catch-all SPA shell (text/html) — not a document
+  - path: /.well-known/api-catalog
+    status: 200
+    not_a_document: true
+    note: catch-all SPA shell (text/html) — not a document
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    not_a_document: true
+    note: catch-all SPA shell (text/html) — not a document

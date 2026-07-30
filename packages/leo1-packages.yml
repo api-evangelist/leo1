@@ -1,0 +1,38 @@
+generated: '2026-07-19'
+method: searched
+source: registry searches (npm, PyPI) + https://docs.leo1.in/integrations/web-integration
+summary: LEO1 publishes no client libraries to any public package registry. The only first-party distributable
+  is the browser Fees SDK, delivered as a versioned CDN script rather than a package. No SDKs pointer
+  is emitted because no installable, resolvable client library exists.
+packages:
+- language: javascript
+  registry: cdn
+  name: leoFees.js
+  version: 1.0.0
+  url: https://cdn.leo1.in/feesdk/1.0.0/Fees_SDK/dist/leoFees.js
+  install: <script src="https://cdn.leo1.in/feesdk/1.0.0/Fees_SDK/dist/leoFees.js"></script>
+  official: true
+  resolvable: false
+  http_status: 404
+  note: First-party per the docs, but the documented CDN URL returns 404. Catalogued in components/leo1-components.yml
+    as the embeddable checkout surface.
+registries_searched:
+- registry: npm
+  queries:
+  - leo1
+  - leofees
+  - leo-fees
+  - '@leo1/sdk'
+  first_party_results: 0
+- registry: pypi
+  queries:
+  - leo1
+  - leofees
+  first_party_results: 0
+  http_status: 404
+- registry: github
+  queries:
+  - leo1
+  - leo1-in
+  - leo1india
+  org_found: false

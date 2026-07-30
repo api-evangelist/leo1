@@ -1,0 +1,215 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/leo1-leofees-openapi-original.json
+summary:
+  schemas: 121
+  operations: 184
+  note: Entities and relationships are derived from *_id reference fields across the 121 request/response
+    schemas and from the tag/path grouping of the 184 operations. The FastAPI-generated spec exposes request/response
+    DTOs rather than canonical resource schemas, so entities below are the resource concepts those DTOs
+    address.
+entities:
+- name: institute
+  path_group: /api/v1/institute
+  description: The educational institution tenant. Root of the hierarchy; owns branches, courses, fee
+    types and students.
+  id_field: institute_id
+- name: branch
+  description: A campus/branch of an institute; scopes students, courses and fee structures.
+  id_field: branch_id
+- name: course
+  path_group: /api/v1/institute_course
+  description: A programme offered by an institute branch.
+  id_field: course_id
+- name: class
+  path_group: /api/v1/institute_course_class
+  description: A class/year within a course.
+  id_field: class_id
+- name: fee_structure
+  path_group: /api/v1/institute_fee_structure
+  description: The fee schedule mapped to a course class.
+  id_field: fee_structure_id
+- name: fee_type
+  path_group: /api/v1/institute_fee_type
+  description: An institute-scoped fee category, optionally derived from a common (platform-wide) fee
+    type.
+  id_field: fee_type_id
+- name: common_fee_type
+  description: Platform-level fee category shared across institutes.
+  id_field: common_fee_type_id
+- name: student
+  path_group: /api/v1/student
+  description: A student enrolled at an institute branch; carries profile, bank details and course mapping.
+  id_field: student_id
+- name: student_account
+  path_group: /api/v1/student_account
+  description: The student ledger/account record.
+- name: fee_due
+  path_group: /api/v1/fee_dues
+  description: An amount owed by a student under a fee structure.
+  id_field: fee_due_id
+- name: fee_collection
+  path_group: /api/v1/fee_collections
+  description: A recorded collection against a student, optionally linked to a transaction and a receipt.
+  id_field: collection_id
+- name: transaction
+  path_group: /api/v1/transactions
+  description: A LEO1 fee transaction; correlated to the institute ledger by erp_transaction_id and to
+    the gateway by transaction_log_id.
+  id_field: transaction_id
+- name: transaction_log
+  description: Gateway-side log entry for a payment attempt.
+  id_field: transaction_log_id
+- name: payment
+  path_group: /api/v1/payment
+  description: A payment initiation/verification against a transaction.
+- name: settlement
+  description: Funds settled to the institute; retrieved by date range.
+  operation: retrieve_settlements
+- name: refund
+  path_group: /api/v1/refund
+  description: A refund raised against a student.
+  id_field: student_refund_id
+- name: penalty
+  path_group: /api/v1/penalty
+  description: A late/other penalty applied to a student.
+  id_field: student_penalty_id
+- name: waiver
+  path_group: /api/v1/waiver
+  description: A fee waiver granted to a student; reversible.
+- name: student_coin_request
+  path_group: /api/v1/student_coin_request
+  description: A rewards-coin request raised by a student against a transaction.
+  id_field: student_coin_request_id
+- name: nach_mandate
+  path_group: /api/v1/nach
+  description: NPCI NACH e-mandate for recurring fee debits — registration, presentation, scheduling and
+    configuration (31 operations).
+  id_field: registration_id
+- name: enach
+  path_group: /api/v1/enach
+  description: eNACH registration and fee-subscription registration for a student.
+- name: loan
+  description: Fee-finance (education loan) lead and lifecycle, notified back by webhook.
+  id_field: loan_id
+- name: document
+  path_group: /api/v1/documents
+  description: Documents attached to a student or loan journey.
+- name: user
+  path_group: /api/v1/user
+  description: ERP/portal user authenticating against the API.
+  id_field: user_id
+relationships:
+- from: institute
+  to: branch
+  type: has_many
+  via: branch_id
+- from: institute
+  to: course
+  type: has_many
+  via: institute_id
+  evidence: CreateInstituteCourseRequest.institute_id
+- from: course
+  to: class
+  type: has_many
+  via: course_id
+  evidence: CreateInstituteCourseClassRequest.course_id
+- from: class
+  to: fee_structure
+  type: has_one
+  via: class_id
+  evidence: CreateInstituteCourseFeeStructureRequest.class_id
+- from: fee_type
+  to: common_fee_type
+  type: belongs_to
+  via: common_fee_type_id
+  evidence: CreateInstituteFeeTypeRequest.common_fee_type_id
+- from: student
+  to: institute
+  type: belongs_to
+  via: institute_id
+  evidence: CreateStudentProfileRequest.institute_id
+- from: student
+  to: branch
+  type: belongs_to
+  via: branch_id
+  evidence: CreateStudentProfileRequest.branch_id
+- from: student
+  to: fee_due
+  type: has_many
+  via: student_id
+  evidence: CreateStudentFeeDuesRequest.student_id
+- from: student
+  to: penalty
+  type: has_many
+  via: student_id
+  evidence: CreateStudentPenaltyRequest.student_id
+- from: student
+  to: refund
+  type: has_many
+  via: student_id
+  evidence: Body_create_student_refund_api_v1_refund__post.student_id
+- from: student
+  to: waiver
+  type: has_many
+  via: student_id
+  evidence: Body_create_student_waiver_api_v1_waiver__post.student_id
+- from: fee_collection
+  to: student
+  type: belongs_to
+  via: student_id
+  evidence: Body_create_fee_collection_api_v1_fee_collections__post.student_id
+- from: fee_collection
+  to: transaction
+  type: belongs_to
+  via: transaction_id
+  evidence: Body_create_fee_collection_api_v1_fee_collections__post.transaction_id
+- from: transaction
+  to: transaction_log
+  type: has_many
+  via: transaction_log_id
+  evidence: PaymentRequest.transaction_log_id, UpdatePaymentInitiated.transaction_log_id
+- from: transaction
+  to: institute
+  type: belongs_to
+  via: institute_id
+  evidence: FeePaymentRequest.institute_id
+- from: student_coin_request
+  to: transaction
+  type: belongs_to
+  via: transaction_id
+  evidence: Body_create_student_coin_request_api_v1_student_coin_request__post.transaction_id
+- from: nach_mandate
+  to: student
+  type: belongs_to
+  via: student_id
+  evidence: EnachRegistrationBody.student_id, EnachFeeSubscriptionRegistrationBody.student_id
+- from: enach_presentation
+  to: nach_mandate
+  type: belongs_to
+  via: registration_id
+  evidence: EnachPresentationBody.registration_id
+- from: loan
+  to: transaction
+  type: belongs_to
+  via: trans_id
+  evidence: CreateLoanLead.trans_id, NotifyLoanCreatedRequest.trans_id
+- from: waiver_reversal
+  to: waiver
+  type: belongs_to
+  via: waiver_id
+  evidence: ReverseStudentWaiverRequest.waiver_id
+correlation_keys:
+- field: erp_transaction_id
+  description: Institute ERP transaction identifier; the join key between the institute ledger, the LEO1
+    transaction, and both webhook payloads.
+  appears_in:
+  - TransactionDataRequest
+  - GetInstituteTransactionRequest
+  - InstituteTransactionResponse
+  - LinkStudentRequest
+  - pg webhook
+  - fee-finance webhook
+- field: roll_number
+  description: Institute-scoped student identifier used at checkout and echoed on the payment-gateway
+    webhook.

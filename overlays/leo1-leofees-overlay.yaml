@@ -1,0 +1,48 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for LEO1 Fees API
+  version: 1.0.0
+extends: openapi/leo1-leofees-openapi-original.json
+x-generated: '2026-07-19'
+x-method: generated
+actions:
+- target: $.info
+  description: Name the service, record provenance and flag the placeholder version.
+  update:
+    title: LEO1 Fees API
+    x-service-name: leofees_backend
+    description: 'Production REST API behind the LEO1 Fees SDK: student records, fee dues and structures,
+      fee collections, transactions, payments and settlements, refunds, penalties and waivers, NACH/eNACH
+      mandates, documents, communication and institute administration.'
+    x-apievangelist-source: https://api.leo1.in/openapi.json
+    x-apievangelist-harvested: '2026-07-19'
+    x-apievangelist-note: info.version is the literal placeholder string "version" in the published spec;
+      no released version identifier is available.
+    contact:
+      name: LEO1
+      url: https://docs.leo1.in/
+- target: $
+  description: The published spec declares no servers[] at the document root; the SDK docs publish both
+    environments.
+  update:
+    servers:
+    - url: https://api.leo1.in
+      description: Prod ENV
+    - url: https://uatapi.leo1.in
+      description: TEST ENV
+- target: $.components.securitySchemes.APIKeyHeader
+  description: Document the institute Secret Key semantics behind the secret-key header.
+  update:
+    description: Institute Secret Key, issued by LEO1 during onboarding. Paired with an Access Key that
+      is passed to the browser SDK. See https://docs.leo1.in/intro
+- target: $.paths['/api/v1/sdk/start_transaction'].post
+  description: Cross-reference the SHA-512 request-signing contract that governs the hash field.
+  update:
+    externalDocs:
+      description: Server integration and hash sequence
+      url: https://docs.leo1.in/integrations/server-integration
+    x-apievangelist-signing:
+      algorithm: SHA-512
+      field: hash
+      hash_sequence: key|total_fees|fees_paid|student_name|roll_number|branch_name|course_name|parent_name|institute_name|phone_number|erp_transaction_id
+      note: Trim all values before hashing; append the institute Secret Key to the hash string.

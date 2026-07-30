@@ -1,0 +1,43 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/leo1-leofees-openapi-original.json + https://docs.leo1.in/
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: Provider publishes OpenAPI 3.0.2 at https://api.leo1.in/openapi.json
+- id: oauth2
+  conforms: false
+  evidence: Only securityScheme is APIKeyHeader (apiKey in header). No oauth2 flows declared.
+- id: oidc
+  conforms: false
+  evidence: No openIdConnect scheme; /.well-known/openid-configuration returns 404.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Error responses use the FastAPI HTTPValidationError envelope as application/json, not application/problem+json.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on api.leo1.in and www.leo1.in.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No deprecation or sunset signalling documented.
+- id: idempotency
+  conforms: false
+  evidence: No idempotency key header or parameter in any operation.
+- id: pagination
+  conforms: false
+  evidence: No pagination parameters declared on collection operations.
+- id: json:api
+  conforms: false
+  evidence: Responses are bespoke JSON objects, not JSON:API documents.
+- id: nach-emandate
+  conforms: true
+  evidence: 31 operations under the "Nach Feature" tag plus 4 eNACH operations implement NPCI NACH / eNACH
+    e-mandate registration, presentation and scheduling for recurring fee debits.
+- id: asyncapi
+  conforms: false
+  evidence: Webhooks are documented in prose with JSON payload examples; no AsyncAPI document is published.
+compliance_program:
+  published: false
+  evidence: No trust center, certification page or named certification (SOC 2, ISO 27001, PCI DSS) was
+    found on leo1.in; probe-security-programs.py returned no trust-center hit. No Compliance pointer is
+    emitted.

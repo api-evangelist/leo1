@@ -1,0 +1,90 @@
+generated: '2026-07-19'
+method: searched
+type: Webhooks
+source:
+- https://docs.leo1.in/webhooks/pg
+- https://docs.leo1.in/webhooks/fee-finance
+asyncapi_published: false
+note: LEO1 documents two webhook streams in prose with JSON payload examples but publishes no AsyncAPI
+  document. The catalogue below is captured verbatim from the docs; no AsyncAPI is fabricated.
+delivery:
+  transport: http
+  method: POST
+  content_type: application/json
+  subscription: Not self-service. The institute sends its webhook URL to LEO1, which configures delivery.
+  timing: Near real time on status change; the docs note latency may be experienced.
+  signature_verification: Not documented. The pg payload carries a hash field consistent with the SHA-512
+    request-signing scheme, but the docs do not specify a verification sequence for inbound webhooks.
+  retries: Not documented.
+channels:
+- name: payment-gateway
+  title: Payment Gateway
+  docs: https://docs.leo1.in/webhooks/pg
+  description: Fires as soon as a success/failure event occurs on a fee payment.
+  payload_fields:
+  - name: txnid
+    type: string
+  - name: amount
+    type: string
+  - name: status
+    type: string
+  - name: date
+    type: string
+  - name: roll_number
+    type: string
+  - name: phone_number
+    type: string
+  - name: institute_name
+    type: string
+  - name: branch_name
+    type: string
+  - name: course_name
+    type: string
+  - name: parent_name
+    type: string
+  - name: fees_paid
+    type: integer
+  - name: total_fees
+    type: integer
+  - name: redirect_fail
+    type: string
+  - name: redirect_success
+    type: string
+  - name: erp_transaction_id
+    type: string
+  - name: student_name
+    type: string
+  - name: hash
+    type: string
+  - name: extra_data
+    type: object
+  - name: email_id
+    type: string
+- name: fee-finance
+  title: Fee Finance
+  docs: https://docs.leo1.in/webhooks/fee-finance
+  description: Fires on every status change in the fee-finance (education loan) journey.
+  payload_fields:
+  - name: loan_id
+    type: string
+  - name: erp_transaction_id
+    type: string
+  - name: status
+    type: string
+  - name: updated_datetime
+    type: string
+  - name: amount
+    type: string
+  - name: extra_data
+    type: object
+    required: false
+  status_values:
+  - Documents Pending
+  - Application Submitted
+  - Approved
+  - Post Approval Pending
+  - Ready for Disbursal
+  - Push for Disbursal
+  - Disbursed
+  - Closed
+  - Rejected

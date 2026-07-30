@@ -1,0 +1,43 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.leo1.in/api/start-transaction (OpenAPI servers) + https://docs.leo1.in/integrations/web-integration
+summary: LEO1 publishes a separate UAT (test) environment alongside production, selected server-side by
+  base URL and client-side by an env flag passed to the browser SDK. No public self-service signup, test
+  cards, magic values or fixture tooling are published — Access Key / Secret Key credentials are issued
+  by LEO1 to the institute.
+environments:
+- name: test
+  label: TEST ENV
+  base_url: https://uatapi.leo1.in/
+  source: OpenAPI servers[] on the documented SDK operations
+  probe:
+    date: '2026-07-19'
+    result: DNS/connection failed from public internet (curl exit 28, no response)
+    publicly_reachable: false
+    note: The UAT host is documented but did not respond to an unauthenticated probe; it appears to be
+      network-restricted to onboarded institutes.
+- name: production
+  label: Prod ENV
+  base_url: https://api.leo1.in/
+  source: OpenAPI servers[] on the documented SDK operations
+  probe:
+    date: '2026-07-19'
+    result: 200 — serves the OpenAPI description at /openapi.json
+    publicly_reachable: true
+client_switch:
+  parameter: env
+  values:
+  - test
+  - prod
+  where: requestData object passed to initiateLeoFeesPayment() / initiateLeoFees() in the browser SDK
+  docs: https://docs.leo1.in/integrations/web-integration
+credentials:
+  model: Access Key + Secret Key issued per institute
+  self_service: false
+  docs: https://docs.leo1.in/intro
+  notes: The docs state "You will require Access Key and Secret Key to interact with our sdk." No signup
+    or key-provisioning flow is published; keys are obtained through LEO1 onboarding.
+test_values:
+  published: false
+  note: No test card numbers, test bank accounts, magic identifiers, test clocks or fixture/trigger tooling
+    are published. None are recorded here rather than invented.

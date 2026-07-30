@@ -1,0 +1,39 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.leo1.in/ + openapi/leo1-leofees-openapi-original.json + live host probes
+versioning:
+  scheme: uri-path
+  current: v1
+  base_path: /api/v1
+  policy_documented: false
+  notes: All 152 paths are under /api/v1. The OpenAPI info.version is the literal placeholder string "version";
+    no released version identifier or version history is published.
+deprecation:
+  policy_url: null
+  policy_documented: false
+  sunset_header: false
+  evidence: 'No operation in the OpenAPI carries deprecated: true, and no deprecation or sunset policy
+    is published in the docs.'
+sla:
+  url: null
+  uptime_target: null
+  documented: false
+status_page: null
+status_page_probe:
+- host: https://status.leo1.in
+  result: DNS does not resolve
+- host: https://www.leo1.in/status
+  result: '404'
+changelog:
+  url: null
+  documented: false
+  evidence: The docs site publishes no dated changelog or release notes section.
+deprecated_operations: []
+roadmap:
+  documented: false
+  signals:
+  - item: Create Or Update MID
+    status: announced
+    note: The docs page /create-update-mid states "This Feature is coming soon" — the only forward-looking
+      signal published.
+    url: https://docs.leo1.in/create-update-mid

@@ -1,0 +1,70 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.leo1.in/ (Leo1 Fees SDK docs) + openapi/leo1-leofees-openapi-original.json
+authentication:
+  style: api-key-header
+  header: secret-key
+  notes: OpenAPI declares a single securityScheme APIKeyHeader (apiKey in header, name secret-key), applied
+    to 127 of 184 operations. The SDK integration additionally uses an Access Key / Secret Key pair issued
+    to the institute; the Access Key is passed to the browser SDK and the Secret Key is used server-side
+    to sign the request hash.
+  artifact: authentication/leo1-authentication.yml
+request_signing:
+  supported: true
+  algorithm: SHA-512
+  encoding: lowercase hex
+  scheme: Pipe-delimited hash of ordered field values with the institute Secret Key appended.
+  hash_sequence: key|total_fees|fees_paid|student_name|roll_number|branch_name|course_name|parent_name|institute_name|phone_number|erp_transaction_id
+  field: hash
+  rules:
+  - All parameter values MUST be trimmed of leading and trailing whitespace before hashing.
+  - Fields not supplied (e.g. branch_name, course_name) are represented as an empty string but still contribute
+    their pipe separator.
+  - The Secret Key is appended to the end of the hash string before hashing.
+  docs: https://docs.leo1.in/integrations/server-integration
+idempotency:
+  supported: false
+  evidence: No Idempotency-Key header or equivalent parameter appears in any of the 184 OpenAPI operations,
+    and the SDK docs describe no retry-safety contract. The caller-supplied erp_transaction_id is a correlation
+    identifier for the institute ERP transaction, not a documented idempotency key.
+correlation:
+  field: erp_transaction_id
+  description: Institute-side ERP transaction identifier echoed through transaction creation, the payment-gateway
+    webhook and the fee-finance webhook; used to reconcile a LEO1 transaction back to the institute ledger.
+pagination:
+  supported: false
+  evidence: No page/limit/offset/cursor parameters are declared on the collection operations in the OpenAPI;
+    listing endpoints (e.g. get_students_api_v1_student__get) take filter parameters and return full result
+    sets. Bulk extracts are served through the download_* operations instead.
+versioning:
+  scheme: uri-path
+  current: v1
+  base_path: /api/v1
+  info_version: version (the FastAPI info.version field is an unset placeholder string)
+error_envelope:
+  format: fastapi-validation
+  media_type: application/json
+  shape: '{"detail":[{"loc":[...],"msg":"...","type":"..."}]}'
+  rfc9457: false
+  notes: Every operation declares only 200 and 422. The 422 body is the FastAPI HTTPValidationError envelope.
+    No application/problem+json responses are declared.
+  artifact: errors/leo1-problem-types.yml
+rate_limiting:
+  documented: false
+  evidence: No rate-limit headers, quotas or throttling policy are documented in the SDK docs or declared
+    in the OpenAPI.
+metadata:
+  field: extra_data
+  type: object
+  optional: true
+  description: Free-form object accepted on transaction start and echoed back on both webhook payloads.
+webhooks:
+  delivery: HTTP POST to an institute-supplied URL configured by LEO1 on request
+  self_service: false
+  artifact: asyncapi/leo1-fees-webhooks.yml
+cross_links:
+  authentication: authentication/leo1-authentication.yml
+  errors: errors/leo1-problem-types.yml
+  lifecycle: lifecycle/leo1-lifecycle.yml
+  sandbox: sandbox/leo1-sandbox.yml
+  data_model: data-model/leo1-data-model.yml

@@ -1,0 +1,51 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: openapi/leo1-leofees-openapi-original.json
+published_server:
+  exists: false
+  evidence: No hosted or remote MCP server is referenced in the LEO1 docs, and no LEO1 package exists
+    on npm or in the MCP registry. This file is a derived candidate tool surface, not a published server.
+server:
+  name: leo1-fees
+  transport: http
+  url: null
+authentication:
+  scheme: apiKey
+  header: secret-key
+  note: 127 of 184 operations require the institute secret key; a deployed server would need per-institute
+    credential binding.
+tools:
+- name: status
+  description: Get Status
+  method: GET
+  path: /api/v1/status
+  source_operation: openapi/leo1-leofees-openapi-original.json#get_status_api_v1_status_get
+- name: sdk_start_transaction
+  description: Start Transaction
+  method: POST
+  path: /api/v1/sdk/start_transaction
+  source_operation: openapi/leo1-leofees-openapi-original.json#start_transaction_api_v1_sdk_start_transaction_post
+- name: sdk_generate_access
+  description: Generate Token
+  method: POST
+  path: /api/v1/sdk/generate_access
+  source_operation: openapi/leo1-leofees-openapi-original.json#generate_token_api_v1_sdk_generate_access_post
+- name: sdk_link_get_institute_details
+  description: Link Get Institute Details
+  method: POST
+  path: /api/v1/sdk/link_get_institute_details
+  source_operation: openapi/leo1-leofees-openapi-original.json#link_get_institute_details_api_v1_sdk_link_get_institute_details_post
+- name: sdk_link_generate_access
+  description: Link Generate Access
+  method: POST
+  path: /api/v1/sdk/link_generate_access
+  source_operation: openapi/leo1-leofees-openapi-original.json#link_generate_access_api_v1_sdk_link_generate_access_post
+- name: sdk_link_get_student
+  description: Get Link Student
+  method: POST
+  path: /api/v1/sdk/link_get_student
+  source_operation: openapi/leo1-leofees-openapi-original.json#get_link_student_api_v1_sdk_link_get_student_post
+coverage_note: Only the 5 SDK-tagged integration operations plus the status probe are proposed as candidate
+  tools. The remaining 178 operations are institute back-office and NACH administration surfaces that
+  carry write/financial consequence and should not be exposed to an agent without an explicit access contract.
