@@ -758,6 +758,8 @@ apis:
   - type: ErrorCatalog
     url: errors/leo1-problem-types.yml
 common:
+- type: MCPServer
+  url: mcp/leo1-mcp.yml
 - type: Website
   url: https://www.leo1.in/
 - type: DeveloperPortal
@@ -779,7 +781,7 @@ common:
 - type: Twitter
   url: https://x.com/Leo1India
 - type: OpenAPI
-  url: openapi/leo1-leofees-openapi-original.json
+  url: openapi/_original/leo1-leofees-openapi-original.json
 - type: Authentication
   url: authentication/leo1-authentication.yml
 - type: Conventions
