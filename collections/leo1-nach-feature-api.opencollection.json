@@ -1,0 +1,733 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api Nach Feature API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Nach Feature",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Initiate Nach Registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/nach/registration/initiate/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Initiate Nach Registration"
+        },
+        {
+          "info": {
+            "name": "Request Nach Registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/nach/registration/request/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Request Nach Registration"
+        },
+        {
+          "info": {
+            "name": "Get Registration Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/nach/registration/",
+            "params": [
+              {
+                "name": "filter_data",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "institutes",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "branches",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "courses",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "classes",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Registration Details"
+        },
+        {
+          "info": {
+            "name": "Get Registration Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/nach/registration/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Registration Detail"
+        },
+        {
+          "info": {
+            "name": "Get Registration Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/nach/registration/details/:student_uuid",
+            "params": [
+              {
+                "name": "student_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Registration Details"
+        },
+        {
+          "info": {
+            "name": "Get Registration Redirect Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/nach/registration/link/:student_uuid",
+            "params": [
+              {
+                "name": "student_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Registration Redirect Link"
+        },
+        {
+          "info": {
+            "name": "Request Nach Registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/nach/registration/status/",
+            "params": [
+              {
+                "name": "reg_ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Request Nach Registration"
+        },
+        {
+          "info": {
+            "name": "Registration Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/nach/registration/webhook/"
+          },
+          "docs": "Registration Webhook"
+        },
+        {
+          "info": {
+            "name": "Registration Redirect",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/nach/registration/redirect/"
+          },
+          "docs": "Registration Redirect"
+        },
+        {
+          "info": {
+            "name": "Registration Redirect",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/nach/registration/redirect/"
+          },
+          "docs": "Registration Redirect"
+        },
+        {
+          "info": {
+            "name": "Get Registration Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/nach/presentation/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Registration Details"
+        },
+        {
+          "info": {
+            "name": "Create Student",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/nach/presentation/webhook/"
+          },
+          "docs": "Create Student"
+        },
+        {
+          "info": {
+            "name": "Request Nach Registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/nach/presentation/status/",
+            "params": [
+              {
+                "name": "presentation_ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Request Nach Registration"
+        },
+        {
+          "info": {
+            "name": "Get Bank Codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/nach/get-bank-codes/"
+          },
+          "docs": "Get Bank Codes"
+        },
+        {
+          "info": {
+            "name": "Get Bank Codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/nach/bulk-update-nach-status/",
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Bank Codes"
+        },
+        {
+          "info": {
+            "name": "Get Fee Subscription Registration Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/nach/fee-subscription/registration/",
+            "params": [
+              {
+                "name": "filter_data",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "institutes",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "branches",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "courses",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "classes",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Fee Subscription Registration Details"
+        },
+        {
+          "info": {
+            "name": "Fee Subscription Initiate Nach Registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/nach/fee-subscription/registration/initiate/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fee Subscription Initiate Nach Registration"
+        },
+        {
+          "info": {
+            "name": "Get Fee Subscription Registration Analytics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/nach/fee-subscription/analytics/",
+            "params": [
+              {
+                "name": "institutes",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Fee Subscription Registration Analytics"
+        },
+        {
+          "info": {
+            "name": "Get Institute Logo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/nach/fee-subscription/institute-logo/",
+            "params": [
+              {
+                "name": "student_uuid",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Institute Logo"
+        },
+        {
+          "info": {
+            "name": "Get User Nach Registration Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/nach/fee-subscription/user-nach-registration-logs/",
+            "params": [
+              {
+                "name": "institutes",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "roll_number",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get User Nach Registration Logs"
+        },
+        {
+          "info": {
+            "name": "Get Reports Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/nach/fee-subscription/reports-details/",
+            "params": [
+              {
+                "name": "institutes",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Reports Details"
+        },
+        {
+          "info": {
+            "name": "Generate Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/nach/fee-subscription/generate-report/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Generate Report"
+        },
+        {
+          "info": {
+            "name": "Send Bulk Notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/nach/fee-subscription/send_bulk_notification",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Send Bulk Notification"
+        },
+        {
+          "info": {
+            "name": "Get B2C Card Consent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/nach/get-b2c-card-consent/",
+            "params": [
+              {
+                "name": "student_uuid",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get B2C Card Consent"
+        },
+        {
+          "info": {
+            "name": "Update B2C Card Consent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/nach/update-b2c-card-consent/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update B2C Card Consent"
+        },
+        {
+          "info": {
+            "name": "Get Nach Status By Mobile No",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/nach/get-nach-status-by-mobile-no/",
+            "params": [
+              {
+                "name": "mobile_no",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "institute_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Nach Status By Mobile No"
+        },
+        {
+          "info": {
+            "name": "Mandate Redirect",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/nach/mandate/redirect/"
+          },
+          "docs": "Mandate Redirect"
+        },
+        {
+          "info": {
+            "name": "Mandate Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/nach/mandate/webhook/"
+          },
+          "docs": "Mandate Webhook"
+        },
+        {
+          "info": {
+            "name": "Update Institute Nach Applicable",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/nach/update-institute-nach-applicable",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Institute Nach Applicable"
+        },
+        {
+          "info": {
+            "name": "Get Institute Nach Applicable",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/nach/institute-nach-applicable",
+            "params": [
+              {
+                "name": "institute_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "branch_name",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Institute Nach Applicable"
+        },
+        {
+          "info": {
+            "name": "Get Institute Nach Applicable",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/nach/institutes-applicable-nach",
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Institute Nach Applicable"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

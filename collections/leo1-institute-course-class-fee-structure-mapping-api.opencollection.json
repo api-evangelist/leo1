@@ -1,0 +1,168 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api Institute Course Class Fee Structure Mapping API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Institute Course Class Fee Structure Mapping",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Institute Course Classes Fee Structures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/institute/mapping/class_fee_structure",
+            "params": [
+              {
+                "name": "course_ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Institute Course Classes Fee Structures"
+        },
+        {
+          "info": {
+            "name": "Create Student",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/institute/mapping/add_student",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Student"
+        },
+        {
+          "info": {
+            "name": "Create Bulk Students",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/institute/mapping/add_bulk_students",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Bulk Students"
+        },
+        {
+          "info": {
+            "name": "Update Bulk Students",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/institute/mapping/update_bulk_students",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Bulk Students"
+        },
+        {
+          "info": {
+            "name": "Download Sample Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/institute/mapping/sample_template_download",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Download Sample Template"
+        },
+        {
+          "info": {
+            "name": "Collection Download Sample Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/institute/mapping/collection_sample_template_download",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Collection Download Sample Template"
+        },
+        {
+          "info": {
+            "name": "Download Course Mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/institute/mapping/download_course_mapping",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Download Course Mapping"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

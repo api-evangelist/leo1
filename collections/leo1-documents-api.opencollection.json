@@ -1,0 +1,122 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api documents API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/documents/",
+            "params": [
+              {
+                "name": "document_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Document"
+        },
+        {
+          "info": {
+            "name": "Get Response File Manager Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/documents/response_file_manager",
+            "params": [
+              {
+                "name": "institutes",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "branches",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Response File Manager Data"
+        },
+        {
+          "info": {
+            "name": "Download Response File Manager",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/documents/download/response_file_manager",
+            "params": [
+              {
+                "name": "file_manager_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Download Response File Manager"
+        },
+        {
+          "info": {
+            "name": "Delete Expired File Manager Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v1/documents/delete/expired_file_manager_records",
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Expired File Manager Records"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

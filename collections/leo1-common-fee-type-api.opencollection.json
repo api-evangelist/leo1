@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api Common Fee Type API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Common Fee Type",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Common Fee Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/common_fee_type/",
+            "params": [
+              {
+                "name": "category",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Common Fee Types"
+        },
+        {
+          "info": {
+            "name": "Create Common Fee Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/common_fee_type/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Common Fee Type"
+        },
+        {
+          "info": {
+            "name": "Update Common Fee Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/common_fee_type/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Common Fee Type"
+        },
+        {
+          "info": {
+            "name": "Bulk Delete Common Fee Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v1/common_fee_type/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Bulk Delete Common Fee Types"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

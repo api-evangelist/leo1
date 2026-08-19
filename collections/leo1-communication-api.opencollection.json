@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api Communication API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Communication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send Due Notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/communication/send_due_notification",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send Due Notification"
+        },
+        {
+          "info": {
+            "name": "Send Bulk Due Notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/communication/send_bulk_due_notification",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send Bulk Due Notification"
+        },
+        {
+          "info": {
+            "name": "Bulk Response File Saving",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/communication/save_bulk_response_file",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk Response File Saving"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,147 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api Institute Course Fee Structure API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Institute Course Fee Structure",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Institute Course Fee Structures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/institute/fee_structure/",
+            "params": [
+              {
+                "name": "class_ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Institute Course Fee Structures"
+        },
+        {
+          "info": {
+            "name": "Create Institute Course Fee Structure",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/institute/fee_structure/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Institute Course Fee Structure"
+        },
+        {
+          "info": {
+            "name": "Delete Institute Course Fee Structure",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v1/institute/fee_structure/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Institute Course Fee Structure"
+        },
+        {
+          "info": {
+            "name": "Create Bulk Institute Course Fee Structure",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/institute/fee_structure/create_bulk_course_fee_structure",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Bulk Institute Course Fee Structure"
+        },
+        {
+          "info": {
+            "name": "Create Bulk Institute Course Fee Structure Excel",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/institute/fee_structure/create_bulk_course_fee_structure_excel",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Bulk Institute Course Fee Structure Excel"
+        },
+        {
+          "info": {
+            "name": "Update Bulk Institute Course Fee Structure",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/institute/fee_structure/update_bulk_course_fee_structure",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Bulk Institute Course Fee Structure"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

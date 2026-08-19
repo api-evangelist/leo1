@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api waiver API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "waiver",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Student Waivers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/waiver/",
+            "params": [
+              {
+                "name": "student_ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "API to get list of fee waivers for given students"
+        },
+        {
+          "info": {
+            "name": "Create Student Waiver",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/waiver/",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "API to create single fee collection entry. Adjusts the dues and creates mapping as well."
+        },
+        {
+          "info": {
+            "name": "Delete Student Waiver",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v1/waiver/",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "API to delete single fee collection entry"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

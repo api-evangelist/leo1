@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api student otp API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "student otp",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send Student Otp",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/student_otp/send_student_otp",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Send Student Otp"
+        },
+        {
+          "info": {
+            "name": "Verify Student Otp",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/student_otp/verify_student_otp",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Verify Student Otp"
+        },
+        {
+          "info": {
+            "name": "Payment Otp Verification Required",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/student_otp/payment_otp_verification_required",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Payment Otp Verification Required"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

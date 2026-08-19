@@ -1,0 +1,142 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api student coin request API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "student coin request",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Students Coin Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/student_coin_request/",
+            "params": [
+              {
+                "name": "student_ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Students Coin Requests"
+        },
+        {
+          "info": {
+            "name": "Create Student Coin Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/student_coin_request/",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Student Coin Request"
+        },
+        {
+          "info": {
+            "name": "Update Student Coin Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/student_coin_request/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Student Coin Request"
+        },
+        {
+          "info": {
+            "name": "Get Students Pending Coin Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/student_coin_request/pending_coin_requests",
+            "params": [
+              {
+                "name": "institute_ids",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "branch_ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Students Pending Coin Requests"
+        },
+        {
+          "info": {
+            "name": "Get Download Pending Coin Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/student_coin_request/download_pending_coin_requests",
+            "params": [
+              {
+                "name": "institute_ids",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "branch_ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Download Pending Coin Requests"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

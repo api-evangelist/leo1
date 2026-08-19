@@ -1,0 +1,205 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api transactions API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/transactions/user_transactions"
+          },
+          "docs": "Get Transactions"
+        },
+        {
+          "info": {
+            "name": "Get Fee Receipt",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/transactions/fee_receipt/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Fee Receipt"
+        },
+        {
+          "info": {
+            "name": "Notify Loan Create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/transactions/notify_loan_create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Notify Loan Create"
+        },
+        {
+          "info": {
+            "name": "Create Loan Lead",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/transactions/create_loan_lead",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Loan Lead"
+        },
+        {
+          "info": {
+            "name": "Get Institute Transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/transactions/institute_transactions/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Institute Transactions"
+        },
+        {
+          "info": {
+            "name": "Get Institute Aggregate Transcations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/transactions/aggregate_transcations/:inst_name",
+            "params": [
+              {
+                "name": "inst_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Institute Aggregate Transcations"
+        },
+        {
+          "info": {
+            "name": "Get Institute Aggregate Transcations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/transactions/get_branchs_for_institutes/:inst_name",
+            "params": [
+              {
+                "name": "inst_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Institute Aggregate Transcations"
+        },
+        {
+          "info": {
+            "name": "Get Institute Transactions Csv",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/transactions/institute_transactions_csv/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Institute Transactions Csv"
+        },
+        {
+          "info": {
+            "name": "Reverse Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/transactions/reverse_transaction/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reverse Transaction"
+        },
+        {
+          "info": {
+            "name": "Get Transaction Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/transactions/get_transaction_status/",
+            "params": [
+              {
+                "name": "param_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "param_value",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Transaction Status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

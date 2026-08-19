@@ -1,0 +1,141 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api fee_dues API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "fee_dues",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Student Dues",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/fee_dues/",
+            "params": [
+              {
+                "name": "student_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "phone_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "institute_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "API to get list of fee dues (terms) for a given student"
+        },
+        {
+          "info": {
+            "name": "Create Fee Due",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/fee_dues/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "API to create single fee due entry"
+        },
+        {
+          "info": {
+            "name": "Update Fee Due",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/fee_dues/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "API to update single fee due entry"
+        },
+        {
+          "info": {
+            "name": "Delete Fee Due",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v1/fee_dues/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "API to delete single fee due entry"
+        },
+        {
+          "info": {
+            "name": "Update Bulk Fee Due",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/fee_dues/update_bulk_dues",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "API to update multiple fee due entries for a given student"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

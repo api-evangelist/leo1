@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api Reversal Feature API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reversal Feature",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Reverse Fee Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/reversal/fee_collection",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Reverse Fee Collection"
+        },
+        {
+          "info": {
+            "name": "Reverse Student Waiver",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/reversal/student_waiver",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Reverse Student Waiver"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

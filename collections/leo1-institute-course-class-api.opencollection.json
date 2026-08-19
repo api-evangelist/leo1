@@ -1,0 +1,126 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api Institute Course Class API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Institute Course Class",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Institute Course Classes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/institute/class/",
+            "params": [
+              {
+                "name": "course_ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Institute Course Classes"
+        },
+        {
+          "info": {
+            "name": "Create Institute Course Class",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/institute/class/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Institute Course Class"
+        },
+        {
+          "info": {
+            "name": "Update Institute Course Class",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/institute/class/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Institute Course Class"
+        },
+        {
+          "info": {
+            "name": "Bulk Create Institute Course Class",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/institute/class/create_bulk_course_class",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Bulk Create Institute Course Class"
+        },
+        {
+          "info": {
+            "name": "Update Bulk Institute Course Class",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/institute/class/update_bulk_course_class",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Bulk Institute Course Class"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

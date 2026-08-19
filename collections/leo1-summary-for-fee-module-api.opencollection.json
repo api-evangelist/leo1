@@ -1,0 +1,188 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api Summary for fee module API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Summary for fee module",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Fees Numbers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/summary/get_fees_numbers/:branch_ids",
+            "params": [
+              {
+                "name": "branch_ids",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "API to get fee numbers"
+        },
+        {
+          "info": {
+            "name": "Get Payment Trends",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/summary/get_payment_trends",
+            "params": [
+              {
+                "name": "branch_ids",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "API to get payment trends for given branches"
+        },
+        {
+          "info": {
+            "name": "Get Payment Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/summary/get_payment_stats",
+            "params": [
+              {
+                "name": "branch_ids",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "label_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "payment_methods",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "API to get payment stats based on filters"
+        },
+        {
+          "info": {
+            "name": "Get Institutes Fee Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/summary/get_fee_summary",
+            "params": [
+              {
+                "name": "institute_ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "API to get payment stats based on filters"
+        },
+        {
+          "info": {
+            "name": "Download Payment Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/summary/download_payment_data",
+            "params": [
+              {
+                "name": "institute_ids",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "branch_ids",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "payment_methods",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "API to download payment data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

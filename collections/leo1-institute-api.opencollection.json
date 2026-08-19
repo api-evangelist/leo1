@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api institute API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "institute",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Institute Settlements",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/institute/settlement",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve Institute Settlements"
+        },
+        {
+          "info": {
+            "name": "Retrieve Institute Transactions Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/institute/transactions/date",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve Institute Transactions Date"
+        },
+        {
+          "info": {
+            "name": "Get Txn Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/institute/transactions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Txn Details"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

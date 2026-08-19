@@ -1,0 +1,744 @@
+{
+  "item": [
+    {
+      "id": "b6033036-5c9b-4778-a8c1-5ff8a18ea0e5",
+      "name": "SDK",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e7e67aea-ccd3-4e59-aee8-b6b18752dc9a",
+          "name": "Start Transaction",
+          "request": {
+            "name": "Start Transaction",
+            "description": {
+              "content": "SDK to Start Transaction",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "sdk",
+                "start_transaction"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": \"<string>\",\n  \"roll_number\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"institute_name\": \"<string>\",\n  \"branch_name\": \"<string>\",\n  \"course_name\": \"<string>\",\n  \"parent_name\": \"<string>\",\n  \"fees_paid\": \"<string>\",\n  \"total_fees\": \"<string>\",\n  \"erp_transaction_id\": \"<string>\",\n  \"student_name\": \"<string>\",\n  \"hash\": \"<string>\",\n  \"redirect_fail\": \"<string>\",\n  \"redirect_success\": \"<string>\",\n  \"extra_data\": \"<object>\",\n  \"email_id\": \"test@gmail.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "46f36315-42a7-4f5d-a8d9-d9ba5967d200",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sdk",
+                    "start_transaction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"<string>\",\n  \"roll_number\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"institute_name\": \"<string>\",\n  \"branch_name\": \"<string>\",\n  \"course_name\": \"<string>\",\n  \"parent_name\": \"<string>\",\n  \"fees_paid\": \"<string>\",\n  \"total_fees\": \"<string>\",\n  \"erp_transaction_id\": \"<string>\",\n  \"student_name\": \"<string>\",\n  \"hash\": \"<string>\",\n  \"redirect_fail\": \"<string>\",\n  \"redirect_success\": \"<string>\",\n  \"extra_data\": \"<object>\",\n  \"email_id\": \"test@gmail.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f3c6f41-8ceb-43a8-8c42-f405fb1f31e3",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sdk",
+                    "start_transaction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"<string>\",\n  \"roll_number\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"institute_name\": \"<string>\",\n  \"branch_name\": \"<string>\",\n  \"course_name\": \"<string>\",\n  \"parent_name\": \"<string>\",\n  \"fees_paid\": \"<string>\",\n  \"total_fees\": \"<string>\",\n  \"erp_transaction_id\": \"<string>\",\n  \"student_name\": \"<string>\",\n  \"hash\": \"<string>\",\n  \"redirect_fail\": \"<string>\",\n  \"redirect_success\": \"<string>\",\n  \"extra_data\": \"<object>\",\n  \"email_id\": \"test@gmail.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "48754859-e086-4712-b555-10f06940997b",
+          "name": "Generate Token",
+          "request": {
+            "name": "Generate Token",
+            "description": {
+              "content": "SDK API to Verify Transaction and generate access token",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "sdk",
+                "generate_access"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": \"<string>\",\n  \"access_token\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "493f0726-98ad-465e-9e7a-908e09f9d049",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sdk",
+                    "generate_access"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": \"<string>\",\n  \"access_token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roll_number\": \"string\",\n  \"transaction_log_id\": 9910,\n  \"unique_transaction_id\": \"string\",\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"access_token\": \"string\",\n  \"fee_transaction_id\": 3624,\n  \"redirect_success\": \"string\",\n  \"redirect_fail\": \"string\",\n  \"is_enach\": false,\n  \"erp_json_dump\": {},\n  \"institute_erp\": {\n    \"institute_id\": 676,\n    \"institute_name\": \"string\",\n    \"hasEMI\": false,\n    \"image_asset\": \"string\",\n    \"is_login_pass\": \"string\",\n    \"has_form\": true,\n    \"has_payment_gateway\": true\n  },\n  \"easebuzz_env\": \"string\",\n  \"easebuzz_access_key\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "112e13a8-0cc9-4c8a-acf1-186a60dfdef2",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sdk",
+                    "generate_access"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": \"<string>\",\n  \"access_token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0b4d8a37-bf01-4b7e-ae43-81c24a570b6d",
+          "name": "Link Get Institute Details",
+          "request": {
+            "name": "Link Get Institute Details",
+            "description": {
+              "content": "Get Institute for static website",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "sdk",
+                "link_get_institute_details"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"access_token\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b8138c16-5cae-4bb9-ae66-e4175ca091e8",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sdk",
+                    "link_get_institute_details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"access_token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2d39427-6c3b-45b7-af92-631db4708d6e",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sdk",
+                    "link_get_institute_details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"access_token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "360f4615-d73b-408f-9b74-63845c73ee84",
+          "name": "Link Generate Access",
+          "request": {
+            "name": "Link Generate Access",
+            "description": {
+              "content": "Generate Access for static website",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "sdk",
+                "link_generate_access"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": \"<string>\",\n  \"roll_number\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"branch_name\": \"<string>\",\n  \"course_name\": \"<string>\",\n  \"parent_name\": \"<string>\",\n  \"fees_paid\": \"<string>\",\n  \"total_fees\": \"<string>\",\n  \"student_name\": \"<string>\",\n  \"institute_id\": \"<integer>\",\n  \"institute_name\": \"<string>\",\n  \"redirect_fail\": \"<string>\",\n  \"redirect_success\": \"<string>\",\n  \"erp_transaction_id\": \"<string>\",\n  \"hash\": \"<string>\",\n  \"extra_data\": \"<object>\",\n  \"email_id\": \"test@gmail.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b10cf837-2c2f-4803-a19b-f2b56166766b",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sdk",
+                    "link_generate_access"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"<string>\",\n  \"roll_number\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"branch_name\": \"<string>\",\n  \"course_name\": \"<string>\",\n  \"parent_name\": \"<string>\",\n  \"fees_paid\": \"<string>\",\n  \"total_fees\": \"<string>\",\n  \"student_name\": \"<string>\",\n  \"institute_id\": \"<integer>\",\n  \"institute_name\": \"<string>\",\n  \"redirect_fail\": \"<string>\",\n  \"redirect_success\": \"<string>\",\n  \"erp_transaction_id\": \"<string>\",\n  \"hash\": \"<string>\",\n  \"extra_data\": \"<object>\",\n  \"email_id\": \"test@gmail.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb330735-4097-47f6-9f9a-a24759ac058b",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sdk",
+                    "link_generate_access"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"<string>\",\n  \"roll_number\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"branch_name\": \"<string>\",\n  \"course_name\": \"<string>\",\n  \"parent_name\": \"<string>\",\n  \"fees_paid\": \"<string>\",\n  \"total_fees\": \"<string>\",\n  \"student_name\": \"<string>\",\n  \"institute_id\": \"<integer>\",\n  \"institute_name\": \"<string>\",\n  \"redirect_fail\": \"<string>\",\n  \"redirect_success\": \"<string>\",\n  \"erp_transaction_id\": \"<string>\",\n  \"hash\": \"<string>\",\n  \"extra_data\": \"<object>\",\n  \"email_id\": \"test@gmail.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b6db2be-ae5d-498b-b171-39ad4b80b994",
+          "name": "Get Link Student",
+          "request": {
+            "name": "Get Link Student",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "sdk",
+                "link_get_student"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"access_key\": \"<string>\",\n  \"roll_number\": \"<string>\",\n  \"user_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1961400b-4236-47bc-84ba-5533fc85e798",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sdk",
+                    "link_get_student"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"access_key\": \"<string>\",\n  \"roll_number\": \"<string>\",\n  \"user_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roll_number\": \"string\",\n  \"phone_number\": \"string\",\n  \"branch_name\": \"string\",\n  \"course_name\": \"string\",\n  \"parent_name\": \"string\",\n  \"student_name\": \"string\",\n  \"email_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e10b6bd-b8ec-4455-8501-809d2ab17839",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sdk",
+                    "link_get_student"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"access_key\": \"<string>\",\n  \"roll_number\": \"<string>\",\n  \"user_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3d3e9ec9-3778-4566-9b0c-75ac10c7efbe",
+    "name": "leofees_backend api SDK API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "General system endpoints for the API.",
+      "type": "text/plain"
+    }
+  }
+}

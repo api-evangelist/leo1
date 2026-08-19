@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api Nach Feature V2 API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Nach Feature V2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request Nach Registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/nach/registration/request/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Request Nach Registration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

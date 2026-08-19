@@ -1,0 +1,167 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api Institute Fee Type API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Institute Fee Type",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Institute Fee Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/institute_fee_type/",
+            "params": [
+              {
+                "name": "institute_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "branch_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Institute Fee Types"
+        },
+        {
+          "info": {
+            "name": "Create Institute Fee Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/institute_fee_type/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Institute Fee Type"
+        },
+        {
+          "info": {
+            "name": "Bulk Update Institute Fee Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/institute_fee_type/",
+            "params": [
+              {
+                "name": "institute_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "branch_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Bulk Update Institute Fee Types"
+        },
+        {
+          "info": {
+            "name": "Bulk Delete Institute Fee Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v1/institute_fee_type/",
+            "params": [
+              {
+                "name": "institute_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "branch_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Bulk Delete Institute Fee Types"
+        },
+        {
+          "info": {
+            "name": "Bulk Create Institute Fee Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/institute_fee_type/fee_types_bulk_create",
+            "params": [
+              {
+                "name": "institute_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "branch_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Bulk Create Institute Fee Type"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

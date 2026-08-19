@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api SDK API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SDK",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Start Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/sdk/start_transaction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "SDK to Start Transaction"
+        },
+        {
+          "info": {
+            "name": "Generate Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/sdk/generate_access",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "SDK API to Verify Transaction and generate access token"
+        },
+        {
+          "info": {
+            "name": "Link Get Institute Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/sdk/link_get_institute_details",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Institute for static website"
+        },
+        {
+          "info": {
+            "name": "Link Generate Access",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/sdk/link_generate_access",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate Access for static website"
+        },
+        {
+          "info": {
+            "name": "Get Link Student",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/sdk/link_get_student",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Link Student"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

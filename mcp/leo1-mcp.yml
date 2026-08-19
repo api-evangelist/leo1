@@ -49,3 +49,9 @@ tools:
 coverage_note: Only the 5 SDK-tagged integration operations plus the status probe are proposed as candidate
   tools. The remaining 178 operations are institute back-office and NACH administration surfaces that
   carry write/financial consequence and should not be exposed to an agent without an explicit access contract.
+deployment:
+  mode: none
+  verified: derived
+  tools: 6
+  checked: '2026-08-12'
+  source: catalog MCP census

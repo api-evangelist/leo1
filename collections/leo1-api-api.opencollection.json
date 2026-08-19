@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "api",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/status"
+          },
+          "docs": "Get API status."
+        },
+        {
+          "info": {
+            "name": "Send Otp",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/auth/get_otp",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get OTP"
+        },
+        {
+          "info": {
+            "name": "Send Otp Signup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/auth/get_otp_signup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get OTP"
+        },
+        {
+          "info": {
+            "name": "Error Func",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/error"
+          },
+          "docs": "Error Func"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

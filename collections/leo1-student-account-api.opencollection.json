@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api student account API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "student account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Student Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/student_account/",
+            "params": [
+              {
+                "name": "student_ids",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Student Accounts"
+        },
+        {
+          "info": {
+            "name": "Create Bulk Student Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/student_account/bulk_create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Bulk Student Accounts"
+        },
+        {
+          "info": {
+            "name": "Update Bulk Student Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/student_account/bulk_update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Bulk Student Accounts"
+        },
+        {
+          "info": {
+            "name": "Delete Bulk Student Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v1/student_account/bulk_delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Bulk Student Accounts"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

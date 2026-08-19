@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api Enach API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Enach",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Initiate Enach",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/enach/initiate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiate Enach"
+        },
+        {
+          "info": {
+            "name": "Create Enach Schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/enach/create_schedule",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Enach Schedule"
+        },
+        {
+          "info": {
+            "name": "Get Debit Frequencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/enach/debit_frequencies"
+          },
+          "docs": "Get Debit Frequencies"
+        },
+        {
+          "info": {
+            "name": "Preview Debit Schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/enach/preview_debit_schedule",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Preview Debit Schedule"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

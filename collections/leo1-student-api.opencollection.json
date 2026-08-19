@@ -1,0 +1,415 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api student API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "student",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Student",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/student/info/roll-number",
+            "params": [
+              {
+                "name": "student_roll_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "institute_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Student"
+        },
+        {
+          "info": {
+            "name": "Get Student",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/student/info/",
+            "params": [
+              {
+                "name": "phone_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "institute_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "student_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "student_uuid",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Student"
+        },
+        {
+          "info": {
+            "name": "Check Student Exist",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/student/check-student-exist",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Check Student Exist"
+        },
+        {
+          "info": {
+            "name": "Change Student Mobile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/student/change-mobile-number",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Change Student Mobile"
+        },
+        {
+          "info": {
+            "name": "Get Students",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/student/",
+            "params": [
+              {
+                "name": "filter_data",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "institutes",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "branches",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "courses",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "classes",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Students"
+        },
+        {
+          "info": {
+            "name": "Create Student",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/student/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Student"
+        },
+        {
+          "info": {
+            "name": "Update Students",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/student/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Students"
+        },
+        {
+          "info": {
+            "name": "Delete Students",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v1/student/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Students"
+        },
+        {
+          "info": {
+            "name": "Download Filtered Students",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/student/download_filtered_students",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Download Filtered Students"
+        },
+        {
+          "info": {
+            "name": "Download Students",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/student/download_students",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Download Students"
+        },
+        {
+          "info": {
+            "name": "Create Bulk Students",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/student/add_bulk_students",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Bulk Students"
+        },
+        {
+          "info": {
+            "name": "Create Bulk Students Fee Dues",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/student/add_bulk_fee_dues",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Bulk Students Fee Dues"
+        },
+        {
+          "info": {
+            "name": "Data Sync Students Leo1 Fees",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/student/data_sync_students_leo1_fees",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Data Sync Students Leo1 Fees"
+        },
+        {
+          "info": {
+            "name": "Fetch Student Details Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/student/fetch_student_details_for_payment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "secret-key",
+              "value": "{{secret-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch Student Details Payment"
+        },
+        {
+          "info": {
+            "name": "Get Student Bank Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/student/bank-details/",
+            "params": [
+              {
+                "name": "student_uuid",
+                "value": "",
+                "type": "query",
+                "description": "The uuid of the student"
+              }
+            ]
+          },
+          "docs": "Get Student Bank Details"
+        },
+        {
+          "info": {
+            "name": "Create Or Update Bank Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/student/create-or-update-bank-details/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Or Update Bank Details"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

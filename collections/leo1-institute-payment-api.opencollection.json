@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "leofees_backend api Institute Payment API",
+    "version": "version"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Institute Payment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Index",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/institute_payment/v1/"
+          },
+          "docs": "Index"
+        },
+        {
+          "info": {
+            "name": "Get Or Create Temp Student",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/institute_payment/v1/create-temp-student",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Or Create Temp Student"
+        },
+        {
+          "info": {
+            "name": "Get Temp Student Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/institute_payment/v1/get-temp-student-details",
+            "params": [
+              {
+                "name": "mobile_no",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Temp Student Details"
+        },
+        {
+          "info": {
+            "name": "Get Latest Payment Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/institute_payment/v1/get-latest-payment-record",
+            "params": [
+              {
+                "name": "student_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_status",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Latest Payment Record"
+        },
+        {
+          "info": {
+            "name": "Download Institute Payment Receipt",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/institute_payment/v1/download-institute-payment-receipt",
+            "params": [
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "new_student",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "API to download institute payment receipt"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
