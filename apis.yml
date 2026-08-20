@@ -43,6 +43,17 @@ tags:
 - India
 - Campus
 - Prepaid Cards
+- Webhook
+tags_raw:
+- Company
+- Fintech
+- Education
+- Payments
+- Student Loans
+- Fee Collection
+- India
+- Campus
+- Prepaid Cards
 - Webhooks
 maintainers:
 - FN: Kin Lane
@@ -55,7 +66,8 @@ apis:
   description: General system endpoints for the API.
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
-  tags:
+  tags: []
+  tags_raw:
   - api
   properties:
   - type: OpenAPI
@@ -78,6 +90,8 @@ apis:
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
   tags:
+  - Authentication
+  tags_raw:
   - auth
   properties:
   - type: OpenAPI
@@ -122,6 +136,8 @@ apis:
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
   tags:
+  - Communications
+  tags_raw:
   - Communication
   properties:
   - type: OpenAPI
@@ -144,6 +160,8 @@ apis:
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
   tags:
+  - Documents
+  tags_raw:
   - documents
   properties:
   - type: OpenAPI
@@ -166,6 +184,8 @@ apis:
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
   tags:
+  - eNACH
+  tags_raw:
   - Enach
   properties:
   - type: OpenAPI
@@ -187,7 +207,8 @@ apis:
   description: The fee_collections API from Leo1 — 7 operation(s) for fee_collections.
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
-  tags:
+  tags: []
+  tags_raw:
   - fee_collections
   properties:
   - type: OpenAPI
@@ -209,7 +230,8 @@ apis:
   description: The fee_dues API from Leo1 — 2 operation(s) for fee_dues.
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
-  tags:
+  tags: []
+  tags_raw:
   - fee_dues
   properties:
   - type: OpenAPI
@@ -432,7 +454,8 @@ apis:
   description: The Operations API from Leo1 — 2 operation(s) for operations.
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
-  tags:
+  tags: []
+  tags_raw:
   - Operations
   properties:
   - type: OpenAPI
@@ -455,6 +478,8 @@ apis:
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
   tags:
+  - Payment
+  tags_raw:
   - payment
   properties:
   - type: OpenAPI
@@ -499,6 +524,8 @@ apis:
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
   tags:
+  - Refund
+  tags_raw:
   - refund
   properties:
   - type: OpenAPI
@@ -587,6 +614,8 @@ apis:
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
   tags:
+  - Students
+  tags_raw:
   - student
   properties:
   - type: OpenAPI
@@ -697,6 +726,8 @@ apis:
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
   tags:
+  - Transaction
+  tags_raw:
   - transactions
   properties:
   - type: OpenAPI
@@ -719,6 +750,8 @@ apis:
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
   tags:
+  - User
+  tags_raw:
   - user
   properties:
   - type: OpenAPI
