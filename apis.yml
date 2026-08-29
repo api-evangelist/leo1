@@ -11,6 +11,18 @@ description: 'LEO1 is a Mumbai-based education fintech founded in 2017 that oper
   administration operations. Backed by QED Investors, LEO1 reports partnerships with 31+ institution groups
   serving over half a million students across India.'
 url: https://raw.githubusercontent.com/api-evangelist/leo1/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
@@ -791,6 +803,9 @@ apis:
   - type: ErrorCatalog
     url: errors/leo1-problem-types.yml
 common:
+- type: CapabilityMap
+  url: capabilities/leo1-capability-edges.yml
+  name: Leo1 Business Capability Map
 - type: MCPServer
   url: mcp/leo1-mcp.yml
 - type: Website
