@@ -196,7 +196,7 @@ apis:
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
   tags:
-  - eNACH
+  - Enach
   tags_raw:
   - Enach
   properties:
@@ -536,7 +536,7 @@ apis:
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
   tags:
-  - Refund
+  - refund
   tags_raw:
   - refund
   properties:
@@ -626,7 +626,7 @@ apis:
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
   tags:
-  - Students
+  - student
   tags_raw:
   - student
   properties:
