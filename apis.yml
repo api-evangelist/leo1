@@ -1,6 +1,6 @@
 aid: leo1
 name: Leo1
-description: 'LEO1 is a Mumbai-based education fintech founded in 2017 that operates an all-in-one campus
+description: LEO1 is a Mumbai-based education fintech founded in 2017 that operates an all-in-one campus
   and financial platform for Indian educational institutions. The company issues co-branded student and
   alumni prepaid cards, collects and reconciles institutional fees, and originates fee-financing (education
   loan) journeys that convert lump-sum tuition into instalments while giving institutes regularized cash
@@ -9,7 +9,7 @@ description: 'LEO1 is a Mumbai-based education fintech founded in 2017 that oper
   and fee-finance webhook notifications — backed by a public OpenAPI 3.0.2 description covering student,
   fee-due, fee-collection, payment, NACH/eNACH mandate, refund, penalty, waiver, settlement and institute
   administration operations. Backed by QED Investors, LEO1 reports partnerships with 31+ institution groups
-  serving over half a million students across India.'
+  serving over half a million students across India.
 url: https://raw.githubusercontent.com/api-evangelist/leo1/refs/heads/main/apis.yml
 deliveryModel:
   model: saas
@@ -46,7 +46,7 @@ x-tier: profiled
 x-tier-reason: public-openapi-and-sdk-documentation
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-19'
+modified: '2026-09-16'
 tags:
 - Company
 - Fintech
@@ -76,7 +76,7 @@ maintainers:
   email: info@apis.io
 apis:
 - aid: leo1:leo1-api-api
-  name: Leo1 api API
+  name: Leo1 api
   description: General system endpoints for the API.
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
@@ -330,9 +330,8 @@ apis:
     url: errors/leo1-problem-types.yml
 - aid: leo1:leo1-institute-course-class-fee-structure-mapping-api
   name: Leo1 Institute Course Class Fee Structure Mapping API
-  description: >-
-    The Institute Course Class Fee Structure Mapping API from Leo1 — 7 operation(s) for institute course
-    class fee structure mapping.
+  description: The Institute Course Class Fee Structure Mapping API from Leo1 — 7 operation(s) for institute
+    course class fee structure mapping.
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
   tags:
@@ -354,8 +353,8 @@ apis:
     url: errors/leo1-problem-types.yml
 - aid: leo1:leo1-institute-course-fee-structure-api
   name: Leo1 Institute Course Fee Structure API
-  description: >-
-    The Institute Course Fee Structure API from Leo1 — 4 operation(s) for institute course fee structure.
+  description: The Institute Course Fee Structure API from Leo1 — 4 operation(s) for institute course
+    fee structure.
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
   tags:
@@ -810,7 +809,10 @@ common:
   name: Leo1 Business Capability Map
 - type: X-MCPServerCandidate
   url: mcp/leo1-mcp.yml
-  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate
+    — a tool list derived from the published API contracts, not an existing server. The scorer already
+    read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type
+    surfaces with a server that does not exist.'
 - type: Website
   url: https://www.leo1.in/
 - type: DeveloperPortal
