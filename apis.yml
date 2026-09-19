@@ -491,7 +491,7 @@ apis:
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
   tags:
-  - Payment
+  - Payments
   tags_raw:
   - payment
   properties:
