@@ -1,0 +1,56 @@
+slug: leo1
+provider: Leo1
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Education
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: fee_collections
+  spec_file: leo1-fee-collections-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.8
+  evidence: GET /api/v1/fee_collections/  Get Student Collections; GET /api/v1/fee_collections/download/  Download
+    Online Fee Receipt; PaymentDistribution
+  reason: Recording and reconciling student fee collections, receipts and payment distribution against
+    institutional fees — customer invoicing/collections and cash application, i.e. accounts receivable.
+- tag: fee_dues
+  spec_file: leo1-fee-dues-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.75
+  evidence: GET /api/v1/fee_dues/  Get Student Dues; CreateStudentFeeDuesRequest
+  reason: Maintenance of amounts owed by students (dues) per institute — receivable balances, i.e. accounts
+    receivable management.
+- tag: Nach Feature
+  spec_file: leo1-nach-feature-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.7
+  evidence: POST /api/v1/nach/registration/initiate/  Initiate Nach Registration; POST /api/v1/nach/presentation/  ;
+    EnachFeeSubscriptionRegistrationBody
+  reason: Large surface for NACH mandate registration and debit presentation used to collect recurring
+    student fee instalments — direct-debit collection against receivables. Webhook/redirect endpoints
+    are plumbing supporting the same flow.
+- tag: payment
+  spec_file: leo1-payment-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.7
+  evidence: POST /api/v1/payment/initiate_payment  Initiate Payment; POST /api/v1/payment/fetch_payment_status_easebuzz  Fetch
+    Payment Status; FeePaymentRequest
+  reason: Initiation of fee payments through a payment gateway plus status/webhook reconciliation — collection
+    of receivables and cash application. Gateway webhook handling is partly technical, so not maximal
+    confidence.
