@@ -1,8 +1,7 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: leofees_backend api student coin request API
+  title: leofees_backend student coin request API
   version: version
-  description: General system endpoints for the API.
 tags:
 - name: student coin request
 paths:
@@ -184,15 +183,6 @@ components:
         comment:
           title: Comment
           type: string
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
     ValidationError:
       title: ValidationError
       required:
@@ -238,6 +228,15 @@ components:
           title: Comment
           type: string
           description: Comment is optional
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
   securitySchemes:
     APIKeyHeader:
       type: apiKey

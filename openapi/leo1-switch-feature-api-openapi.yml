@@ -1,8 +1,7 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: leofees_backend api Switch Feature API
+  title: leofees_backend Switch Feature API
   version: version
-  description: General system endpoints for the API.
 tags:
 - name: Switch Feature
 paths:
@@ -115,6 +114,41 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
+    CreateSwitchFeatureRequest:
+      title: CreateSwitchFeatureRequest
+      required:
+      - feature_name
+      type: object
+      properties:
+        feature_name:
+          title: Feature Name
+          type: string
+          description: Feature name is required
+        enabled:
+          title: Enabled
+          type: boolean
+          description: enabled is optional
+    DeleteSwitchFeatureRequest:
+      title: DeleteSwitchFeatureRequest
+      required:
+      - switch_feature_ids
+      type: object
+      properties:
+        switch_feature_ids:
+          title: Switch Feature Ids
+          type: array
+          items:
+            type: integer
+          description: switch_feature_ids are required
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     ValidationError:
       title: ValidationError
       required:
@@ -136,27 +170,6 @@ components:
         type:
           title: Error Type
           type: string
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    DeleteSwitchFeatureRequest:
-      title: DeleteSwitchFeatureRequest
-      required:
-      - switch_feature_ids
-      type: object
-      properties:
-        switch_feature_ids:
-          title: Switch Feature Ids
-          type: array
-          items:
-            type: integer
-          description: switch_feature_ids are required
     UpdateSwitchFeatureRequest:
       title: UpdateSwitchFeatureRequest
       required:
@@ -171,20 +184,6 @@ components:
           title: Feature Name
           type: string
           description: feature_name is optional
-        enabled:
-          title: Enabled
-          type: boolean
-          description: enabled is optional
-    CreateSwitchFeatureRequest:
-      title: CreateSwitchFeatureRequest
-      required:
-      - feature_name
-      type: object
-      properties:
-        feature_name:
-          title: Feature Name
-          type: string
-          description: Feature name is required
         enabled:
           title: Enabled
           type: boolean

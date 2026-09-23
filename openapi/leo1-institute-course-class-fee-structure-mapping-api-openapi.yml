@@ -1,8 +1,7 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: leofees_backend api Institute Course Class Fee Structure Mapping API
+  title: leofees_backend Institute Course Class Fee Structure…
   version: version
-  description: General system endpoints for the API.
 tags:
 - name: Institute Course Class Fee Structure Mapping
 paths:
@@ -189,26 +188,65 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
+    Body_download_sample_template_api_v1_institute_mapping_sample_template_download_post:
+      title: Body_download_sample_template_api_v1_institute_mapping_sample_template_download_post
       type: object
       properties:
-        loc:
-          title: Location
+        branch_id:
+          title: Branch Id
+          type: integer
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
           type: array
           items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
+            $ref: '#/components/schemas/ValidationError'
+    Body_update_bulk_students_api_v1_institute_mapping_update_bulk_students_post:
+      title: Body_update_bulk_students_api_v1_institute_mapping_update_bulk_students_post
+      required:
+      - file
+      type: object
+      properties:
+        file:
+          title: File
           type: string
-        type:
-          title: Error Type
+          format: binary
+        institute_id:
+          title: Institute Id
+          type: integer
+        branch_id:
+          title: Branch Id
+          type: integer
+        institute_name:
+          title: Institute Name
+          type: string
+        branch_name:
+          title: Branch Name
+          type: string
+    Body_create_bulk_students_api_v1_institute_mapping_add_bulk_students_post:
+      title: Body_create_bulk_students_api_v1_institute_mapping_add_bulk_students_post
+      required:
+      - file
+      type: object
+      properties:
+        file:
+          title: File
+          type: string
+          format: binary
+        institute_id:
+          title: Institute Id
+          type: integer
+        branch_id:
+          title: Branch Id
+          type: integer
+        institute_name:
+          title: Institute Name
+          type: string
+        branch_name:
+          title: Branch Name
           type: string
     CreateStudentInstituteCourseMappingRequest:
       title: CreateStudentInstituteCourseMappingRequest
@@ -260,6 +298,27 @@ components:
           title: Branch Name
           type: string
           description: Branch name is required
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
     DownloadCourseMapping:
       title: DownloadCourseMapping
       required:
@@ -279,68 +338,8 @@ components:
           items:
             type: integer
           description: Branch IDs are required
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    Body_create_bulk_students_api_v1_institute_mapping_add_bulk_students_post:
-      title: Body_create_bulk_students_api_v1_institute_mapping_add_bulk_students_post
-      required:
-      - file
-      type: object
-      properties:
-        file:
-          title: File
-          type: string
-          format: binary
-        institute_id:
-          title: Institute Id
-          type: integer
-        branch_id:
-          title: Branch Id
-          type: integer
-        institute_name:
-          title: Institute Name
-          type: string
-        branch_name:
-          title: Branch Name
-          type: string
     Body_collection_download_sample_template_api_v1_institute_mapping_collection_sample_template_download_post:
       title: Body_collection_download_sample_template_api_v1_institute_mapping_collection_sample_template_download_post
-      type: object
-      properties:
-        branch_id:
-          title: Branch Id
-          type: integer
-    Body_update_bulk_students_api_v1_institute_mapping_update_bulk_students_post:
-      title: Body_update_bulk_students_api_v1_institute_mapping_update_bulk_students_post
-      required:
-      - file
-      type: object
-      properties:
-        file:
-          title: File
-          type: string
-          format: binary
-        institute_id:
-          title: Institute Id
-          type: integer
-        branch_id:
-          title: Branch Id
-          type: integer
-        institute_name:
-          title: Institute Name
-          type: string
-        branch_name:
-          title: Branch Name
-          type: string
-    Body_download_sample_template_api_v1_institute_mapping_sample_template_download_post:
-      title: Body_download_sample_template_api_v1_institute_mapping_sample_template_download_post
       type: object
       properties:
         branch_id:

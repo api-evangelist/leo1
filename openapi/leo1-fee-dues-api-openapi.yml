@@ -1,8 +1,7 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: leofees_backend api fee_dues API
+  title: leofees_backend Fee Dues API
   version: version
-  description: General system endpoints for the API.
 tags:
 - name: fee_dues
 paths:
@@ -162,27 +161,6 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
     CreateStudentFeeDuesRequest:
       title: CreateStudentFeeDuesRequest
       required:
@@ -221,6 +199,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
     UpdateStudentFeeDuesRequest:
       title: UpdateStudentFeeDuesRequest
       required:

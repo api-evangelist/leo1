@@ -1,8 +1,7 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: leofees_backend api Nach Feature API
+  title: leofees_backend Nach Feature API
   version: version
-  description: General system endpoints for the API.
 tags:
 - name: Nach Feature
 paths:
@@ -839,6 +838,81 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
+    EnachPresentationBody:
+      title: EnachPresentationBody
+      required:
+      - registration_id
+      - debit_date
+      - amount
+      - created_by
+      type: object
+      properties:
+        registration_id:
+          title: Registration Id
+          type: integer
+        debit_date:
+          title: Debit Date
+          type: string
+        amount:
+          title: Amount
+          type: integer
+        created_by:
+          title: Created By
+          type: string
+    GenerateReport:
+      title: GenerateReport
+      required:
+      - report_name
+      - institute_ids
+      type: object
+      properties:
+        report_name:
+          title: Report Name
+          type: string
+          description: Report name is required
+        institute_ids:
+          title: Institute Ids
+          type: array
+          items:
+            type: integer
+          description: Institute IDs are required
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    EnachFeeSubscriptionRegistrationBody:
+      title: EnachFeeSubscriptionRegistrationBody
+      required:
+      - student_id
+      - created_by
+      type: object
+      properties:
+        student_id:
+          title: Student Id
+          type: integer
+        created_by:
+          title: Created By
+          type: string
+        account_number:
+          title: Account Number
+          type: string
+        ifsc_code:
+          title: Ifsc Code
+          type: string
+        bank_code:
+          title: Bank Code
+          type: string
+        account_type:
+          title: Account Type
+          type: string
+        name_on_bank_account:
+          title: Name On Bank Account
+          type: string
     UpdateNachConfigurationApplicable:
       title: UpdateNachConfigurationApplicable
       required:
@@ -878,23 +952,28 @@ components:
           items:
             type: integer
           default: []
-    GenerateReport:
-      title: GenerateReport
+    B2CConsentData:
+      title: B2CConsentData
       required:
-      - report_name
-      - institute_ids
+      - student_uuid
       type: object
       properties:
-        report_name:
-          title: Report Name
+        student_uuid:
+          title: Student Uuid
           type: string
-          description: Report name is required
-        institute_ids:
-          title: Institute Ids
-          type: array
-          items:
-            type: integer
-          description: Institute IDs are required
+    EnachBody:
+      title: EnachBody
+      required:
+      - student_uuid
+      - authentication_mode
+      type: object
+      properties:
+        student_uuid:
+          title: Student Uuid
+          type: string
+        authentication_mode:
+          title: Authentication Mode
+          type: string
     ValidationError:
       title: ValidationError
       required:
@@ -915,47 +994,6 @@ components:
           type: string
         type:
           title: Error Type
-          type: string
-    EnachBody:
-      title: EnachBody
-      required:
-      - student_uuid
-      - authentication_mode
-      type: object
-      properties:
-        student_uuid:
-          title: Student Uuid
-          type: string
-        authentication_mode:
-          title: Authentication Mode
-          type: string
-    EnachFeeSubscriptionRegistrationBody:
-      title: EnachFeeSubscriptionRegistrationBody
-      required:
-      - student_id
-      - created_by
-      type: object
-      properties:
-        student_id:
-          title: Student Id
-          type: integer
-        created_by:
-          title: Created By
-          type: string
-        account_number:
-          title: Account Number
-          type: string
-        ifsc_code:
-          title: Ifsc Code
-          type: string
-        bank_code:
-          title: Bank Code
-          type: string
-        account_type:
-          title: Account Type
-          type: string
-        name_on_bank_account:
-          title: Name On Bank Account
           type: string
     EnachRegistrationBody:
       title: EnachRegistrationBody
@@ -988,45 +1026,6 @@ components:
           type: string
         name_on_bank_account:
           title: Name On Bank Account
-          type: string
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    EnachPresentationBody:
-      title: EnachPresentationBody
-      required:
-      - registration_id
-      - debit_date
-      - amount
-      - created_by
-      type: object
-      properties:
-        registration_id:
-          title: Registration Id
-          type: integer
-        debit_date:
-          title: Debit Date
-          type: string
-        amount:
-          title: Amount
-          type: integer
-        created_by:
-          title: Created By
-          type: string
-    B2CConsentData:
-      title: B2CConsentData
-      required:
-      - student_uuid
-      type: object
-      properties:
-        student_uuid:
-          title: Student Uuid
           type: string
   securitySchemes:
     APIKeyHeader:

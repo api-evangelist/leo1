@@ -1,8 +1,7 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: leofees_backend api Institute Fee Type API
+  title: leofees_backend Institute Fee Type API
   version: version
-  description: General system endpoints for the API.
 tags:
 - name: Institute Fee Type
 paths:
@@ -187,6 +186,41 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
+    BulkCreateInstituteFeeTypeRequest:
+      title: BulkCreateInstituteFeeTypeRequest
+      required:
+      - fee_type_name
+      type: object
+      properties:
+        fee_type_name:
+          title: Fee Type Name
+          type: string
+          description: Fee type name is required
+        common_fee_type_id:
+          title: Common Fee Type Id
+          type: integer
+          description: Common fee type is optional
+    DeleteInstituteFeeTypeRequest:
+      title: DeleteInstituteFeeTypeRequest
+      required:
+      - fee_type_ids
+      type: object
+      properties:
+        fee_type_ids:
+          title: Fee Type Ids
+          type: array
+          items:
+            type: integer
+          description: fee_type_ids is required
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     ValidationError:
       title: ValidationError
       required:
@@ -208,41 +242,6 @@ components:
         type:
           title: Error Type
           type: string
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    DeleteInstituteFeeTypeRequest:
-      title: DeleteInstituteFeeTypeRequest
-      required:
-      - fee_type_ids
-      type: object
-      properties:
-        fee_type_ids:
-          title: Fee Type Ids
-          type: array
-          items:
-            type: integer
-          description: fee_type_ids is required
-    BulkCreateInstituteFeeTypeRequest:
-      title: BulkCreateInstituteFeeTypeRequest
-      required:
-      - fee_type_name
-      type: object
-      properties:
-        fee_type_name:
-          title: Fee Type Name
-          type: string
-          description: Fee type name is required
-        common_fee_type_id:
-          title: Common Fee Type Id
-          type: integer
-          description: Common fee type is optional
     CreateInstituteFeeTypeRequest:
       title: CreateInstituteFeeTypeRequest
       required:

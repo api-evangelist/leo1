@@ -1,8 +1,7 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: leofees_backend api student otp API
+  title: leofees_backend student otp API
   version: version
-  description: General system endpoints for the API.
 tags:
 - name: student otp
 paths:
@@ -86,6 +85,60 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
+    SendStudentOTPRequest:
+      title: SendStudentOTPRequest
+      required:
+      - mobile_number
+      - amount
+      type: object
+      properties:
+        mobile_number:
+          title: Mobile Number
+          type: string
+          description: Mobile number is required
+        amount:
+          title: Amount
+          type: integer
+          description: Transaction amount is required
+    VerifyStudentOTPRequest:
+      title: VerifyStudentOTPRequest
+      required:
+      - mobile_number
+      - otp
+      type: object
+      properties:
+        mobile_number:
+          title: Mobile Number
+          type: string
+          description: Mobile number is required
+        otp:
+          title: Otp
+          type: integer
+          description: OTP is required
+    PaymentOTPVerificationRequest:
+      title: PaymentOTPVerificationRequest
+      required:
+      - institute_id
+      - payment_type
+      type: object
+      properties:
+        institute_id:
+          title: Institute Id
+          type: integer
+          description: Institute Id is required
+        payment_type:
+          title: Payment Type
+          type: string
+          description: Payment type is required
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     ValidationError:
       title: ValidationError
       required:
@@ -107,60 +160,6 @@ components:
         type:
           title: Error Type
           type: string
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    VerifyStudentOTPRequest:
-      title: VerifyStudentOTPRequest
-      required:
-      - mobile_number
-      - otp
-      type: object
-      properties:
-        mobile_number:
-          title: Mobile Number
-          type: string
-          description: Mobile number is required
-        otp:
-          title: Otp
-          type: integer
-          description: OTP is required
-    SendStudentOTPRequest:
-      title: SendStudentOTPRequest
-      required:
-      - mobile_number
-      - amount
-      type: object
-      properties:
-        mobile_number:
-          title: Mobile Number
-          type: string
-          description: Mobile number is required
-        amount:
-          title: Amount
-          type: integer
-          description: Transaction amount is required
-    PaymentOTPVerificationRequest:
-      title: PaymentOTPVerificationRequest
-      required:
-      - institute_id
-      - payment_type
-      type: object
-      properties:
-        institute_id:
-          title: Institute Id
-          type: integer
-          description: Institute Id is required
-        payment_type:
-          title: Payment Type
-          type: string
-          description: Payment type is required
   securitySchemes:
     APIKeyHeader:
       type: apiKey

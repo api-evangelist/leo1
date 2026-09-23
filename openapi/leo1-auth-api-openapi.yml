@@ -1,15 +1,14 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: leofees_backend api auth API
+  title: leofees_backend Auth API
   version: version
-  description: General system endpoints for the API.
 tags:
-- name: auth
+- name: Auth
 paths:
   /api/v1/auth/login:
     post:
       tags:
-      - auth
+      - Auth
       summary: Get Status
       operationId: get_status_api_v1_auth_login_post
       requestBody:
@@ -34,7 +33,7 @@ paths:
   /api/v1/auth/signup:
     post:
       tags:
-      - auth
+      - Auth
       summary: Signup
       operationId: signup_api_v1_auth_signup_post
       requestBody:
@@ -59,7 +58,7 @@ paths:
   /api/v1/user_journey/save:
     post:
       tags:
-      - auth
+      - Auth
       summary: Save User Journey Erp
       description: Save User journey from ERP
       operationId: save_user_journey_erp_api_v1_user_journey_save_post
@@ -84,7 +83,7 @@ paths:
   /api/v1/institute:
     get:
       tags:
-      - auth
+      - Auth
       summary: Get Institute
       operationId: get_institute_api_v1_institute_get
       responses:
@@ -95,6 +94,54 @@ paths:
               schema: {}
 components:
   schemas:
+    SignUp:
+      title: SignUp
+      required:
+      - phone_number
+      - otp
+      type: object
+      properties:
+        phone_number:
+          title: Phone Number
+          type: string
+        otp:
+          title: Otp
+          type: string
+    PaymentType:
+      title: PaymentType
+      enum:
+      - 1
+      - 2
+      description: An enumeration.
+    LoginResponse:
+      title: LoginResponse
+      required:
+      - status
+      - message
+      - access_token
+      type: object
+      properties:
+        status:
+          title: Status
+          type: string
+        message:
+          title: Message
+          type: string
+        access_token:
+          title: Access Token
+          type: string
+        user_id:
+          title: User Id
+          type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     SignUpResponse:
       title: SignUpResponse
       required:
@@ -110,46 +157,6 @@ components:
           type: string
         access_token:
           title: Access Token
-          type: string
-    PaymentType:
-      title: PaymentType
-      enum:
-      - 1
-      - 2
-      description: An enumeration.
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-    SignUp:
-      title: SignUp
-      required:
-      - phone_number
-      - otp
-      type: object
-      properties:
-        phone_number:
-          title: Phone Number
-          type: string
-        otp:
-          title: Otp
           type: string
     StudentERPRequest:
       title: StudentERPRequest
@@ -209,15 +216,27 @@ components:
         email:
           title: Email
           type: string
-    HTTPValidationError:
-      title: HTTPValidationError
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
       type: object
       properties:
-        detail:
-          title: Detail
+        loc:
+          title: Location
           type: array
           items:
-            $ref: '#/components/schemas/ValidationError'
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
     Login:
       title: Login
       required:
@@ -229,26 +248,6 @@ components:
           type: string
         otp:
           title: Otp
-          type: string
-    LoginResponse:
-      title: LoginResponse
-      required:
-      - status
-      - message
-      - access_token
-      type: object
-      properties:
-        status:
-          title: Status
-          type: string
-        message:
-          title: Message
-          type: string
-        access_token:
-          title: Access Token
-          type: string
-        user_id:
-          title: User Id
           type: string
   securitySchemes:
     APIKeyHeader:

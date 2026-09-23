@@ -1,8 +1,7 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: leofees_backend api Common Fee Type API
+  title: leofees_backend Common Fee Type API
   version: version
-  description: General system endpoints for the API.
 tags:
 - name: Common Fee Type
 paths:
@@ -110,6 +109,47 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
+    DeleteCommonFeeTypeRequest:
+      title: DeleteCommonFeeTypeRequest
+      required:
+      - common_fee_type_ids
+      type: object
+      properties:
+        common_fee_type_ids:
+          title: Common Fee Type Ids
+          type: array
+          items:
+            type: integer
+          description: common_fee_type_ids is required
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    UpdateCommonFeeTypeRequest:
+      title: UpdateCommonFeeTypeRequest
+      required:
+      - common_fee_type_id
+      - category
+      - common_fee_type_name
+      type: object
+      properties:
+        common_fee_type_id:
+          title: Common Fee Type Id
+          type: integer
+          description: common_fee_type_id is required
+        category:
+          title: Category
+          type: string
+          description: category is required
+        common_fee_type_name:
+          title: Common Fee Type Name
+          type: string
+          description: common_fee_type_name is required
     ValidationError:
       title: ValidationError
       required:
@@ -138,47 +178,6 @@ components:
       - common_fee_type_name
       type: object
       properties:
-        category:
-          title: Category
-          type: string
-          description: category is required
-        common_fee_type_name:
-          title: Common Fee Type Name
-          type: string
-          description: common_fee_type_name is required
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    DeleteCommonFeeTypeRequest:
-      title: DeleteCommonFeeTypeRequest
-      required:
-      - common_fee_type_ids
-      type: object
-      properties:
-        common_fee_type_ids:
-          title: Common Fee Type Ids
-          type: array
-          items:
-            type: integer
-          description: common_fee_type_ids is required
-    UpdateCommonFeeTypeRequest:
-      title: UpdateCommonFeeTypeRequest
-      required:
-      - common_fee_type_id
-      - category
-      - common_fee_type_name
-      type: object
-      properties:
-        common_fee_type_id:
-          title: Common Fee Type Id
-          type: integer
-          description: common_fee_type_id is required
         category:
           title: Category
           type: string

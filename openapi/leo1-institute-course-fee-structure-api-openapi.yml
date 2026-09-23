@@ -1,8 +1,7 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: leofees_backend api Institute Course Fee Structure API
+  title: leofees_backend Institute Course Fee Structure API
   version: version
-  description: General system endpoints for the API.
 tags:
 - name: Institute Course Fee Structure
 paths:
@@ -169,27 +168,52 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
-    ValidationError:
-      title: ValidationError
+    ? Body_create_bulk_institute_course_fee_structure_excel_api_v1_institute_fee_structure_create_bulk_course_fee_structure_excel_post
+    : title: Body_create_bulk_institute_course_fee_structure_excel_api_v1_institute_fee_structure_create_bulk_course_fee_structure_excel_post
       required:
-      - loc
-      - msg
-      - type
+      - file
+      - course_id
+      - institute_id
+      - branch_id
+      - course_name
+      - institute_name
+      - branch_name
       type: object
       properties:
-        loc:
-          title: Location
+        file:
+          title: File
+          type: string
+          format: binary
+        course_id:
+          title: Course Id
+          type: integer
+        institute_id:
+          title: Institute Id
+          type: integer
+        branch_id:
+          title: Branch Id
+          type: integer
+        course_name:
+          title: Course Name
+          type: string
+        institute_name:
+          title: Institute Name
+          type: string
+        branch_name:
+          title: Branch Name
+          type: string
+    DeleteInstituteCourseFeeStructureRequest:
+      title: DeleteInstituteCourseFeeStructureRequest
+      required:
+      - fee_structure_ids
+      type: object
+      properties:
+        fee_structure_ids:
+          title: Fee Structure Ids
           type: array
           items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
+            type: integer
+          description: Fee structure IDs is required
     UpdateInstituteCourseFeeStructureRequest:
       title: UpdateInstituteCourseFeeStructureRequest
       required:
@@ -226,27 +250,6 @@ components:
           title: Description
           type: string
           description: Description is optional
-    DeleteInstituteCourseFeeStructureRequest:
-      title: DeleteInstituteCourseFeeStructureRequest
-      required:
-      - fee_structure_ids
-      type: object
-      properties:
-        fee_structure_ids:
-          title: Fee Structure Ids
-          type: array
-          items:
-            type: integer
-          description: Fee structure IDs is required
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
     CreateInstituteCourseFeeStructureRequest:
       title: CreateInstituteCourseFeeStructureRequest
       required:
@@ -276,39 +279,35 @@ components:
           title: Description
           type: string
           description: Description is required
-    ? Body_create_bulk_institute_course_fee_structure_excel_api_v1_institute_fee_structure_create_bulk_course_fee_structure_excel_post
-    : title: Body_create_bulk_institute_course_fee_structure_excel_api_v1_institute_fee_structure_create_bulk_course_fee_structure_excel_post
-      required:
-      - file
-      - course_id
-      - institute_id
-      - branch_id
-      - course_name
-      - institute_name
-      - branch_name
+    HTTPValidationError:
+      title: HTTPValidationError
       type: object
       properties:
-        file:
-          title: File
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
           type: string
-          format: binary
-        course_id:
-          title: Course Id
-          type: integer
-        institute_id:
-          title: Institute Id
-          type: integer
-        branch_id:
-          title: Branch Id
-          type: integer
-        course_name:
-          title: Course Name
-          type: string
-        institute_name:
-          title: Institute Name
-          type: string
-        branch_name:
-          title: Branch Name
+        type:
+          title: Error Type
           type: string
   securitySchemes:
     APIKeyHeader:

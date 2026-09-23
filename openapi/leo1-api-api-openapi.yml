@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: leofees_backend api API
+  title: leofees_backend API
   version: version
   description: General system endpoints for the API.
 tags:
@@ -84,15 +84,6 @@ paths:
               schema: {}
 components:
   schemas:
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
     triggerSMSBody:
       title: triggerSMSBody
       required:
@@ -123,6 +114,15 @@ components:
         type:
           title: Error Type
           type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
   securitySchemes:
     APIKeyHeader:
       type: apiKey

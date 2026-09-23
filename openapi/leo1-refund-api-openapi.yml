@@ -1,15 +1,14 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: leofees_backend api refund API
+  title: leofees_backend Refund API
   version: version
-  description: General system endpoints for the API.
 tags:
-- name: refund
+- name: Refund
 paths:
   /api/v1/refund/:
     get:
       tags:
-      - refund
+      - Refund
       summary: Get Student Refunds
       operationId: get_student_refunds_api_v1_refund__get
       parameters:
@@ -35,7 +34,7 @@ paths:
       - APIKeyHeader: []
     put:
       tags:
-      - refund
+      - Refund
       summary: Update Student Refund
       operationId: update_student_refund_api_v1_refund__put
       requestBody:
@@ -60,7 +59,7 @@ paths:
       - APIKeyHeader: []
     post:
       tags:
-      - refund
+      - Refund
       summary: Create Student Refund
       operationId: create_student_refund_api_v1_refund__post
       requestBody:
@@ -85,7 +84,7 @@ paths:
       - APIKeyHeader: []
     delete:
       tags:
-      - refund
+      - Refund
       summary: Delete Student Refund
       operationId: delete_student_refund_api_v1_refund__delete
       requestBody:
@@ -110,6 +109,62 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
+    Body_create_student_refund_api_v1_refund__post:
+      title: Body_create_student_refund_api_v1_refund__post
+      required:
+      - student_id
+      - amount
+      - payment_mode
+      - payment_date
+      - status
+      type: object
+      properties:
+        student_id:
+          title: Student Id
+          type: integer
+        amount:
+          title: Amount
+          type: number
+        utrn:
+          title: Utrn
+          type: string
+        payment_mode:
+          title: Payment Mode
+          type: string
+        payment_date:
+          title: Payment Date
+          type: string
+        status:
+          title: Status
+          type: string
+        reciept:
+          title: Reciept
+          type: string
+          format: binary
+        remarks:
+          title: Remarks
+          type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    DeleteStudentRefundRequest:
+      title: DeleteStudentRefundRequest
+      required:
+      - student_refund_ids
+      type: object
+      properties:
+        student_refund_ids:
+          title: Student Refund Ids
+          type: array
+          items:
+            type: integer
+          description: Student Refund IDs are required
     UpdateStudentRefundRequest:
       title: UpdateStudentRefundRequest
       required:
@@ -169,62 +224,6 @@ components:
         type:
           title: Error Type
           type: string
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    Body_create_student_refund_api_v1_refund__post:
-      title: Body_create_student_refund_api_v1_refund__post
-      required:
-      - student_id
-      - amount
-      - payment_mode
-      - payment_date
-      - status
-      type: object
-      properties:
-        student_id:
-          title: Student Id
-          type: integer
-        amount:
-          title: Amount
-          type: number
-        utrn:
-          title: Utrn
-          type: string
-        payment_mode:
-          title: Payment Mode
-          type: string
-        payment_date:
-          title: Payment Date
-          type: string
-        status:
-          title: Status
-          type: string
-        reciept:
-          title: Reciept
-          type: string
-          format: binary
-        remarks:
-          title: Remarks
-          type: string
-    DeleteStudentRefundRequest:
-      title: DeleteStudentRefundRequest
-      required:
-      - student_refund_ids
-      type: object
-      properties:
-        student_refund_ids:
-          title: Student Refund Ids
-          type: array
-          items:
-            type: integer
-          description: Student Refund IDs are required
   securitySchemes:
     APIKeyHeader:
       type: apiKey

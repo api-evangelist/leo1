@@ -1,8 +1,7 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: leofees_backend api institute API
+  title: leofees_backend Institute API
   version: version
-  description: General system endpoints for the API.
 tags:
 - name: institute
 paths:
@@ -80,36 +79,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
     GetInstituteTransactionRequest:
       title: GetInstituteTransactionRequest
       required:
@@ -135,6 +104,15 @@ components:
         hash:
           title: Hash
           type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     RetrieveInstituteTransactionsByDateRequest:
       title: RetrieveInstituteTransactionsByDateRequest
       required:
@@ -155,6 +133,27 @@ components:
           type: string
         email:
           title: Email
+          type: string
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
           type: string
     RetrieveSettlementsRequest:
       title: RetrieveSettlementsRequest

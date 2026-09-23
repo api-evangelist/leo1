@@ -1,8 +1,7 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: leofees_backend api Institute Course API
+  title: leofees_backend Institute Course API
   version: version
-  description: General system endpoints for the API.
 tags:
 - name: Institute Course
 paths:
@@ -131,15 +130,6 @@ components:
           title: No Of Years
           type: integer
           description: Number of years is optional
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
     ValidationError:
       title: ValidationError
       required:
@@ -194,6 +184,15 @@ components:
         no_of_years:
           title: No Of Years
           type: integer
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
   securitySchemes:
     APIKeyHeader:
       type: apiKey
