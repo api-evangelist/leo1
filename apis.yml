@@ -75,31 +75,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 apis:
-- aid: leo1:leo1-api-api
-  name: Leo1 api
-  description: General system endpoints for the API.
-  humanURL: https://docs.leo1.in/
-  baseURL: https://api.leo1.in
-  tags: []
-  tags_raw:
-  - api
-  properties:
-  - type: OpenAPI
-    url: openapi/leo1-api-api-openapi.yml
-  - type: Documentation
-    url: https://docs.leo1.in/
-  - type: APIReference
-    url: https://docs.leo1.in/api/start-transaction
-  - type: GettingStarted
-    url: https://docs.leo1.in/intro
-  - type: Webhooks
-    url: asyncapi/leo1-fees-webhooks.yml
-  - type: Authentication
-    url: authentication/leo1-authentication.yml
-  - type: ErrorCatalog
-    url: errors/leo1-problem-types.yml
 - aid: leo1:leo1-auth-api
-  name: Leo1 auth API
+  name: Leo1 Auth API
   description: The auth API from Leo1 — 4 operation(s) for auth.
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
@@ -169,7 +146,7 @@ apis:
   - type: ErrorCatalog
     url: errors/leo1-problem-types.yml
 - aid: leo1:leo1-documents-api
-  name: Leo1 documents API
+  name: Leo1 Documents API
   description: The documents API from Leo1 — 4 operation(s) for documents.
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
@@ -217,7 +194,7 @@ apis:
   - type: ErrorCatalog
     url: errors/leo1-problem-types.yml
 - aid: leo1:leo1-fee-collections-api
-  name: Leo1 fee_collections API
+  name: Leo1 Fee Collections API
   description: The fee_collections API from Leo1 — 7 operation(s) for fee_collections.
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
@@ -240,7 +217,7 @@ apis:
   - type: ErrorCatalog
     url: errors/leo1-problem-types.yml
 - aid: leo1:leo1-fee-dues-api
-  name: Leo1 fee_dues API
+  name: Leo1 Fee Dues API
   description: The fee_dues API from Leo1 — 2 operation(s) for fee_dues.
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
@@ -263,7 +240,7 @@ apis:
   - type: ErrorCatalog
     url: errors/leo1-problem-types.yml
 - aid: leo1:leo1-institute-api
-  name: Leo1 institute API
+  name: Leo1 Institute API
   description: The institute API from Leo1 — 3 operation(s) for institute.
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
@@ -330,8 +307,9 @@ apis:
     url: errors/leo1-problem-types.yml
 - aid: leo1:leo1-institute-course-class-fee-structure-mapping-api
   name: Leo1 Institute Course Class Fee Structure Mapping API
-  description: The Institute Course Class Fee Structure Mapping API from Leo1 — 7 operation(s) for institute
-    course class fee structure mapping.
+  description: >-
+    The Institute Course Class Fee Structure Mapping API from Leo1 — 7 operation(s) for institute course
+    class fee structure mapping.
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
   tags:
@@ -353,8 +331,8 @@ apis:
     url: errors/leo1-problem-types.yml
 - aid: leo1:leo1-institute-course-fee-structure-api
   name: Leo1 Institute Course Fee Structure API
-  description: The Institute Course Fee Structure API from Leo1 — 4 operation(s) for institute course
-    fee structure.
+  description: >-
+    The Institute Course Fee Structure API from Leo1 — 4 operation(s) for institute course fee structure.
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
   tags:
@@ -486,7 +464,7 @@ apis:
   - type: ErrorCatalog
     url: errors/leo1-problem-types.yml
 - aid: leo1:leo1-payment-api
-  name: Leo1 payment API
+  name: Leo1 Payment API
   description: The payment API from Leo1 — 12 operation(s) for payment.
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
@@ -510,7 +488,7 @@ apis:
   - type: ErrorCatalog
     url: errors/leo1-problem-types.yml
 - aid: leo1:leo1-penalty-api
-  name: Leo1 penalty API
+  name: Leo1 Penalty API
   description: The penalty API from Leo1 — 1 operation(s) for penalty.
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
@@ -532,7 +510,7 @@ apis:
   - type: ErrorCatalog
     url: errors/leo1-problem-types.yml
 - aid: leo1:leo1-refund-api
-  name: Leo1 refund API
+  name: Leo1 Refund API
   description: The refund API from Leo1 — 1 operation(s) for refund.
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
@@ -622,7 +600,7 @@ apis:
   - type: ErrorCatalog
     url: errors/leo1-problem-types.yml
 - aid: leo1:leo1-student-api
-  name: Leo1 student API
+  name: Leo1 Student API
   description: The student API from Leo1 — 13 operation(s) for student.
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
@@ -734,7 +712,7 @@ apis:
   - type: ErrorCatalog
     url: errors/leo1-problem-types.yml
 - aid: leo1:leo1-transactions-api
-  name: Leo1 transactions API
+  name: Leo1 Transactions API
   description: The transactions API from Leo1 — 10 operation(s) for transactions.
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
@@ -758,7 +736,7 @@ apis:
   - type: ErrorCatalog
     url: errors/leo1-problem-types.yml
 - aid: leo1:leo1-user-api
-  name: Leo1 user API
+  name: Leo1 User API
   description: The user API from Leo1 — 2 operation(s) for user.
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
@@ -782,7 +760,7 @@ apis:
   - type: ErrorCatalog
     url: errors/leo1-problem-types.yml
 - aid: leo1:leo1-waiver-api
-  name: Leo1 waiver API
+  name: Leo1 Waiver API
   description: The waiver API from Leo1 — 1 operation(s) for waiver.
   humanURL: https://docs.leo1.in/
   baseURL: https://api.leo1.in
@@ -791,6 +769,50 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/leo1-waiver-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leo1.in/
+  - type: APIReference
+    url: https://docs.leo1.in/api/start-transaction
+  - type: GettingStarted
+    url: https://docs.leo1.in/intro
+  - type: Webhooks
+    url: asyncapi/leo1-fees-webhooks.yml
+  - type: Authentication
+    url: authentication/leo1-authentication.yml
+  - type: ErrorCatalog
+    url: errors/leo1-problem-types.yml
+- aid: leo1:leo1-error-api
+  name: Leo1 Error API
+  description: The Error API from Leo1 — 1 operation(s) for error.
+  humanURL: https://docs.leo1.in/
+  baseURL: https://api.leo1.in
+  tags:
+  - Error
+  properties:
+  - type: OpenAPI
+    url: openapi/leo1-error-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leo1.in/
+  - type: APIReference
+    url: https://docs.leo1.in/api/start-transaction
+  - type: GettingStarted
+    url: https://docs.leo1.in/intro
+  - type: Webhooks
+    url: asyncapi/leo1-fees-webhooks.yml
+  - type: Authentication
+    url: authentication/leo1-authentication.yml
+  - type: ErrorCatalog
+    url: errors/leo1-problem-types.yml
+- aid: leo1:leo1-status-api
+  name: Leo1 Status API
+  description: The Status API from Leo1 — 1 operation(s) for status.
+  humanURL: https://docs.leo1.in/
+  baseURL: https://api.leo1.in
+  tags:
+  - Status
+  properties:
+  - type: OpenAPI
+    url: openapi/leo1-status-api-openapi.yml
   - type: Documentation
     url: https://docs.leo1.in/
   - type: APIReference

@@ -838,53 +838,27 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
-    EnachPresentationBody:
-      title: EnachPresentationBody
+    ValidationError:
+      title: ValidationError
       required:
-      - registration_id
-      - debit_date
-      - amount
-      - created_by
+      - loc
+      - msg
+      - type
       type: object
       properties:
-        registration_id:
-          title: Registration Id
-          type: integer
-        debit_date:
-          title: Debit Date
-          type: string
-        amount:
-          title: Amount
-          type: integer
-        created_by:
-          title: Created By
-          type: string
-    GenerateReport:
-      title: GenerateReport
-      required:
-      - report_name
-      - institute_ids
-      type: object
-      properties:
-        report_name:
-          title: Report Name
-          type: string
-          description: Report name is required
-        institute_ids:
-          title: Institute Ids
+        loc:
+          title: Location
           type: array
           items:
-            type: integer
-          description: Institute IDs are required
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
     EnachFeeSubscriptionRegistrationBody:
       title: EnachFeeSubscriptionRegistrationBody
       required:
@@ -913,23 +887,15 @@ components:
         name_on_bank_account:
           title: Name On Bank Account
           type: string
-    UpdateNachConfigurationApplicable:
-      title: UpdateNachConfigurationApplicable
+    B2CConsentData:
+      title: B2CConsentData
       required:
-      - institute_name
-      - branch_name
-      - is_active
+      - student_uuid
       type: object
       properties:
-        institute_name:
-          title: Institute Name
+        student_uuid:
+          title: Student Uuid
           type: string
-        branch_name:
-          title: Branch Name
-          type: string
-        is_active:
-          title: Is Active
-          type: boolean
     NachBulkCommunication:
       title: NachBulkCommunication
       type: object
@@ -952,49 +918,23 @@ components:
           items:
             type: integer
           default: []
-    B2CConsentData:
-      title: B2CConsentData
+    GenerateReport:
+      title: GenerateReport
       required:
-      - student_uuid
+      - report_name
+      - institute_ids
       type: object
       properties:
-        student_uuid:
-          title: Student Uuid
+        report_name:
+          title: Report Name
           type: string
-    EnachBody:
-      title: EnachBody
-      required:
-      - student_uuid
-      - authentication_mode
-      type: object
-      properties:
-        student_uuid:
-          title: Student Uuid
-          type: string
-        authentication_mode:
-          title: Authentication Mode
-          type: string
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      properties:
-        loc:
-          title: Location
+          description: Report name is required
+        institute_ids:
+          title: Institute Ids
           type: array
           items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
+            type: integer
+          description: Institute IDs are required
     EnachRegistrationBody:
       title: EnachRegistrationBody
       required:
@@ -1027,6 +967,66 @@ components:
         name_on_bank_account:
           title: Name On Bank Account
           type: string
+    EnachPresentationBody:
+      title: EnachPresentationBody
+      required:
+      - registration_id
+      - debit_date
+      - amount
+      - created_by
+      type: object
+      properties:
+        registration_id:
+          title: Registration Id
+          type: integer
+        debit_date:
+          title: Debit Date
+          type: string
+        amount:
+          title: Amount
+          type: integer
+        created_by:
+          title: Created By
+          type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    EnachBody:
+      title: EnachBody
+      required:
+      - student_uuid
+      - authentication_mode
+      type: object
+      properties:
+        student_uuid:
+          title: Student Uuid
+          type: string
+        authentication_mode:
+          title: Authentication Mode
+          type: string
+    UpdateNachConfigurationApplicable:
+      title: UpdateNachConfigurationApplicable
+      required:
+      - institute_name
+      - branch_name
+      - is_active
+      type: object
+      properties:
+        institute_name:
+          title: Institute Name
+          type: string
+        branch_name:
+          title: Branch Name
+          type: string
+        is_active:
+          title: Is Active
+          type: boolean
   securitySchemes:
     APIKeyHeader:
       type: apiKey

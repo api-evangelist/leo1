@@ -1,0 +1,25 @@
+openapi: 3.2.0
+info:
+  title: leofees_backend Error API
+  version: version
+tags:
+- name: Error
+paths:
+  /api/v1/error:
+    get:
+      tags:
+      - Error
+      summary: Error Func
+      operationId: error_func_api_v1_error_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+components:
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: secret-key

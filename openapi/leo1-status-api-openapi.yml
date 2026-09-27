@@ -1,0 +1,26 @@
+openapi: 3.2.0
+info:
+  title: leofees_backend Status API
+  version: version
+tags:
+- name: Status
+paths:
+  /api/v1/status:
+    get:
+      tags:
+      - Status
+      summary: Get Status
+      description: Get API status.
+      operationId: get_status_api_v1_status_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+components:
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: secret-key

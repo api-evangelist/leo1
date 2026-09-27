@@ -88,24 +88,6 @@ components:
         student_id:
           title: Student Id
           type: integer
-    BulkResponseFile:
-      title: BulkResponseFile
-      required:
-      - data
-      type: object
-      properties:
-        data:
-          title: Data
-          type: object
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
     ValidationError:
       title: ValidationError
       required:
@@ -149,6 +131,24 @@ components:
           items:
             type: integer
           default: []
+    BulkResponseFile:
+      title: BulkResponseFile
+      required:
+      - data
+      type: object
+      properties:
+        data:
+          title: Data
+          type: object
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
   securitySchemes:
     APIKeyHeader:
       type: apiKey

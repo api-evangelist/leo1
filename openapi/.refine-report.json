@@ -4,9 +4,11 @@
     "_original/leo1-leofees-openapi-original.json"
   ],
   "outputs": [
+    "leo1-auth-api-openapi.yml",
     "leo1-common-fee-type-api-openapi.yml",
     "leo1-communication-api-openapi.yml",
     "leo1-enach-api-openapi.yml",
+    "leo1-error-api-openapi.yml",
     "leo1-institute-course-api-openapi.yml",
     "leo1-institute-course-class-api-openapi.yml",
     "leo1-institute-course-class-fee-structure-mapping-api-openapi.yml",
@@ -18,10 +20,9 @@
     "leo1-operations-api-openapi.yml",
     "leo1-reversal-feature-api-openapi.yml",
     "leo1-sdk-api-openapi.yml",
+    "leo1-status-api-openapi.yml",
     "leo1-summary-for-fee-module-api-openapi.yml",
     "leo1-switch-feature-api-openapi.yml",
-    "leo1-api-api-openapi.yml",
-    "leo1-auth-api-openapi.yml",
     "leo1-documents-api-openapi.yml",
     "leo1-fee-collections-api-openapi.yml",
     "leo1-fee-dues-api-openapi.yml",
@@ -37,15 +38,23 @@
     "leo1-user-api-openapi.yml",
     "leo1-waiver-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "leo1-leofees-openapi-original.json: upgraded openapi 3.0.2 -> OpenAPI 3.2.0",
+    "leo1-leofees-openapi-original.json: tagged paths GET /api/v1/status -> Status",
+    "leo1-leofees-openapi-original.json: tagged paths POST /api/v1/auth/get_otp -> Auth",
+    "leo1-leofees-openapi-original.json: tagged paths POST /api/v1/auth/get_otp_signup -> Auth",
+    "leo1-leofees-openapi-original.json: tagged paths GET /api/v1/error -> Error",
+    "leo1-leofees-openapi-original.json: declared missing tag: Auth",
     "leo1-leofees-openapi-original.json: declared missing tag: Common Fee Type",
     "leo1-leofees-openapi-original.json: declared missing tag: Communication",
     "leo1-leofees-openapi-original.json: declared missing tag: Enach",
+    "leo1-leofees-openapi-original.json: declared missing tag: Error",
     "leo1-leofees-openapi-original.json: declared missing tag: Institute Course",
     "leo1-leofees-openapi-original.json: declared missing tag: Institute Course Class",
     "leo1-leofees-openapi-original.json: declared missing tag: Institute Course Class Fee Structure Mapping",
@@ -57,6 +66,7 @@
     "leo1-leofees-openapi-original.json: declared missing tag: Operations",
     "leo1-leofees-openapi-original.json: declared missing tag: Reversal Feature",
     "leo1-leofees-openapi-original.json: declared missing tag: SDK",
+    "leo1-leofees-openapi-original.json: declared missing tag: Status",
     "leo1-leofees-openapi-original.json: declared missing tag: Summary for fee module",
     "leo1-leofees-openapi-original.json: declared missing tag: Switch Feature",
     "leo1-leofees-openapi-original.json: declared missing tag: auth",
@@ -74,7 +84,8 @@
     "leo1-leofees-openapi-original.json: declared missing tag: transactions",
     "leo1-leofees-openapi-original.json: declared missing tag: user",
     "leo1-leofees-openapi-original.json: declared missing tag: waiver",
-    "apis.yml register: already-registered"
+    "superseded outputs removed: leo1-api-api-openapi.yml",
+    "apis.yml register: written (+2 apis, 33 total)"
   ],
   "skipped": [
     "leo1-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",

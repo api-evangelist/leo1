@@ -499,10 +499,24 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    DeleteStudentProfileRequest:
-      title: DeleteStudentProfileRequest
+    Body_create_bulk_students_fee_dues_api_v1_student_add_bulk_fee_dues_post:
+      title: Body_create_bulk_students_fee_dues_api_v1_student_add_bulk_fee_dues_post
+      required:
+      - file
+      - institute_id
+      - branch_id
       type: object
-      properties: {}
+      properties:
+        file:
+          title: File
+          type: string
+          format: binary
+        institute_id:
+          title: Institute Id
+          type: integer
+        branch_id:
+          title: Branch Id
+          type: integer
     ValidationError:
       title: ValidationError
       required:
@@ -524,23 +538,6 @@ components:
         type:
           title: Error Type
           type: string
-    ChangeMobileNumberRequest:
-      title: ChangeMobileNumberRequest
-      required:
-      - old_mobile
-      - new_mobile
-      - new_nbfc_user_id
-      type: object
-      properties:
-        old_mobile:
-          title: Old Mobile
-          type: string
-        new_mobile:
-          title: New Mobile
-          type: string
-        new_nbfc_user_id:
-          title: New Nbfc User Id
-          type: integer
     DownloadStudentsFilterData:
       title: DownloadStudentsFilterData
       required:
@@ -604,6 +601,23 @@ components:
           title: Offset
           type: integer
           description: offset is optional
+    DeleteStudentProfileRequest:
+      title: DeleteStudentProfileRequest
+      type: object
+      properties: {}
+    FetchStudentDetailsForPaymentRequest:
+      title: FetchStudentDetailsForPaymentRequest
+      required:
+      - institute_identifier
+      - roll_no
+      type: object
+      properties:
+        institute_identifier:
+          title: Institute Identifier
+          type: string
+        roll_no:
+          title: Roll No
+          type: string
     CreateStudentProfileRequest:
       title: CreateStudentProfileRequest
       required:
@@ -644,6 +658,45 @@ components:
           title: Branch Name
           type: string
           description: Branch name is required
+    Body_create_bulk_students_api_v1_student_add_bulk_students_post:
+      title: Body_create_bulk_students_api_v1_student_add_bulk_students_post
+      required:
+      - file
+      type: object
+      properties:
+        file:
+          title: File
+          type: string
+          format: binary
+        institute_id:
+          title: Institute Id
+          type: integer
+        branch_id:
+          title: Branch Id
+          type: integer
+        institute_name:
+          title: Institute Name
+          type: string
+        branch_name:
+          title: Branch Name
+          type: string
+    ChangeMobileNumberRequest:
+      title: ChangeMobileNumberRequest
+      required:
+      - old_mobile
+      - new_mobile
+      - new_nbfc_user_id
+      type: object
+      properties:
+        old_mobile:
+          title: Old Mobile
+          type: string
+        new_mobile:
+          title: New Mobile
+          type: string
+        new_nbfc_user_id:
+          title: New Nbfc User Id
+          type: integer
     BankDetails:
       title: BankDetails
       required:
@@ -673,15 +726,23 @@ components:
         name_on_bank_account:
           title: Name On Bank Account
           type: string
-    HTTPValidationError:
-      title: HTTPValidationError
+    StudentExistRequestBody:
+      title: StudentExistRequestBody
+      required:
+      - student_roll_number
+      - institute_ids
       type: object
       properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
+        student_roll_number:
+          title: Student Roll Number
+          type: string
+        institute_ids:
+          title: Institute Ids
+          type: string
+    UpdateStudentProfileRequest:
+      title: UpdateStudentProfileRequest
+      type: object
+      properties: {}
     DownloadStudents:
       title: DownloadStudents
       required:
@@ -707,76 +768,15 @@ components:
           items:
             type: integer
           description: Student IDs is optional
-    UpdateStudentProfileRequest:
-      title: UpdateStudentProfileRequest
-      type: object
-      properties: {}
-    FetchStudentDetailsForPaymentRequest:
-      title: FetchStudentDetailsForPaymentRequest
-      required:
-      - institute_identifier
-      - roll_no
+    HTTPValidationError:
+      title: HTTPValidationError
       type: object
       properties:
-        institute_identifier:
-          title: Institute Identifier
-          type: string
-        roll_no:
-          title: Roll No
-          type: string
-    Body_create_bulk_students_api_v1_student_add_bulk_students_post:
-      title: Body_create_bulk_students_api_v1_student_add_bulk_students_post
-      required:
-      - file
-      type: object
-      properties:
-        file:
-          title: File
-          type: string
-          format: binary
-        institute_id:
-          title: Institute Id
-          type: integer
-        branch_id:
-          title: Branch Id
-          type: integer
-        institute_name:
-          title: Institute Name
-          type: string
-        branch_name:
-          title: Branch Name
-          type: string
-    StudentExistRequestBody:
-      title: StudentExistRequestBody
-      required:
-      - student_roll_number
-      - institute_ids
-      type: object
-      properties:
-        student_roll_number:
-          title: Student Roll Number
-          type: string
-        institute_ids:
-          title: Institute Ids
-          type: string
-    Body_create_bulk_students_fee_dues_api_v1_student_add_bulk_fee_dues_post:
-      title: Body_create_bulk_students_fee_dues_api_v1_student_add_bulk_fee_dues_post
-      required:
-      - file
-      - institute_id
-      - branch_id
-      type: object
-      properties:
-        file:
-          title: File
-          type: string
-          format: binary
-        institute_id:
-          title: Institute Id
-          type: integer
-        branch_id:
-          title: Branch Id
-          type: integer
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
   securitySchemes:
     APIKeyHeader:
       type: apiKey

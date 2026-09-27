@@ -5,6 +5,56 @@ info:
 tags:
 - name: Auth
 paths:
+  /api/v1/auth/get_otp:
+    post:
+      tags:
+      - Auth
+      summary: Send Otp
+      description: Get OTP
+      operationId: send_OTP_api_v1_auth_get_otp_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/triggerSMSBody'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/auth/get_otp_signup:
+    post:
+      tags:
+      - Auth
+      summary: Send Otp Signup
+      description: Get OTP
+      operationId: send_otp_signup_api_v1_auth_get_otp_signup_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/triggerSMSBody'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
   /api/v1/auth/login:
     post:
       tags:
@@ -94,25 +144,45 @@ paths:
               schema: {}
 components:
   schemas:
-    SignUp:
-      title: SignUp
+    ValidationError:
+      title: ValidationError
       required:
-      - phone_number
-      - otp
+      - loc
+      - msg
+      - type
       type: object
       properties:
-        phone_number:
-          title: Phone Number
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
           type: string
-        otp:
-          title: Otp
+        type:
+          title: Error Type
           type: string
-    PaymentType:
-      title: PaymentType
-      enum:
-      - 1
-      - 2
-      description: An enumeration.
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    triggerSMSBody:
+      title: triggerSMSBody
+      required:
+      - mobile
+      type: object
+      properties:
+        mobile:
+          title: Mobile
+          type: string
     LoginResponse:
       title: LoginResponse
       required:
@@ -133,15 +203,12 @@ components:
         user_id:
           title: User Id
           type: string
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
+    PaymentType:
+      title: PaymentType
+      enum:
+      - 1
+      - 2
+      description: An enumeration.
     SignUpResponse:
       title: SignUpResponse
       required:
@@ -157,6 +224,31 @@ components:
           type: string
         access_token:
           title: Access Token
+          type: string
+    SignUp:
+      title: SignUp
+      required:
+      - phone_number
+      - otp
+      type: object
+      properties:
+        phone_number:
+          title: Phone Number
+          type: string
+        otp:
+          title: Otp
+          type: string
+    Login:
+      title: Login
+      required:
+      - phone_number
+      type: object
+      properties:
+        phone_number:
+          title: Phone Number
+          type: string
+        otp:
+          title: Otp
           type: string
     StudentERPRequest:
       title: StudentERPRequest
@@ -215,39 +307,6 @@ components:
           $ref: '#/components/schemas/PaymentType'
         email:
           title: Email
-          type: string
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-    Login:
-      title: Login
-      required:
-      - phone_number
-      type: object
-      properties:
-        phone_number:
-          title: Phone Number
-          type: string
-        otp:
-          title: Otp
           type: string
   securitySchemes:
     APIKeyHeader:
