@@ -91,6 +91,15 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     DebitFrequencyEnum:
       title: DebitFrequencyEnum
       enum:
@@ -99,6 +108,27 @@ components:
       - 6
       - 12
       description: An enumeration.
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
     InitiateEnachRequest:
       title: InitiateEnachRequest
       required:
@@ -135,44 +165,6 @@ components:
         furl:
           title: Furl
           type: string
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-    CreateEnachScheduleRequest:
-      title: CreateEnachScheduleRequest
-      required:
-      - customer_auth_id
-      - txn_log
-      - auto_debit_access_key
-      type: object
-      properties:
-        customer_auth_id:
-          title: Customer Auth Id
-          type: string
-        txn_log:
-          title: Txn Log
-          type: integer
-        auto_debit_access_key:
-          title: Auto Debit Access Key
-          type: string
     PreviewDebitScheduleRequest:
       title: PreviewDebitScheduleRequest
       required:
@@ -193,15 +185,23 @@ components:
         debit_start_date:
           title: Debit Start Date
           type: string
-    HTTPValidationError:
-      title: HTTPValidationError
+    CreateEnachScheduleRequest:
+      title: CreateEnachScheduleRequest
+      required:
+      - customer_auth_id
+      - txn_log
+      - auto_debit_access_key
       type: object
       properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
+        customer_auth_id:
+          title: Customer Auth Id
+          type: string
+        txn_log:
+          title: Txn Log
+          type: integer
+        auto_debit_access_key:
+          title: Auto Debit Access Key
+          type: string
   securitySchemes:
     APIKeyHeader:
       type: apiKey

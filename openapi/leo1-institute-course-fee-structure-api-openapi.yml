@@ -168,6 +168,18 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
+    DeleteInstituteCourseFeeStructureRequest:
+      title: DeleteInstituteCourseFeeStructureRequest
+      required:
+      - fee_structure_ids
+      type: object
+      properties:
+        fee_structure_ids:
+          title: Fee Structure Ids
+          type: array
+          items:
+            type: integer
+          description: Fee structure IDs is required
     UpdateInstituteCourseFeeStructureRequest:
       title: UpdateInstituteCourseFeeStructureRequest
       required:
@@ -204,48 +216,6 @@ components:
           title: Description
           type: string
           description: Description is optional
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    DeleteInstituteCourseFeeStructureRequest:
-      title: DeleteInstituteCourseFeeStructureRequest
-      required:
-      - fee_structure_ids
-      type: object
-      properties:
-        fee_structure_ids:
-          title: Fee Structure Ids
-          type: array
-          items:
-            type: integer
-          description: Fee structure IDs is required
     CreateInstituteCourseFeeStructureRequest:
       title: CreateInstituteCourseFeeStructureRequest
       required:
@@ -275,6 +245,36 @@ components:
           title: Description
           type: string
           description: Description is required
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
     ? Body_create_bulk_institute_course_fee_structure_excel_api_v1_institute_fee_structure_create_bulk_course_fee_structure_excel_post
     : title: Body_create_bulk_institute_course_fee_structure_excel_api_v1_institute_fee_structure_create_bulk_course_fee_structure_excel_post
       required:

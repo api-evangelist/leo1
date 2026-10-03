@@ -161,6 +161,35 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
+    CreateStudentFeeDuesRequest:
+      title: CreateStudentFeeDuesRequest
+      required:
+      - student_id
+      - due_date
+      - due_amount
+      - fee_type
+      type: object
+      properties:
+        student_id:
+          title: Student Id
+          type: integer
+          description: Student ID is required
+        due_date:
+          title: Due Date
+          type: string
+          description: Due date is required
+        due_amount:
+          title: Due Amount
+          type: number
+          description: Due amount is required
+        fee_type:
+          title: Fee Type
+          type: string
+          description: Fee type is required
+        description:
+          title: Description
+          type: string
+          description: Description is optional
     DeleteStudentFeeDuesRequest:
       title: DeleteStudentFeeDuesRequest
       required:
@@ -232,35 +261,6 @@ components:
         type:
           title: Error Type
           type: string
-    CreateStudentFeeDuesRequest:
-      title: CreateStudentFeeDuesRequest
-      required:
-      - student_id
-      - due_date
-      - due_amount
-      - fee_type
-      type: object
-      properties:
-        student_id:
-          title: Student Id
-          type: integer
-          description: Student ID is required
-        due_date:
-          title: Due Date
-          type: string
-          description: Due date is required
-        due_amount:
-          title: Due Amount
-          type: number
-          description: Due amount is required
-        fee_type:
-          title: Fee Type
-          type: string
-          description: Fee type is required
-        description:
-          title: Description
-          type: string
-          description: Description is optional
   securitySchemes:
     APIKeyHeader:
       type: apiKey

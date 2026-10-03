@@ -112,6 +112,39 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
+    UpdateStudentAccountRequest:
+      title: UpdateStudentAccountRequest
+      required:
+      - student_ids
+      type: object
+      properties:
+        student_ids:
+          title: Student Ids
+          type: array
+          items:
+            type: integer
+          description: Student IDs are required
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    DeleteStudentAccountRequest:
+      title: DeleteStudentAccountRequest
+      required:
+      - student_ids
+      type: object
+      properties:
+        student_ids:
+          title: Student Ids
+          type: array
+          items:
+            type: integer
+          description: Student IDs are required
     ValidationError:
       title: ValidationError
       required:
@@ -145,39 +178,6 @@ components:
           items:
             type: integer
           description: Student IDs are required
-    DeleteStudentAccountRequest:
-      title: DeleteStudentAccountRequest
-      required:
-      - student_ids
-      type: object
-      properties:
-        student_ids:
-          title: Student Ids
-          type: array
-          items:
-            type: integer
-          description: Student IDs are required
-    UpdateStudentAccountRequest:
-      title: UpdateStudentAccountRequest
-      required:
-      - student_ids
-      type: object
-      properties:
-        student_ids:
-          title: Student Ids
-          type: array
-          items:
-            type: integer
-          description: Student IDs are required
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
   securitySchemes:
     APIKeyHeader:
       type: apiKey

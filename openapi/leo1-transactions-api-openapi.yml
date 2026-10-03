@@ -257,27 +257,99 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
-      title: ValidationError
+    GetInstituteTransactionsCsvRequest:
+      title: GetInstituteTransactionsCsvRequest
       required:
-      - loc
-      - msg
-      - type
+      - institute_name
       type: object
       properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
+        institute_name:
+          title: Institute Name
+          type: string
+        branch_name:
+          title: Branch Name
+          type: string
+        search_value:
+          title: Search Value
+          type: string
+        date_filter:
+          title: Date Filter
+          type: string
+        skip:
+          title: Skip
+          type: integer
+        limit:
+          title: Limit
+          type: integer
+        is_csv:
+          title: Is Csv
+          type: boolean
+        send_email:
+          title: Send Email
+          type: boolean
+          default: false
+        email_address:
+          title: Email Address
+          type: string
+          format: email
+          default: ''
+    TransactionResponseList:
+      title: TransactionResponseList
+      required:
+      - transactions
+      type: object
+      properties:
+        transactions:
+          title: Transactions
+          anyOf:
+          - type: array
+            items:
+              $ref: '#/components/schemas/TransactionResponse'
+          - type: array
+            items:
+              $ref: '#/components/schemas/InstituteTransactionResponse'
+        message:
           title: Message
           type: string
-        type:
-          title: Error Type
+        total_records_number:
+          title: Total Records Number
+          type: integer
+    InstituteTranscationRequest:
+      title: InstituteTranscationRequest
+      required:
+      - institute_name
+      type: object
+      properties:
+        institute_name:
+          title: Institute Name
           type: string
+        branch_name:
+          title: Branch Name
+          type: string
+        search_value:
+          title: Search Value
+          type: string
+        date_filter:
+          title: Date Filter
+          type: string
+        skip:
+          title: Skip
+          type: integer
+        limit:
+          title: Limit
+          type: integer
+        is_csv:
+          title: Is Csv
+          type: boolean
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     InstituteTransactionResponse:
       title: InstituteTransactionResponse
       required:
@@ -337,6 +409,47 @@ components:
           type: string
         easebuzz_id:
           title: Easebuzz Id
+          type: string
+    TranscationsAggregateInfo:
+      title: TranscationsAggregateInfo
+      required:
+      - no_of_students_paid
+      - no_of_transcations_paid
+      - total_amount_paid
+      - total_no_of_transcations
+      type: object
+      properties:
+        no_of_students_paid:
+          title: No Of Students Paid
+          type: integer
+        no_of_transcations_paid:
+          title: No Of Transcations Paid
+          type: integer
+        total_amount_paid:
+          title: Total Amount Paid
+          type: number
+        total_no_of_transcations:
+          title: Total No Of Transcations
+          type: integer
+    CreatedResponse:
+      title: CreatedResponse
+      required:
+      - created
+      - status
+      type: object
+      properties:
+        created:
+          title: Created
+          type: boolean
+        status:
+          title: Status
+          type: string
+    ReverseTransactionInput:
+      title: ReverseTransactionInput
+      type: object
+      properties:
+        id:
+          title: Id
           type: string
     TransactionResponse:
       title: TransactionResponse
@@ -405,140 +518,27 @@ components:
         trans_id:
           title: Trans Id
           type: string
-    ReverseTransactionInput:
-      title: ReverseTransactionInput
-      type: object
-      properties:
-        id:
-          title: Id
-          type: string
-    TranscationsAggregateInfo:
-      title: TranscationsAggregateInfo
+    ValidationError:
+      title: ValidationError
       required:
-      - no_of_students_paid
-      - no_of_transcations_paid
-      - total_amount_paid
-      - total_no_of_transcations
+      - loc
+      - msg
+      - type
       type: object
       properties:
-        no_of_students_paid:
-          title: No Of Students Paid
-          type: integer
-        no_of_transcations_paid:
-          title: No Of Transcations Paid
-          type: integer
-        total_amount_paid:
-          title: Total Amount Paid
-          type: number
-        total_no_of_transcations:
-          title: Total No Of Transcations
-          type: integer
-    InstituteTranscationRequest:
-      title: InstituteTranscationRequest
-      required:
-      - institute_name
-      type: object
-      properties:
-        institute_name:
-          title: Institute Name
-          type: string
-        branch_name:
-          title: Branch Name
-          type: string
-        search_value:
-          title: Search Value
-          type: string
-        date_filter:
-          title: Date Filter
-          type: string
-        skip:
-          title: Skip
-          type: integer
-        limit:
-          title: Limit
-          type: integer
-        is_csv:
-          title: Is Csv
-          type: boolean
-    CreatedResponse:
-      title: CreatedResponse
-      required:
-      - created
-      - status
-      type: object
-      properties:
-        created:
-          title: Created
-          type: boolean
-        status:
-          title: Status
-          type: string
-    GetInstituteTransactionsCsvRequest:
-      title: GetInstituteTransactionsCsvRequest
-      required:
-      - institute_name
-      type: object
-      properties:
-        institute_name:
-          title: Institute Name
-          type: string
-        branch_name:
-          title: Branch Name
-          type: string
-        search_value:
-          title: Search Value
-          type: string
-        date_filter:
-          title: Date Filter
-          type: string
-        skip:
-          title: Skip
-          type: integer
-        limit:
-          title: Limit
-          type: integer
-        is_csv:
-          title: Is Csv
-          type: boolean
-        send_email:
-          title: Send Email
-          type: boolean
-          default: false
-        email_address:
-          title: Email Address
-          type: string
-          format: email
-          default: ''
-    TransactionResponseList:
-      title: TransactionResponseList
-      required:
-      - transactions
-      type: object
-      properties:
-        transactions:
-          title: Transactions
-          anyOf:
-          - type: array
-            items:
-              $ref: '#/components/schemas/TransactionResponse'
-          - type: array
-            items:
-              $ref: '#/components/schemas/InstituteTransactionResponse'
-        message:
-          title: Message
-          type: string
-        total_records_number:
-          title: Total Records Number
-          type: integer
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
+        loc:
+          title: Location
           type: array
           items:
-            $ref: '#/components/schemas/ValidationError'
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
     NotifyLoanCreatedRequest:
       title: NotifyLoanCreatedRequest
       required:

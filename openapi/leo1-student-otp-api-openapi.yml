@@ -85,6 +85,60 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
+    VerifyStudentOTPRequest:
+      title: VerifyStudentOTPRequest
+      required:
+      - mobile_number
+      - otp
+      type: object
+      properties:
+        mobile_number:
+          title: Mobile Number
+          type: string
+          description: Mobile number is required
+        otp:
+          title: Otp
+          type: integer
+          description: OTP is required
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    SendStudentOTPRequest:
+      title: SendStudentOTPRequest
+      required:
+      - mobile_number
+      - amount
+      type: object
+      properties:
+        mobile_number:
+          title: Mobile Number
+          type: string
+          description: Mobile number is required
+        amount:
+          title: Amount
+          type: integer
+          description: Transaction amount is required
+    PaymentOTPVerificationRequest:
+      title: PaymentOTPVerificationRequest
+      required:
+      - institute_id
+      - payment_type
+      type: object
+      properties:
+        institute_id:
+          title: Institute Id
+          type: integer
+          description: Institute Id is required
+        payment_type:
+          title: Payment Type
+          type: string
+          description: Payment type is required
     ValidationError:
       title: ValidationError
       required:
@@ -106,60 +160,6 @@ components:
         type:
           title: Error Type
           type: string
-    SendStudentOTPRequest:
-      title: SendStudentOTPRequest
-      required:
-      - mobile_number
-      - amount
-      type: object
-      properties:
-        mobile_number:
-          title: Mobile Number
-          type: string
-          description: Mobile number is required
-        amount:
-          title: Amount
-          type: integer
-          description: Transaction amount is required
-    VerifyStudentOTPRequest:
-      title: VerifyStudentOTPRequest
-      required:
-      - mobile_number
-      - otp
-      type: object
-      properties:
-        mobile_number:
-          title: Mobile Number
-          type: string
-          description: Mobile number is required
-        otp:
-          title: Otp
-          type: integer
-          description: OTP is required
-    PaymentOTPVerificationRequest:
-      title: PaymentOTPVerificationRequest
-      required:
-      - institute_id
-      - payment_type
-      type: object
-      properties:
-        institute_id:
-          title: Institute Id
-          type: integer
-          description: Institute Id is required
-        payment_type:
-          title: Payment Type
-          type: string
-          description: Payment type is required
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
   securitySchemes:
     APIKeyHeader:
       type: apiKey

@@ -499,6 +499,139 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    BankDetails:
+      title: BankDetails
+      required:
+      - student_uuid
+      - account_number
+      - ifsc_code
+      - bank_code
+      - account_type
+      - name_on_bank_account
+      type: object
+      properties:
+        student_uuid:
+          title: Student Uuid
+          type: string
+        account_number:
+          title: Account Number
+          type: string
+        ifsc_code:
+          title: Ifsc Code
+          type: string
+        bank_code:
+          title: Bank Code
+          type: string
+        account_type:
+          title: Account Type
+          type: string
+        name_on_bank_account:
+          title: Name On Bank Account
+          type: string
+    FetchStudentDetailsForPaymentRequest:
+      title: FetchStudentDetailsForPaymentRequest
+      required:
+      - institute_identifier
+      - roll_no
+      type: object
+      properties:
+        institute_identifier:
+          title: Institute Identifier
+          type: string
+        roll_no:
+          title: Roll No
+          type: string
+    DownloadStudents:
+      title: DownloadStudents
+      required:
+      - institute_ids
+      - branch_ids
+      type: object
+      properties:
+        institute_ids:
+          title: Institute Ids
+          type: array
+          items:
+            type: integer
+          description: Institute IDs are required
+        branch_ids:
+          title: Branch Ids
+          type: array
+          items:
+            type: integer
+          description: Branch IDs are required
+        student_ids:
+          title: Student Ids
+          type: array
+          items:
+            type: integer
+          description: Student IDs is optional
+    DeleteStudentProfileRequest:
+      title: DeleteStudentProfileRequest
+      type: object
+      properties: {}
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    CreateStudentProfileRequest:
+      title: CreateStudentProfileRequest
+      required:
+      - student_name
+      - mobile_number
+      - roll_number
+      - institute_id
+      - branch_id
+      - institute_name
+      - branch_name
+      type: object
+      properties:
+        student_name:
+          title: Student Name
+          type: string
+          description: Student name is required
+        mobile_number:
+          title: Mobile Number
+          type: string
+          description: Mobile number is required
+        roll_number:
+          title: Roll Number
+          type: string
+          description: Roll number is required
+        institute_id:
+          title: Institute Id
+          type: integer
+          description: Institute ID is required
+        branch_id:
+          title: Branch Id
+          type: integer
+          description: Branch ID is required
+        institute_name:
+          title: Institute Name
+          type: string
+          description: Institute name is required
+        branch_name:
+          title: Branch Name
+          type: string
+          description: Branch name is required
+    StudentExistRequestBody:
+      title: StudentExistRequestBody
+      required:
+      - student_roll_number
+      - institute_ids
+      type: object
+      properties:
+        student_roll_number:
+          title: Student Roll Number
+          type: string
+        institute_ids:
+          title: Institute Ids
+          type: string
     Body_create_bulk_students_fee_dues_api_v1_student_add_bulk_fee_dues_post:
       title: Body_create_bulk_students_fee_dues_api_v1_student_add_bulk_fee_dues_post
       required:
@@ -517,6 +650,10 @@ components:
         branch_id:
           title: Branch Id
           type: integer
+    UpdateStudentProfileRequest:
+      title: UpdateStudentProfileRequest
+      type: object
+      properties: {}
     ValidationError:
       title: ValidationError
       required:
@@ -537,6 +674,45 @@ components:
           type: string
         type:
           title: Error Type
+          type: string
+    ChangeMobileNumberRequest:
+      title: ChangeMobileNumberRequest
+      required:
+      - old_mobile
+      - new_mobile
+      - new_nbfc_user_id
+      type: object
+      properties:
+        old_mobile:
+          title: Old Mobile
+          type: string
+        new_mobile:
+          title: New Mobile
+          type: string
+        new_nbfc_user_id:
+          title: New Nbfc User Id
+          type: integer
+    Body_create_bulk_students_api_v1_student_add_bulk_students_post:
+      title: Body_create_bulk_students_api_v1_student_add_bulk_students_post
+      required:
+      - file
+      type: object
+      properties:
+        file:
+          title: File
+          type: string
+          format: binary
+        institute_id:
+          title: Institute Id
+          type: integer
+        branch_id:
+          title: Branch Id
+          type: integer
+        institute_name:
+          title: Institute Name
+          type: string
+        branch_name:
+          title: Branch Name
           type: string
     DownloadStudentsFilterData:
       title: DownloadStudentsFilterData
@@ -601,182 +777,6 @@ components:
           title: Offset
           type: integer
           description: offset is optional
-    DeleteStudentProfileRequest:
-      title: DeleteStudentProfileRequest
-      type: object
-      properties: {}
-    FetchStudentDetailsForPaymentRequest:
-      title: FetchStudentDetailsForPaymentRequest
-      required:
-      - institute_identifier
-      - roll_no
-      type: object
-      properties:
-        institute_identifier:
-          title: Institute Identifier
-          type: string
-        roll_no:
-          title: Roll No
-          type: string
-    CreateStudentProfileRequest:
-      title: CreateStudentProfileRequest
-      required:
-      - student_name
-      - mobile_number
-      - roll_number
-      - institute_id
-      - branch_id
-      - institute_name
-      - branch_name
-      type: object
-      properties:
-        student_name:
-          title: Student Name
-          type: string
-          description: Student name is required
-        mobile_number:
-          title: Mobile Number
-          type: string
-          description: Mobile number is required
-        roll_number:
-          title: Roll Number
-          type: string
-          description: Roll number is required
-        institute_id:
-          title: Institute Id
-          type: integer
-          description: Institute ID is required
-        branch_id:
-          title: Branch Id
-          type: integer
-          description: Branch ID is required
-        institute_name:
-          title: Institute Name
-          type: string
-          description: Institute name is required
-        branch_name:
-          title: Branch Name
-          type: string
-          description: Branch name is required
-    Body_create_bulk_students_api_v1_student_add_bulk_students_post:
-      title: Body_create_bulk_students_api_v1_student_add_bulk_students_post
-      required:
-      - file
-      type: object
-      properties:
-        file:
-          title: File
-          type: string
-          format: binary
-        institute_id:
-          title: Institute Id
-          type: integer
-        branch_id:
-          title: Branch Id
-          type: integer
-        institute_name:
-          title: Institute Name
-          type: string
-        branch_name:
-          title: Branch Name
-          type: string
-    ChangeMobileNumberRequest:
-      title: ChangeMobileNumberRequest
-      required:
-      - old_mobile
-      - new_mobile
-      - new_nbfc_user_id
-      type: object
-      properties:
-        old_mobile:
-          title: Old Mobile
-          type: string
-        new_mobile:
-          title: New Mobile
-          type: string
-        new_nbfc_user_id:
-          title: New Nbfc User Id
-          type: integer
-    BankDetails:
-      title: BankDetails
-      required:
-      - student_uuid
-      - account_number
-      - ifsc_code
-      - bank_code
-      - account_type
-      - name_on_bank_account
-      type: object
-      properties:
-        student_uuid:
-          title: Student Uuid
-          type: string
-        account_number:
-          title: Account Number
-          type: string
-        ifsc_code:
-          title: Ifsc Code
-          type: string
-        bank_code:
-          title: Bank Code
-          type: string
-        account_type:
-          title: Account Type
-          type: string
-        name_on_bank_account:
-          title: Name On Bank Account
-          type: string
-    StudentExistRequestBody:
-      title: StudentExistRequestBody
-      required:
-      - student_roll_number
-      - institute_ids
-      type: object
-      properties:
-        student_roll_number:
-          title: Student Roll Number
-          type: string
-        institute_ids:
-          title: Institute Ids
-          type: string
-    UpdateStudentProfileRequest:
-      title: UpdateStudentProfileRequest
-      type: object
-      properties: {}
-    DownloadStudents:
-      title: DownloadStudents
-      required:
-      - institute_ids
-      - branch_ids
-      type: object
-      properties:
-        institute_ids:
-          title: Institute Ids
-          type: array
-          items:
-            type: integer
-          description: Institute IDs are required
-        branch_ids:
-          title: Branch Ids
-          type: array
-          items:
-            type: integer
-          description: Branch IDs are required
-        student_ids:
-          title: Student Ids
-          type: array
-          items:
-            type: integer
-          description: Student IDs is optional
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
   securitySchemes:
     APIKeyHeader:
       type: apiKey

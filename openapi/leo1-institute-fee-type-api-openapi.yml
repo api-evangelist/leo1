@@ -186,27 +186,34 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
-    ValidationError:
-      title: ValidationError
+    UpdateInstituteFeeTypeRequest:
+      title: UpdateInstituteFeeTypeRequest
       required:
-      - loc
-      - msg
-      - type
+      - fee_type_id
+      - fee_type_name
       type: object
       properties:
-        loc:
-          title: Location
+        fee_type_id:
+          title: Fee Type Id
+          type: integer
+          description: fee_type_id is required
+        fee_type_name:
+          title: Fee Type Name
+          type: string
+          description: fee_type_name is required
+        is_checked:
+          title: Is Checked
+          type: boolean
+          description: is_checked is optional
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
           type: array
           items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
+            $ref: '#/components/schemas/ValidationError'
     CreateInstituteFeeTypeRequest:
       title: CreateInstituteFeeTypeRequest
       required:
@@ -257,34 +264,27 @@ components:
           items:
             type: integer
           description: fee_type_ids is required
-    UpdateInstituteFeeTypeRequest:
-      title: UpdateInstituteFeeTypeRequest
+    ValidationError:
+      title: ValidationError
       required:
-      - fee_type_id
-      - fee_type_name
+      - loc
+      - msg
+      - type
       type: object
       properties:
-        fee_type_id:
-          title: Fee Type Id
-          type: integer
-          description: fee_type_id is required
-        fee_type_name:
-          title: Fee Type Name
-          type: string
-          description: fee_type_name is required
-        is_checked:
-          title: Is Checked
-          type: boolean
-          description: is_checked is optional
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
+        loc:
+          title: Location
           type: array
           items:
-            $ref: '#/components/schemas/ValidationError'
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
   securitySchemes:
     APIKeyHeader:
       type: apiKey

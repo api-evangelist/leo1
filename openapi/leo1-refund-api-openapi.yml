@@ -109,39 +109,6 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-    DeleteStudentRefundRequest:
-      title: DeleteStudentRefundRequest
-      required:
-      - student_refund_ids
-      type: object
-      properties:
-        student_refund_ids:
-          title: Student Refund Ids
-          type: array
-          items:
-            type: integer
-          description: Student Refund IDs are required
     Body_create_student_refund_api_v1_refund__post:
       title: Body_create_student_refund_api_v1_refund__post
       required:
@@ -177,6 +144,27 @@ components:
         remarks:
           title: Remarks
           type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    DeleteStudentRefundRequest:
+      title: DeleteStudentRefundRequest
+      required:
+      - student_refund_ids
+      type: object
+      properties:
+        student_refund_ids:
+          title: Student Refund Ids
+          type: array
+          items:
+            type: integer
+          description: Student Refund IDs are required
     UpdateStudentRefundRequest:
       title: UpdateStudentRefundRequest
       required:
@@ -215,15 +203,27 @@ components:
           title: Remarks
           type: string
           description: Remarks is optional
-    HTTPValidationError:
-      title: HTTPValidationError
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
       type: object
       properties:
-        detail:
-          title: Detail
+        loc:
+          title: Location
           type: array
           items:
-            $ref: '#/components/schemas/ValidationError'
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
   securitySchemes:
     APIKeyHeader:
       type: apiKey

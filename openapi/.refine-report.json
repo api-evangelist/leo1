@@ -38,9 +38,7 @@
     "leo1-user-api-openapi.yml",
     "leo1-waiver-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 1 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -84,16 +82,15 @@
     "leo1-leofees-openapi-original.json: declared missing tag: transactions",
     "leo1-leofees-openapi-original.json: declared missing tag: user",
     "leo1-leofees-openapi-original.json: declared missing tag: waiver",
-    "superseded outputs removed: leo1-api-api-openapi.yml",
-    "apis.yml register: written (+2 apis, 33 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
-    "leo1-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "leo1-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "leo1-common-fee-type-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "leo1-communication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "leo1-documents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "leo1-enach-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "leo1-error-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "leo1-fee-collections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "leo1-fee-dues-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "leo1-institute-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -111,6 +108,7 @@
     "leo1-refund-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "leo1-reversal-feature-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "leo1-sdk-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "leo1-status-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "leo1-student-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "leo1-student-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "leo1-student-coin-request-api-openapi.yml: previously refined output, superseded by openapi/_original/",

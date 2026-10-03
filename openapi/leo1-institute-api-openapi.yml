@@ -79,69 +79,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    RetrieveSettlementsRequest:
-      title: RetrieveSettlementsRequest
-      required:
-      - key
-      - payout_date
-      - email
-      - hash
-      type: object
-      properties:
-        key:
-          title: Key
-          type: string
-        payout_date:
-          title: Payout Date
-          type: string
-        email:
-          title: Email
-          type: string
-        hash:
-          title: Hash
-          type: string
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-    RetrieveInstituteTransactionsByDateRequest:
-      title: RetrieveInstituteTransactionsByDateRequest
-      required:
-      - key
-      - transaction_date
-      - hash
-      - email
-      type: object
-      properties:
-        key:
-          title: Key
-          type: string
-        transaction_date:
-          title: Transaction Date
-          type: string
-        hash:
-          title: Hash
-          type: string
-        email:
-          title: Email
-          type: string
     GetInstituteTransactionRequest:
       title: GetInstituteTransactionRequest
       required:
@@ -167,6 +104,48 @@ components:
         hash:
           title: Hash
           type: string
+    RetrieveSettlementsRequest:
+      title: RetrieveSettlementsRequest
+      required:
+      - key
+      - payout_date
+      - email
+      - hash
+      type: object
+      properties:
+        key:
+          title: Key
+          type: string
+        payout_date:
+          title: Payout Date
+          type: string
+        email:
+          title: Email
+          type: string
+        hash:
+          title: Hash
+          type: string
+    RetrieveInstituteTransactionsByDateRequest:
+      title: RetrieveInstituteTransactionsByDateRequest
+      required:
+      - key
+      - transaction_date
+      - hash
+      - email
+      type: object
+      properties:
+        key:
+          title: Key
+          type: string
+        transaction_date:
+          title: Transaction Date
+          type: string
+        hash:
+          title: Hash
+          type: string
+        email:
+          title: Email
+          type: string
     HTTPValidationError:
       title: HTTPValidationError
       type: object
@@ -176,6 +155,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
   securitySchemes:
     APIKeyHeader:
       type: apiKey

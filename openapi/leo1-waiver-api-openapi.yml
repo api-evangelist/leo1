@@ -87,6 +87,62 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
+    DistributionFields:
+      title: DistributionFields
+      required:
+      - id
+      - amount
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+        amount:
+          title: Amount
+          type: number
+    Body_delete_student_waiver_api_v1_waiver__delete:
+      title: Body_delete_student_waiver_api_v1_waiver__delete
+      required:
+      - student_waiver_ids
+      type: object
+      properties:
+        student_waiver_ids:
+          title: Student Waiver Ids
+          type: array
+          items:
+            type: integer
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    PaymentDistribution:
+      title: PaymentDistribution
+      type: object
+      properties:
+        fee_dues:
+          title: Fee Dues
+          type: array
+          items:
+            $ref: '#/components/schemas/DistributionFields'
+          description: Fee Dues are optional
+          default: []
+        penalties:
+          title: Penalties
+          type: array
+          items:
+            $ref: '#/components/schemas/DistributionFields'
+          description: Penalties are optional
+          default: []
+        excess_payment:
+          title: Excess Payment
+          type: number
+          description: Excess payment is optional
+          default: 0
     Body_create_student_waiver_api_v1_waiver__post:
       title: Body_create_student_waiver_api_v1_waiver__post
       required:
@@ -130,62 +186,6 @@ components:
         type:
           title: Error Type
           type: string
-    DistributionFields:
-      title: DistributionFields
-      required:
-      - id
-      - amount
-      type: object
-      properties:
-        id:
-          title: Id
-          type: integer
-        amount:
-          title: Amount
-          type: number
-    PaymentDistribution:
-      title: PaymentDistribution
-      type: object
-      properties:
-        fee_dues:
-          title: Fee Dues
-          type: array
-          items:
-            $ref: '#/components/schemas/DistributionFields'
-          description: Fee Dues are optional
-          default: []
-        penalties:
-          title: Penalties
-          type: array
-          items:
-            $ref: '#/components/schemas/DistributionFields'
-          description: Penalties are optional
-          default: []
-        excess_payment:
-          title: Excess Payment
-          type: number
-          description: Excess payment is optional
-          default: 0
-    Body_delete_student_waiver_api_v1_waiver__delete:
-      title: Body_delete_student_waiver_api_v1_waiver__delete
-      required:
-      - student_waiver_ids
-      type: object
-      properties:
-        student_waiver_ids:
-          title: Student Waiver Ids
-          type: array
-          items:
-            type: integer
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
   securitySchemes:
     APIKeyHeader:
       type: apiKey

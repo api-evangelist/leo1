@@ -209,39 +209,11 @@ components:
       - 1
       - 2
       description: An enumeration.
-    SignUpResponse:
-      title: SignUpResponse
-      required:
-      - status
-      - message
-      type: object
-      properties:
-        status:
-          title: Status
-          type: string
-        message:
-          title: Message
-          type: string
-        access_token:
-          title: Access Token
-          type: string
     SignUp:
       title: SignUp
       required:
       - phone_number
       - otp
-      type: object
-      properties:
-        phone_number:
-          title: Phone Number
-          type: string
-        otp:
-          title: Otp
-          type: string
-    Login:
-      title: Login
-      required:
-      - phone_number
       type: object
       properties:
         phone_number:
@@ -307,6 +279,34 @@ components:
           $ref: '#/components/schemas/PaymentType'
         email:
           title: Email
+          type: string
+    Login:
+      title: Login
+      required:
+      - phone_number
+      type: object
+      properties:
+        phone_number:
+          title: Phone Number
+          type: string
+        otp:
+          title: Otp
+          type: string
+    SignUpResponse:
+      title: SignUpResponse
+      required:
+      - status
+      - message
+      type: object
+      properties:
+        status:
+          title: Status
+          type: string
+        message:
+          title: Message
+          type: string
+        access_token:
+          title: Access Token
           type: string
   securitySchemes:
     APIKeyHeader:
