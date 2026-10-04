@@ -253,19 +253,6 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
-    DistributionFields:
-      title: DistributionFields
-      required:
-      - id
-      - amount
-      type: object
-      properties:
-        id:
-          title: Id
-          type: integer
-        amount:
-          title: Amount
-          type: number
     Body_create_bulk_collections_api_v1_fee_collections_add_bulk_collections_post:
       title: Body_create_bulk_collections_api_v1_fee_collections_add_bulk_collections_post
       required:
@@ -284,6 +271,118 @@ components:
         branch_id:
           title: Branch Id
           type: integer
+    DownloadFeeCollections:
+      title: DownloadFeeCollections
+      required:
+      - institute_ids
+      - branch_ids
+      type: object
+      properties:
+        institute_ids:
+          title: Institute Ids
+          type: array
+          items:
+            type: integer
+          description: Institute IDs are required
+        branch_ids:
+          title: Branch Ids
+          type: array
+          items:
+            type: integer
+          description: Branch IDs are required
+        student_ids:
+          title: Student Ids
+          type: array
+          items:
+            type: integer
+          description: Student IDs is optional
+    Body_create_bulk_collections_of_erp_api_v1_fee_collections_add_bulk_collections_erp_post:
+      title: Body_create_bulk_collections_of_erp_api_v1_fee_collections_add_bulk_collections_erp_post
+      required:
+      - file
+      - institute_id
+      - branch_id
+      type: object
+      properties:
+        file:
+          title: File
+          type: string
+          format: binary
+        institute_id:
+          title: Institute Id
+          type: integer
+        branch_id:
+          title: Branch Id
+          type: integer
+    PaymentDistribution:
+      title: PaymentDistribution
+      type: object
+      properties:
+        fee_dues:
+          title: Fee Dues
+          type: array
+          items:
+            $ref: '#/components/schemas/DistributionFields'
+          description: Fee Dues are optional
+          default: []
+        penalties:
+          title: Penalties
+          type: array
+          items:
+            $ref: '#/components/schemas/DistributionFields'
+          description: Penalties are optional
+          default: []
+        excess_payment:
+          title: Excess Payment
+          type: number
+          description: Excess payment is optional
+          default: 0
+    Body_update_fee_collection_reciept_api_v1_fee_collections_upload_reciept_put:
+      title: Body_update_fee_collection_reciept_api_v1_fee_collections_upload_reciept_put
+      required:
+      - collection_id
+      - reciept
+      type: object
+      properties:
+        collection_id:
+          title: Collection Id
+          type: integer
+        reciept:
+          title: Reciept
+          type: string
+          format: binary
+    Body_delete_fee_collection_api_v1_fee_collections__delete:
+      title: Body_delete_fee_collection_api_v1_fee_collections__delete
+      required:
+      - fee_collection_ids
+      type: object
+      properties:
+        fee_collection_ids:
+          title: Fee Collection Ids
+          type: array
+          items:
+            type: integer
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
     Body_create_fee_collection_api_v1_fee_collections__post:
       title: Body_create_fee_collection_api_v1_fee_collections__post
       required:
@@ -324,6 +423,19 @@ components:
         otp:
           title: Otp
           type: integer
+    DistributionFields:
+      title: DistributionFields
+      required:
+      - id
+      - amount
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+        amount:
+          title: Amount
+          type: number
     HTTPValidationError:
       title: HTTPValidationError
       type: object
@@ -333,118 +445,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
-    DownloadFeeCollections:
-      title: DownloadFeeCollections
-      required:
-      - institute_ids
-      - branch_ids
-      type: object
-      properties:
-        institute_ids:
-          title: Institute Ids
-          type: array
-          items:
-            type: integer
-          description: Institute IDs are required
-        branch_ids:
-          title: Branch Ids
-          type: array
-          items:
-            type: integer
-          description: Branch IDs are required
-        student_ids:
-          title: Student Ids
-          type: array
-          items:
-            type: integer
-          description: Student IDs is optional
-    PaymentDistribution:
-      title: PaymentDistribution
-      type: object
-      properties:
-        fee_dues:
-          title: Fee Dues
-          type: array
-          items:
-            $ref: '#/components/schemas/DistributionFields'
-          description: Fee Dues are optional
-          default: []
-        penalties:
-          title: Penalties
-          type: array
-          items:
-            $ref: '#/components/schemas/DistributionFields'
-          description: Penalties are optional
-          default: []
-        excess_payment:
-          title: Excess Payment
-          type: number
-          description: Excess payment is optional
-          default: 0
-    Body_delete_fee_collection_api_v1_fee_collections__delete:
-      title: Body_delete_fee_collection_api_v1_fee_collections__delete
-      required:
-      - fee_collection_ids
-      type: object
-      properties:
-        fee_collection_ids:
-          title: Fee Collection Ids
-          type: array
-          items:
-            type: integer
-    Body_create_bulk_collections_of_erp_api_v1_fee_collections_add_bulk_collections_erp_post:
-      title: Body_create_bulk_collections_of_erp_api_v1_fee_collections_add_bulk_collections_erp_post
-      required:
-      - file
-      - institute_id
-      - branch_id
-      type: object
-      properties:
-        file:
-          title: File
-          type: string
-          format: binary
-        institute_id:
-          title: Institute Id
-          type: integer
-        branch_id:
-          title: Branch Id
-          type: integer
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-    Body_update_fee_collection_reciept_api_v1_fee_collections_upload_reciept_put:
-      title: Body_update_fee_collection_reciept_api_v1_fee_collections_upload_reciept_put
-      required:
-      - collection_id
-      - reciept
-      type: object
-      properties:
-        collection_id:
-          title: Collection Id
-          type: integer
-        reciept:
-          title: Reciept
-          type: string
-          format: binary
   securitySchemes:
     APIKeyHeader:
       type: apiKey

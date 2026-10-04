@@ -109,18 +109,6 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
-    DeleteCommonFeeTypeRequest:
-      title: DeleteCommonFeeTypeRequest
-      required:
-      - common_fee_type_ids
-      type: object
-      properties:
-        common_fee_type_ids:
-          title: Common Fee Type Ids
-          type: array
-          items:
-            type: integer
-          description: common_fee_type_ids is required
     UpdateCommonFeeTypeRequest:
       title: UpdateCommonFeeTypeRequest
       required:
@@ -133,30 +121,6 @@ components:
           title: Common Fee Type Id
           type: integer
           description: common_fee_type_id is required
-        category:
-          title: Category
-          type: string
-          description: category is required
-        common_fee_type_name:
-          title: Common Fee Type Name
-          type: string
-          description: common_fee_type_name is required
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    CreateCommonFeeTypeRequest:
-      title: CreateCommonFeeTypeRequest
-      required:
-      - category
-      - common_fee_type_name
-      type: object
-      properties:
         category:
           title: Category
           type: string
@@ -186,6 +150,42 @@ components:
         type:
           title: Error Type
           type: string
+    DeleteCommonFeeTypeRequest:
+      title: DeleteCommonFeeTypeRequest
+      required:
+      - common_fee_type_ids
+      type: object
+      properties:
+        common_fee_type_ids:
+          title: Common Fee Type Ids
+          type: array
+          items:
+            type: integer
+          description: common_fee_type_ids is required
+    CreateCommonFeeTypeRequest:
+      title: CreateCommonFeeTypeRequest
+      required:
+      - category
+      - common_fee_type_name
+      type: object
+      properties:
+        category:
+          title: Category
+          type: string
+          description: category is required
+        common_fee_type_name:
+          title: Common Fee Type Name
+          type: string
+          description: common_fee_type_name is required
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
   securitySchemes:
     APIKeyHeader:
       type: apiKey

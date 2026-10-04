@@ -142,27 +142,39 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
+    HTTPValidationError:
+      title: HTTPValidationError
       type: object
       properties:
-        loc:
-          title: Location
+        detail:
+          title: Detail
           type: array
           items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
+            $ref: '#/components/schemas/ValidationError'
+    CreateInstituteCourseClassRequest:
+      title: CreateInstituteCourseClassRequest
+      required:
+      - course_id
+      - name
+      - sequence_number
+      type: object
+      properties:
+        course_id:
+          title: Course Id
+          type: integer
+          description: Institute class ID is required
+        name:
+          title: Name
           type: string
-        type:
-          title: Error Type
-          type: string
+          description: Class name is required
+        no_of_terms:
+          title: No Of Terms
+          type: integer
+          description: Number of terms is optional
+        sequence_number:
+          title: Sequence Number
+          type: integer
+          description: Sequnce Number is optional
     UpdateInstituteCourseClassRequest:
       title: UpdateInstituteCourseClassRequest
       required:
@@ -190,39 +202,27 @@ components:
           title: Sequence Number
           type: integer
           description: Sequnce Number is optional
-    CreateInstituteCourseClassRequest:
-      title: CreateInstituteCourseClassRequest
+    ValidationError:
+      title: ValidationError
       required:
-      - course_id
-      - name
-      - sequence_number
+      - loc
+      - msg
+      - type
       type: object
       properties:
-        course_id:
-          title: Course Id
-          type: integer
-          description: Institute class ID is required
-        name:
-          title: Name
-          type: string
-          description: Class name is required
-        no_of_terms:
-          title: No Of Terms
-          type: integer
-          description: Number of terms is optional
-        sequence_number:
-          title: Sequence Number
-          type: integer
-          description: Sequnce Number is optional
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
+        loc:
+          title: Location
           type: array
           items:
-            $ref: '#/components/schemas/ValidationError'
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
   securitySchemes:
     APIKeyHeader:
       type: apiKey

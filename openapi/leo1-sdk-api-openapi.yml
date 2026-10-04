@@ -134,34 +134,23 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    TransactionDataRequest:
-      title: TransactionDataRequest
+    LinkStudentDetails:
+      title: LinkStudentDetails
       required:
-      - key
       - roll_number
       - phone_number
-      - institute_name
       - branch_name
       - course_name
       - parent_name
-      - fees_paid
-      - total_fees
-      - erp_transaction_id
       - student_name
-      - hash
+      - email_id
       type: object
       properties:
-        key:
-          title: Key
-          type: string
         roll_number:
           title: Roll Number
           type: string
         phone_number:
           title: Phone Number
-          type: string
-        institute_name:
-          title: Institute Name
           type: string
         branch_name:
           title: Branch Name
@@ -172,63 +161,11 @@ components:
         parent_name:
           title: Parent Name
           type: string
-        fees_paid:
-          title: Fees Paid
-          type: string
-        total_fees:
-          title: Total Fees
-          type: string
-        redirect_fail:
-          title: Redirect Fail
-          type: string
-        redirect_success:
-          title: Redirect Success
-          type: string
-        erp_transaction_id:
-          title: Erp Transaction Id
-          type: string
         student_name:
           title: Student Name
           type: string
-        hash:
-          title: Hash
-          type: string
-        extra_data:
-          title: Extra Data
-          type: object
         email_id:
           title: Email Id
-          type: string
-          default: test@gmail.com
-    GetLinkStudentAccess:
-      title: GetLinkStudentAccess
-      required:
-      - access_key
-      - roll_number
-      - user_id
-      type: object
-      properties:
-        access_key:
-          title: Access Key
-          type: string
-        roll_number:
-          title: Roll Number
-          type: string
-        user_id:
-          title: User Id
-          type: integer
-    EncryptedDataRequest:
-      title: EncryptedDataRequest
-      required:
-      - data
-      - access_token
-      type: object
-      properties:
-        data:
-          title: Data
-          type: string
-        access_token:
-          title: Access Token
           type: string
     InstituteERPResponse:
       title: InstituteERPResponse
@@ -267,15 +204,120 @@ components:
         data:
           title: Data
           type: string
-    HTTPValidationError:
-      title: HTTPValidationError
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
       type: object
       properties:
-        detail:
-          title: Detail
+        loc:
+          title: Location
           type: array
           items:
-            $ref: '#/components/schemas/ValidationError'
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    EncryptedDataRequest:
+      title: EncryptedDataRequest
+      required:
+      - data
+      - access_token
+      type: object
+      properties:
+        data:
+          title: Data
+          type: string
+        access_token:
+          title: Access Token
+          type: string
+    GetLinkStudentAccess:
+      title: GetLinkStudentAccess
+      required:
+      - access_key
+      - roll_number
+      - user_id
+      type: object
+      properties:
+        access_key:
+          title: Access Key
+          type: string
+        roll_number:
+          title: Roll Number
+          type: string
+        user_id:
+          title: User Id
+          type: integer
+    LinkDataRequest:
+      title: LinkDataRequest
+      required:
+      - access_token
+      type: object
+      properties:
+        access_token:
+          title: Access Token
+          type: string
+    ERPLoginResponse:
+      title: ERPLoginResponse
+      required:
+      - roll_number
+      - transaction_log_id
+      - unique_transaction_id
+      - status
+      - message
+      - access_token
+      - fee_transaction_id
+      type: object
+      properties:
+        roll_number:
+          title: Roll Number
+          type: string
+        transaction_log_id:
+          title: Transaction Log Id
+          type: integer
+        unique_transaction_id:
+          title: Unique Transaction Id
+          type: string
+        redirect_success:
+          title: Redirect Success
+          type: string
+        redirect_fail:
+          title: Redirect Fail
+          type: string
+        is_enach:
+          title: Is Enach
+          type: boolean
+          default: false
+        status:
+          title: Status
+          type: string
+        message:
+          title: Message
+          type: string
+        access_token:
+          title: Access Token
+          type: string
+        fee_transaction_id:
+          title: Fee Transaction Id
+          type: integer
+        erp_json_dump:
+          title: Erp Json Dump
+          type: object
+        institute_erp:
+          $ref: '#/components/schemas/InstituteERPResponse'
+        easebuzz_env:
+          title: Easebuzz Env
+          type: string
+        easebuzz_access_key:
+          title: Easebuzz Access Key
+          type: string
     LinkStudentRequest:
       title: LinkStudentRequest
       required:
@@ -343,32 +385,43 @@ components:
         institute_id:
           title: Institute Id
           type: integer
-    LinkDataRequest:
-      title: LinkDataRequest
-      required:
-      - access_token
+    HTTPValidationError:
+      title: HTTPValidationError
       type: object
       properties:
-        access_token:
-          title: Access Token
-          type: string
-    LinkStudentDetails:
-      title: LinkStudentDetails
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    TransactionDataRequest:
+      title: TransactionDataRequest
       required:
+      - key
       - roll_number
       - phone_number
+      - institute_name
       - branch_name
       - course_name
       - parent_name
+      - fees_paid
+      - total_fees
+      - erp_transaction_id
       - student_name
-      - email_id
+      - hash
       type: object
       properties:
+        key:
+          title: Key
+          type: string
         roll_number:
           title: Roll Number
           type: string
         phone_number:
           title: Phone Number
+          type: string
+        institute_name:
+          title: Institute Name
           type: string
         branch_name:
           title: Branch Name
@@ -379,87 +432,34 @@ components:
         parent_name:
           title: Parent Name
           type: string
-        student_name:
-          title: Student Name
+        fees_paid:
+          title: Fees Paid
           type: string
-        email_id:
-          title: Email Id
-          type: string
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-    ERPLoginResponse:
-      title: ERPLoginResponse
-      required:
-      - roll_number
-      - transaction_log_id
-      - unique_transaction_id
-      - status
-      - message
-      - access_token
-      - fee_transaction_id
-      type: object
-      properties:
-        roll_number:
-          title: Roll Number
-          type: string
-        transaction_log_id:
-          title: Transaction Log Id
-          type: integer
-        unique_transaction_id:
-          title: Unique Transaction Id
-          type: string
-        redirect_success:
-          title: Redirect Success
+        total_fees:
+          title: Total Fees
           type: string
         redirect_fail:
           title: Redirect Fail
           type: string
-        is_enach:
-          title: Is Enach
-          type: boolean
-          default: false
-        status:
-          title: Status
+        redirect_success:
+          title: Redirect Success
           type: string
-        message:
-          title: Message
+        erp_transaction_id:
+          title: Erp Transaction Id
           type: string
-        access_token:
-          title: Access Token
+        student_name:
+          title: Student Name
           type: string
-        fee_transaction_id:
-          title: Fee Transaction Id
-          type: integer
-        erp_json_dump:
-          title: Erp Json Dump
+        hash:
+          title: Hash
+          type: string
+        extra_data:
+          title: Extra Data
           type: object
-        institute_erp:
-          $ref: '#/components/schemas/InstituteERPResponse'
-        easebuzz_env:
-          title: Easebuzz Env
+        email_id:
+          title: Email Id
           type: string
-        easebuzz_access_key:
-          title: Easebuzz Access Key
-          type: string
+          default: test@gmail.com
   securitySchemes:
     APIKeyHeader:
       type: apiKey

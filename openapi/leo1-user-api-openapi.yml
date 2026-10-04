@@ -45,6 +45,19 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    CreatedResponse:
+      title: CreatedResponse
+      required:
+      - created
+      - status
+      type: object
+      properties:
+        created:
+          title: Created
+          type: boolean
+        status:
+          title: Status
+          type: string
     UserDetailResponse:
       title: UserDetailResponse
       required:
@@ -63,41 +76,6 @@ components:
           type: string
         tenant_type:
           title: Tenant Type
-          type: string
-        name:
-          title: Name
-          type: string
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    CreatedResponse:
-      title: CreatedResponse
-      required:
-      - created
-      - status
-      type: object
-      properties:
-        created:
-          title: Created
-          type: boolean
-        status:
-          title: Status
-          type: string
-    updateUser:
-      title: updateUser
-      required:
-      - phone_number
-      - name
-      type: object
-      properties:
-        phone_number:
-          title: Phone Number
           type: string
         name:
           title: Name
@@ -123,6 +101,28 @@ components:
         type:
           title: Error Type
           type: string
+    updateUser:
+      title: updateUser
+      required:
+      - phone_number
+      - name
+      type: object
+      properties:
+        phone_number:
+          title: Phone Number
+          type: string
+        name:
+          title: Name
+          type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
   securitySchemes:
     APIKeyHeader:
       type: apiKey

@@ -168,54 +168,6 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
-    DeleteInstituteCourseFeeStructureRequest:
-      title: DeleteInstituteCourseFeeStructureRequest
-      required:
-      - fee_structure_ids
-      type: object
-      properties:
-        fee_structure_ids:
-          title: Fee Structure Ids
-          type: array
-          items:
-            type: integer
-          description: Fee structure IDs is required
-    UpdateInstituteCourseFeeStructureRequest:
-      title: UpdateInstituteCourseFeeStructureRequest
-      required:
-      - course_id
-      - class_id
-      - fee_structure_id
-      type: object
-      properties:
-        course_id:
-          title: Course Id
-          type: integer
-          description: Course ID is required
-        class_id:
-          title: Class Id
-          type: integer
-          description: Class ID is required
-        fee_structure_id:
-          title: Fee Structure Id
-          type: integer
-          description: Fee structure ID is required
-        due_amount:
-          title: Due Amount
-          type: integer
-          description: Due amount is optional
-        due_date:
-          title: Due Date
-          type: string
-          description: Due date is optional
-        fee_type:
-          title: Fee Type
-          type: string
-          description: Fee type is optional
-        description:
-          title: Description
-          type: string
-          description: Description is optional
     CreateInstituteCourseFeeStructureRequest:
       title: CreateInstituteCourseFeeStructureRequest
       required:
@@ -245,15 +197,6 @@ components:
           title: Description
           type: string
           description: Description is required
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
     ValidationError:
       title: ValidationError
       required:
@@ -309,6 +252,63 @@ components:
         branch_name:
           title: Branch Name
           type: string
+    DeleteInstituteCourseFeeStructureRequest:
+      title: DeleteInstituteCourseFeeStructureRequest
+      required:
+      - fee_structure_ids
+      type: object
+      properties:
+        fee_structure_ids:
+          title: Fee Structure Ids
+          type: array
+          items:
+            type: integer
+          description: Fee structure IDs is required
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    UpdateInstituteCourseFeeStructureRequest:
+      title: UpdateInstituteCourseFeeStructureRequest
+      required:
+      - course_id
+      - class_id
+      - fee_structure_id
+      type: object
+      properties:
+        course_id:
+          title: Course Id
+          type: integer
+          description: Course ID is required
+        class_id:
+          title: Class Id
+          type: integer
+          description: Class ID is required
+        fee_structure_id:
+          title: Fee Structure Id
+          type: integer
+          description: Fee structure ID is required
+        due_amount:
+          title: Due Amount
+          type: integer
+          description: Due amount is optional
+        due_date:
+          title: Due Date
+          type: string
+          description: Due date is optional
+        fee_type:
+          title: Fee Type
+          type: string
+          description: Fee type is optional
+        description:
+          title: Description
+          type: string
+          description: Description is optional
   securitySchemes:
     APIKeyHeader:
       type: apiKey

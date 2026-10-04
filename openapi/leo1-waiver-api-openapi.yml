@@ -87,39 +87,28 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
-    DistributionFields:
-      title: DistributionFields
+    Body_create_student_waiver_api_v1_waiver__post:
+      title: Body_create_student_waiver_api_v1_waiver__post
       required:
-      - id
+      - student_id
       - amount
+      - payment_distribution
       type: object
       properties:
-        id:
-          title: Id
+        student_id:
+          title: Student Id
           type: integer
         amount:
           title: Amount
           type: number
-    Body_delete_student_waiver_api_v1_waiver__delete:
-      title: Body_delete_student_waiver_api_v1_waiver__delete
-      required:
-      - student_waiver_ids
-      type: object
-      properties:
-        student_waiver_ids:
-          title: Student Waiver Ids
-          type: array
-          items:
-            type: integer
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
+        type:
+          title: Type
+          type: string
+        remarks:
+          title: Remarks
+          type: string
+        payment_distribution:
+          $ref: '#/components/schemas/PaymentDistribution'
     PaymentDistribution:
       title: PaymentDistribution
       type: object
@@ -143,28 +132,6 @@ components:
           type: number
           description: Excess payment is optional
           default: 0
-    Body_create_student_waiver_api_v1_waiver__post:
-      title: Body_create_student_waiver_api_v1_waiver__post
-      required:
-      - student_id
-      - amount
-      - payment_distribution
-      type: object
-      properties:
-        student_id:
-          title: Student Id
-          type: integer
-        amount:
-          title: Amount
-          type: number
-        type:
-          title: Type
-          type: string
-        remarks:
-          title: Remarks
-          type: string
-        payment_distribution:
-          $ref: '#/components/schemas/PaymentDistribution'
     ValidationError:
       title: ValidationError
       required:
@@ -186,6 +153,39 @@ components:
         type:
           title: Error Type
           type: string
+    Body_delete_student_waiver_api_v1_waiver__delete:
+      title: Body_delete_student_waiver_api_v1_waiver__delete
+      required:
+      - student_waiver_ids
+      type: object
+      properties:
+        student_waiver_ids:
+          title: Student Waiver Ids
+          type: array
+          items:
+            type: integer
+    DistributionFields:
+      title: DistributionFields
+      required:
+      - id
+      - amount
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+        amount:
+          title: Amount
+          type: number
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
   securitySchemes:
     APIKeyHeader:
       type: apiKey

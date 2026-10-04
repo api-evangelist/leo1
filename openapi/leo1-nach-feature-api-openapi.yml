@@ -838,6 +838,27 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
+    EnachPresentationBody:
+      title: EnachPresentationBody
+      required:
+      - registration_id
+      - debit_date
+      - amount
+      - created_by
+      type: object
+      properties:
+        registration_id:
+          title: Registration Id
+          type: integer
+        debit_date:
+          title: Debit Date
+          type: string
+        amount:
+          title: Amount
+          type: integer
+        created_by:
+          title: Created By
+          type: string
     UpdateNachConfigurationApplicable:
       title: UpdateNachConfigurationApplicable
       required:
@@ -855,6 +876,15 @@ components:
         is_active:
           title: Is Active
           type: boolean
+    B2CConsentData:
+      title: B2CConsentData
+      required:
+      - student_uuid
+      type: object
+      properties:
+        student_uuid:
+          title: Student Uuid
+          type: string
     GenerateReport:
       title: GenerateReport
       required:
@@ -872,60 +902,6 @@ components:
           items:
             type: integer
           description: Institute IDs are required
-    EnachRegistrationBody:
-      title: EnachRegistrationBody
-      required:
-      - student_id
-      - amount
-      - created_by
-      type: object
-      properties:
-        student_id:
-          title: Student Id
-          type: integer
-        amount:
-          title: Amount
-          type: number
-        created_by:
-          title: Created By
-          type: string
-        account_number:
-          title: Account Number
-          type: string
-        ifsc_code:
-          title: Ifsc Code
-          type: string
-        bank_code:
-          title: Bank Code
-          type: string
-        account_type:
-          title: Account Type
-          type: string
-        name_on_bank_account:
-          title: Name On Bank Account
-          type: string
-    EnachBody:
-      title: EnachBody
-      required:
-      - student_uuid
-      - authentication_mode
-      type: object
-      properties:
-        student_uuid:
-          title: Student Uuid
-          type: string
-        authentication_mode:
-          title: Authentication Mode
-          type: string
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
     ValidationError:
       title: ValidationError
       required:
@@ -975,27 +951,47 @@ components:
         name_on_bank_account:
           title: Name On Bank Account
           type: string
-    EnachPresentationBody:
-      title: EnachPresentationBody
+    EnachRegistrationBody:
+      title: EnachRegistrationBody
       required:
-      - registration_id
-      - debit_date
+      - student_id
       - amount
       - created_by
       type: object
       properties:
-        registration_id:
-          title: Registration Id
+        student_id:
+          title: Student Id
           type: integer
-        debit_date:
-          title: Debit Date
-          type: string
         amount:
           title: Amount
-          type: integer
+          type: number
         created_by:
           title: Created By
           type: string
+        account_number:
+          title: Account Number
+          type: string
+        ifsc_code:
+          title: Ifsc Code
+          type: string
+        bank_code:
+          title: Bank Code
+          type: string
+        account_type:
+          title: Account Type
+          type: string
+        name_on_bank_account:
+          title: Name On Bank Account
+          type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     NachBulkCommunication:
       title: NachBulkCommunication
       type: object
@@ -1018,14 +1014,18 @@ components:
           items:
             type: integer
           default: []
-    B2CConsentData:
-      title: B2CConsentData
+    EnachBody:
+      title: EnachBody
       required:
       - student_uuid
+      - authentication_mode
       type: object
       properties:
         student_uuid:
           title: Student Uuid
+          type: string
+        authentication_mode:
+          title: Authentication Mode
           type: string
   securitySchemes:
     APIKeyHeader:

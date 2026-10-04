@@ -108,6 +108,15 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     ValidationError:
       title: ValidationError
       required:
@@ -162,15 +171,6 @@ components:
         no_of_years:
           title: No Of Years
           type: integer
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
     UpdateInstituteCourseRequest:
       title: UpdateInstituteCourseRequest
       required:
