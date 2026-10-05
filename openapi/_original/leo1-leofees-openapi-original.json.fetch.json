@@ -1,0 +1,12 @@
+{
+ "url": "https://api.leo1.in/openapi.json",
+ "requested_url": "https://api.leo1.in/openapi.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 162949,
+ "sha256": "cace8144ecd96a4eb7e9e5b320c5288f777d3242a3f9f429359535b8cc6356af",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
