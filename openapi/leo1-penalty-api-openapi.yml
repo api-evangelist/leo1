@@ -109,6 +109,38 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    CreateStudentPenaltyRequest:
+      title: CreateStudentPenaltyRequest
+      required:
+      - student_id
+      - amount
+      type: object
+      properties:
+        student_id:
+          title: Student Id
+          type: integer
+          description: Student ID is required
+        amount:
+          title: Amount
+          type: number
+          description: Amount is required
+        type:
+          title: Type
+          type: string
+          description: type is optional
+        remarks:
+          title: Remarks
+          type: string
+          description: Remarks is optional
     UpdateStudentPenaltyRequest:
       title: UpdateStudentPenaltyRequest
       required:
@@ -174,38 +206,6 @@ components:
           items:
             type: integer
           description: Student Penalty IDs are required
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    CreateStudentPenaltyRequest:
-      title: CreateStudentPenaltyRequest
-      required:
-      - student_id
-      - amount
-      type: object
-      properties:
-        student_id:
-          title: Student Id
-          type: integer
-          description: Student ID is required
-        amount:
-          title: Amount
-          type: number
-          description: Amount is required
-        type:
-          title: Type
-          type: string
-          description: type is optional
-        remarks:
-          title: Remarks
-          type: string
-          description: Remarks is optional
   securitySchemes:
     APIKeyHeader:
       type: apiKey

@@ -109,27 +109,15 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
+    HTTPValidationError:
+      title: HTTPValidationError
       type: object
       properties:
-        loc:
-          title: Location
+        detail:
+          title: Detail
           type: array
           items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
+            $ref: '#/components/schemas/ValidationError'
     UpdateStudentRefundRequest:
       title: UpdateStudentRefundRequest
       required:
@@ -168,15 +156,39 @@ components:
           title: Remarks
           type: string
           description: Remarks is optional
-    HTTPValidationError:
-      title: HTTPValidationError
+    DeleteStudentRefundRequest:
+      title: DeleteStudentRefundRequest
+      required:
+      - student_refund_ids
       type: object
       properties:
-        detail:
-          title: Detail
+        student_refund_ids:
+          title: Student Refund Ids
           type: array
           items:
-            $ref: '#/components/schemas/ValidationError'
+            type: integer
+          description: Student Refund IDs are required
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
     Body_create_student_refund_api_v1_refund__post:
       title: Body_create_student_refund_api_v1_refund__post
       required:
@@ -212,18 +224,6 @@ components:
         remarks:
           title: Remarks
           type: string
-    DeleteStudentRefundRequest:
-      title: DeleteStudentRefundRequest
-      required:
-      - student_refund_ids
-      type: object
-      properties:
-        student_refund_ids:
-          title: Student Refund Ids
-          type: array
-          items:
-            type: integer
-          description: Student Refund IDs are required
   securitySchemes:
     APIKeyHeader:
       type: apiKey

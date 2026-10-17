@@ -186,6 +186,29 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    BulkCreateInstituteFeeTypeRequest:
+      title: BulkCreateInstituteFeeTypeRequest
+      required:
+      - fee_type_name
+      type: object
+      properties:
+        fee_type_name:
+          title: Fee Type Name
+          type: string
+          description: Fee type name is required
+        common_fee_type_id:
+          title: Common Fee Type Id
+          type: integer
+          description: Common fee type is optional
     DeleteInstituteFeeTypeRequest:
       title: DeleteInstituteFeeTypeRequest
       required:
@@ -198,6 +221,46 @@ components:
           items:
             type: integer
           description: fee_type_ids is required
+    UpdateInstituteFeeTypeRequest:
+      title: UpdateInstituteFeeTypeRequest
+      required:
+      - fee_type_id
+      - fee_type_name
+      type: object
+      properties:
+        fee_type_id:
+          title: Fee Type Id
+          type: integer
+          description: fee_type_id is required
+        fee_type_name:
+          title: Fee Type Name
+          type: string
+          description: fee_type_name is required
+        is_checked:
+          title: Is Checked
+          type: boolean
+          description: is_checked is optional
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
     CreateInstituteFeeTypeRequest:
       title: CreateInstituteFeeTypeRequest
       required:
@@ -222,69 +285,6 @@ components:
           title: Common Fee Type Id
           type: integer
           description: Common fee type is optional
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-    BulkCreateInstituteFeeTypeRequest:
-      title: BulkCreateInstituteFeeTypeRequest
-      required:
-      - fee_type_name
-      type: object
-      properties:
-        fee_type_name:
-          title: Fee Type Name
-          type: string
-          description: Fee type name is required
-        common_fee_type_id:
-          title: Common Fee Type Id
-          type: integer
-          description: Common fee type is optional
-    UpdateInstituteFeeTypeRequest:
-      title: UpdateInstituteFeeTypeRequest
-      required:
-      - fee_type_id
-      - fee_type_name
-      type: object
-      properties:
-        fee_type_id:
-          title: Fee Type Id
-          type: integer
-          description: fee_type_id is required
-        fee_type_name:
-          title: Fee Type Name
-          type: string
-          description: fee_type_name is required
-        is_checked:
-          title: Is Checked
-          type: boolean
-          description: is_checked is optional
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
   securitySchemes:
     APIKeyHeader:
       type: apiKey

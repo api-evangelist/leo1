@@ -257,130 +257,15 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    GetInstituteTransactionsCsvRequest:
-      title: GetInstituteTransactionsCsvRequest
-      required:
-      - institute_name
+    HTTPValidationError:
+      title: HTTPValidationError
       type: object
       properties:
-        institute_name:
-          title: Institute Name
-          type: string
-        branch_name:
-          title: Branch Name
-          type: string
-        search_value:
-          title: Search Value
-          type: string
-        date_filter:
-          title: Date Filter
-          type: string
-        skip:
-          title: Skip
-          type: integer
-        limit:
-          title: Limit
-          type: integer
-        is_csv:
-          title: Is Csv
-          type: boolean
-        send_email:
-          title: Send Email
-          type: boolean
-          default: false
-        email_address:
-          title: Email Address
-          type: string
-          format: email
-          default: ''
-    CreatedResponse:
-      title: CreatedResponse
-      required:
-      - created
-      - status
-      type: object
-      properties:
-        created:
-          title: Created
-          type: boolean
-        status:
-          title: Status
-          type: string
-    TransactionResponse:
-      title: TransactionResponse
-      required:
-      - transaction_id
-      - transaction_status
-      - fees_paid
-      - total_fees
-      - roll_no
-      - student_name
-      - institute_name
-      - branch_name
-      - course_name
-      - mobile_number
-      type: object
-      properties:
-        transaction_id:
-          title: Transaction Id
-          type: string
-        transaction_timestamp:
-          title: Transaction Timestamp
-          type: string
-        transaction_mode:
-          title: Transaction Mode
-          type: string
-        transaction_status:
-          title: Transaction Status
-          type: string
-        fees_paid:
-          title: Fees Paid
-          type: number
-        utrn:
-          title: Utrn
-          type: string
-        total_fees:
-          title: Total Fees
-          type: number
-        roll_no:
-          title: Roll No
-          type: string
-        student_name:
-          title: Student Name
-          type: string
-        institute_name:
-          title: Institute Name
-          type: string
-        branch_name:
-          title: Branch Name
-          type: string
-        course_name:
-          title: Course Name
-          type: string
-        mobile_number:
-          title: Mobile Number
-          type: string
-    TranscationsAggregateInfo:
-      title: TranscationsAggregateInfo
-      required:
-      - no_of_students_paid
-      - no_of_transcations_paid
-      - total_amount_paid
-      - total_no_of_transcations
-      type: object
-      properties:
-        no_of_students_paid:
-          title: No Of Students Paid
-          type: integer
-        no_of_transcations_paid:
-          title: No Of Transcations Paid
-          type: integer
-        total_amount_paid:
-          title: Total Amount Paid
-          type: number
-        total_no_of_transcations:
-          title: Total No Of Transcations
-          type: integer
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     InstituteTransactionResponse:
       title: InstituteTransactionResponse
       required:
@@ -441,12 +326,54 @@ components:
         easebuzz_id:
           title: Easebuzz Id
           type: string
-    ReverseTransactionInput:
-      title: ReverseTransactionInput
+    GetInstituteTransactionsCsvRequest:
+      title: GetInstituteTransactionsCsvRequest
+      required:
+      - institute_name
       type: object
       properties:
-        id:
-          title: Id
+        institute_name:
+          title: Institute Name
+          type: string
+        branch_name:
+          title: Branch Name
+          type: string
+        search_value:
+          title: Search Value
+          type: string
+        date_filter:
+          title: Date Filter
+          type: string
+        skip:
+          title: Skip
+          type: integer
+        limit:
+          title: Limit
+          type: integer
+        is_csv:
+          title: Is Csv
+          type: boolean
+        send_email:
+          title: Send Email
+          type: boolean
+          default: false
+        email_address:
+          title: Email Address
+          type: string
+          format: email
+          default: ''
+    CreatedResponse:
+      title: CreatedResponse
+      required:
+      - created
+      - status
+      type: object
+      properties:
+        created:
+          title: Created
+          type: boolean
+        status:
+          title: Status
           type: string
     NotifyLoanCreatedRequest:
       title: NotifyLoanCreatedRequest
@@ -496,26 +423,80 @@ components:
         student_name:
           title: Student Name
           type: string
-    ValidationError:
-      title: ValidationError
+    TranscationsAggregateInfo:
+      title: TranscationsAggregateInfo
       required:
-      - loc
-      - msg
-      - type
+      - no_of_students_paid
+      - no_of_transcations_paid
+      - total_amount_paid
+      - total_no_of_transcations
       type: object
       properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
+        no_of_students_paid:
+          title: No Of Students Paid
+          type: integer
+        no_of_transcations_paid:
+          title: No Of Transcations Paid
+          type: integer
+        total_amount_paid:
+          title: Total Amount Paid
+          type: number
+        total_no_of_transcations:
+          title: Total No Of Transcations
+          type: integer
+    TransactionResponse:
+      title: TransactionResponse
+      required:
+      - transaction_id
+      - transaction_status
+      - fees_paid
+      - total_fees
+      - roll_no
+      - student_name
+      - institute_name
+      - branch_name
+      - course_name
+      - mobile_number
+      type: object
+      properties:
+        transaction_id:
+          title: Transaction Id
           type: string
-        type:
-          title: Error Type
+        transaction_timestamp:
+          title: Transaction Timestamp
+          type: string
+        transaction_mode:
+          title: Transaction Mode
+          type: string
+        transaction_status:
+          title: Transaction Status
+          type: string
+        fees_paid:
+          title: Fees Paid
+          type: number
+        utrn:
+          title: Utrn
+          type: string
+        total_fees:
+          title: Total Fees
+          type: number
+        roll_no:
+          title: Roll No
+          type: string
+        student_name:
+          title: Student Name
+          type: string
+        institute_name:
+          title: Institute Name
+          type: string
+        branch_name:
+          title: Branch Name
+          type: string
+        course_name:
+          title: Course Name
+          type: string
+        mobile_number:
+          title: Mobile Number
           type: string
     CreateLoanLead:
       title: CreateLoanLead
@@ -578,15 +559,34 @@ components:
         total_records_number:
           title: Total Records Number
           type: integer
-    HTTPValidationError:
-      title: HTTPValidationError
+    ReverseTransactionInput:
+      title: ReverseTransactionInput
       type: object
       properties:
-        detail:
-          title: Detail
+        id:
+          title: Id
+          type: string
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
           type: array
           items:
-            $ref: '#/components/schemas/ValidationError'
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
   securitySchemes:
     APIKeyHeader:
       type: apiKey

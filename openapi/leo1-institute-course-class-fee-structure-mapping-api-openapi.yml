@@ -188,6 +188,22 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    Body_download_sample_template_api_v1_institute_mapping_sample_template_download_post:
+      title: Body_download_sample_template_api_v1_institute_mapping_sample_template_download_post
+      type: object
+      properties:
+        branch_id:
+          title: Branch Id
+          type: integer
     DownloadCourseMapping:
       title: DownloadCourseMapping
       required:
@@ -207,27 +223,6 @@ components:
           items:
             type: integer
           description: Branch IDs are required
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
     Body_create_bulk_students_api_v1_institute_mapping_add_bulk_students_post:
       title: Body_create_bulk_students_api_v1_institute_mapping_add_bulk_students_post
       required:
@@ -250,37 +245,13 @@ components:
         branch_name:
           title: Branch Name
           type: string
-    Body_update_bulk_students_api_v1_institute_mapping_update_bulk_students_post:
-      title: Body_update_bulk_students_api_v1_institute_mapping_update_bulk_students_post
-      required:
-      - file
+    Body_collection_download_sample_template_api_v1_institute_mapping_collection_sample_template_download_post:
+      title: Body_collection_download_sample_template_api_v1_institute_mapping_collection_sample_template_download_post
       type: object
       properties:
-        file:
-          title: File
-          type: string
-          format: binary
-        institute_id:
-          title: Institute Id
-          type: integer
         branch_id:
           title: Branch Id
           type: integer
-        institute_name:
-          title: Institute Name
-          type: string
-        branch_name:
-          title: Branch Name
-          type: string
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
     CreateStudentInstituteCourseMappingRequest:
       title: CreateStudentInstituteCourseMappingRequest
       required:
@@ -331,20 +302,49 @@ components:
           title: Branch Name
           type: string
           description: Branch name is required
-    Body_download_sample_template_api_v1_institute_mapping_sample_template_download_post:
-      title: Body_download_sample_template_api_v1_institute_mapping_sample_template_download_post
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
       type: object
       properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    Body_update_bulk_students_api_v1_institute_mapping_update_bulk_students_post:
+      title: Body_update_bulk_students_api_v1_institute_mapping_update_bulk_students_post
+      required:
+      - file
+      type: object
+      properties:
+        file:
+          title: File
+          type: string
+          format: binary
+        institute_id:
+          title: Institute Id
+          type: integer
         branch_id:
           title: Branch Id
           type: integer
-    Body_collection_download_sample_template_api_v1_institute_mapping_collection_sample_template_download_post:
-      title: Body_collection_download_sample_template_api_v1_institute_mapping_collection_sample_template_download_post
-      type: object
-      properties:
-        branch_id:
-          title: Branch Id
-          type: integer
+        institute_name:
+          title: Institute Name
+          type: string
+        branch_name:
+          title: Branch Name
+          type: string
   securitySchemes:
     APIKeyHeader:
       type: apiKey

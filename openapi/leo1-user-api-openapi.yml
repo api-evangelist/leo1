@@ -45,19 +45,15 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    CreatedResponse:
-      title: CreatedResponse
-      required:
-      - created
-      - status
+    HTTPValidationError:
+      title: HTTPValidationError
       type: object
       properties:
-        created:
-          title: Created
-          type: boolean
-        status:
-          title: Status
-          type: string
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     UserDetailResponse:
       title: UserDetailResponse
       required:
@@ -79,6 +75,19 @@ components:
           type: string
         name:
           title: Name
+          type: string
+    CreatedResponse:
+      title: CreatedResponse
+      required:
+      - created
+      - status
+      type: object
+      properties:
+        created:
+          title: Created
+          type: boolean
+        status:
+          title: Status
           type: string
     ValidationError:
       title: ValidationError
@@ -114,15 +123,6 @@ components:
         name:
           title: Name
           type: string
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
   securitySchemes:
     APIKeyHeader:
       type: apiKey

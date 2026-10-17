@@ -235,12 +235,20 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    FeePaymentRequest:
-      title: FeePaymentRequest
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    FeePaymentRequestForTempStudent:
+      title: FeePaymentRequestForTempStudent
       required:
       - transaction_id
       - phone_number
-      - institute_id
       - amount
       type: object
       properties:
@@ -250,45 +258,24 @@ components:
         phone_number:
           title: Phone Number
           type: string
-        institute_id:
-          title: Institute Id
-          type: integer
         amount:
           title: Amount
           type: number
         payment_mode:
           title: Payment Mode
           type: string
-        comments:
-          title: Comments
+        udf2:
+          title: Udf2
           type: string
-    PaymentRequest:
-      title: PaymentRequest
+    UpdatePaymentInitiated:
+      title: UpdatePaymentInitiated
       required:
-      - roll_number
       - transaction_log_id
-      - unique_transaction_id
       type: object
       properties:
-        roll_number:
-          title: Roll Number
-          type: string
         transaction_log_id:
           title: Transaction Log Id
           type: integer
-        unique_transaction_id:
-          title: Unique Transaction Id
-          type: string
-        redirect_success:
-          title: Redirect Success
-          type: string
-        redirect_fail:
-          title: Redirect Fail
-          type: string
-        is_enach:
-          title: Is Enach
-          type: boolean
-          default: false
     ValidationError:
       title: ValidationError
       required:
@@ -310,45 +297,6 @@ components:
         type:
           title: Error Type
           type: string
-    UpdatePaymentInitiated:
-      title: UpdatePaymentInitiated
-      required:
-      - transaction_log_id
-      type: object
-      properties:
-        transaction_log_id:
-          title: Transaction Log Id
-          type: integer
-    FetchPaymentStatusRequest:
-      title: FetchPaymentStatusRequest
-      required:
-      - txn_id
-      - txn_amount
-      - trans_id
-      - insti_id
-      type: object
-      properties:
-        txn_id:
-          title: Txn Id
-          type: string
-        txn_amount:
-          title: Txn Amount
-          type: number
-        trans_id:
-          title: Trans Id
-          type: string
-        insti_id:
-          title: Insti Id
-          type: integer
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
     PaymentCompleteStatus:
       title: PaymentCompleteStatus
       required:
@@ -384,11 +332,60 @@ components:
         reason:
           title: Reason
           type: string
-    FeePaymentRequestForTempStudent:
-      title: FeePaymentRequestForTempStudent
+    FetchPaymentStatusRequest:
+      title: FetchPaymentStatusRequest
+      required:
+      - txn_id
+      - txn_amount
+      - trans_id
+      - insti_id
+      type: object
+      properties:
+        txn_id:
+          title: Txn Id
+          type: string
+        txn_amount:
+          title: Txn Amount
+          type: number
+        trans_id:
+          title: Trans Id
+          type: string
+        insti_id:
+          title: Insti Id
+          type: integer
+    PaymentRequest:
+      title: PaymentRequest
+      required:
+      - roll_number
+      - transaction_log_id
+      - unique_transaction_id
+      type: object
+      properties:
+        roll_number:
+          title: Roll Number
+          type: string
+        transaction_log_id:
+          title: Transaction Log Id
+          type: integer
+        unique_transaction_id:
+          title: Unique Transaction Id
+          type: string
+        redirect_success:
+          title: Redirect Success
+          type: string
+        redirect_fail:
+          title: Redirect Fail
+          type: string
+        is_enach:
+          title: Is Enach
+          type: boolean
+          default: false
+    FeePaymentRequest:
+      title: FeePaymentRequest
       required:
       - transaction_id
       - phone_number
+      - institute_id
       - amount
       type: object
       properties:
@@ -398,14 +395,17 @@ components:
         phone_number:
           title: Phone Number
           type: string
+        institute_id:
+          title: Institute Id
+          type: integer
         amount:
           title: Amount
           type: number
         payment_mode:
           title: Payment Mode
           type: string
-        udf2:
-          title: Udf2
+        comments:
+          title: Comments
           type: string
   securitySchemes:
     APIKeyHeader:
